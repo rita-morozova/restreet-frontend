@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css';
 import MainContainer from './Containers/MainContainer'
-import {Route, Switch, withRouter} from 'react-router-dom'
+import {Route, Switch, withRouter, Redirect, Link} from 'react-router-dom'
 import Login from './Components/Login'
 import Signup from './Components/Signup'
 import Form from './Components/Form'
@@ -15,11 +15,12 @@ import LearnContainer from './Containers/LearnContainer'
 import NotFound from './Components/NotFound'
 
 
+
 class App extends React.Component {
 
   state ={
-    user: "",
-    token:""
+    user: '',
+    token:''
   }
 
   //username={this.state.user.username} insert in home for testing
@@ -39,13 +40,14 @@ class App extends React.Component {
   //Remove console.logs after testing
   handleLogin = (info) => {
     console.log('login')
+    console.log(info)
     this.handleAuthFetch(info,'http://localhost:3000/login')
 
   }
 
   handleSignup = (info) => {
     console.log('sign up')
-    this.handleAuthFetch(info,'http://localhost:3000/users')
+    this.handleSignupFetch(info,'http://localhost:3000/users')
   }
 
   handleAuthFetch = (info, request) => {  
@@ -70,6 +72,31 @@ class App extends React.Component {
     })
   }
 
+  handleSignupFetch = (info, request) => {  
+    fetch(request, {
+      method:'POST',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user: {
+        username: info.username,
+        password: info.password,
+        email: info.email
+        }
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data)
+      this.setState({user: data.user, token: data.token}, ()  =>{
+        //redirects home after login/signup here
+        // this.props.history.push('/') 
+      }
+        )
+    })
+  }
+
   addToFavorites = (art) => {
 
     fetch('http://localhost:3000/favorites',{
@@ -89,6 +116,11 @@ class App extends React.Component {
   handleAllPaintings = () =>  <ArtContainer addToFavorites={this.addToFavorites} />
   handleUserFavorites = () => <FavArtContainer userArts={this.state.user.arts} /> 
 
+  handleLogout = () => {
+    this.setState({user: null, token: null})
+    this.props.history.push('/') 
+  }
+
 
   render(){
   return (
@@ -96,8 +128,9 @@ class App extends React.Component {
         <Navbar />
       <Switch>
       <Route exact path='/'  component={this.handleHome} />
-      <Route exact path="/login" component={this.renderForm} />
-      <Route exact path="/signup" component={this.renderForm} />
+      <Route exact path='/login' component={this.renderForm} />
+      <Route exact path='/signup' component={this.renderForm} />
+      <Route exact path='/logout' component={() =>this.handleLogout()} />
       <Route exact path='/profile' component={UserProfile} />
       <Route exact path='/adopt-a-wall' component={MainContainer} />
       <Route exact path='/my-walls' component={AdoptedWall} />
