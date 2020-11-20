@@ -1,14 +1,12 @@
 import React from 'react'
 
-class Home extends React.Component {
+const Home = props => {
 
-  render(){
     return(
       <div>
-
+        Welcome {props.username}!
       </div>
     )
-  }
 }
 
 export default Home

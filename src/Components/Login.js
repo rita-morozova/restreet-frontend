@@ -22,7 +22,7 @@ render(){
 return (
 
     <form onSubmit={this.handleSubmit}>
-    <h1>{this.props.name}</h1>
+    <h1>LOGIN</h1>
     <label htmlFor="username">Username:</label>
     <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
     <label htmlFor="password">Password:</label>

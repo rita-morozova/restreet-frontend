@@ -3,8 +3,9 @@ import React from 'react'
 class Signup extends React.Component {
 
   state = {
-    username: "",
-    password: ""
+    username: '',
+    password: '',
+    email: ''
   }
 
   handleSubmit = (e) => {
@@ -22,13 +23,14 @@ class Signup extends React.Component {
 render(){
 return (
     <div>
-      SIGNUP
     <form onSubmit={this.handleSubmit}>
-    <h1>{this.props.name}</h1>
+    <h1>SIGNUP</h1>
     <label htmlFor="username">Username:</label>
     <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
     <label htmlFor="password">Password:</label>
     <input type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
+    <label htmlFor="email">Email:</label>
+    <input type="text" name="email" value={this.state.email} onChange={this.handleChange}/>
     <input type="submit" value="Submit"/>
      </form>
      </div>

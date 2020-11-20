@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css';
 import MainContainer from './Containers/MainContainer'
-import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
+import {Route, Switch, withRouter} from 'react-router-dom'
 import Login from './Components/Login'
 import Signup from './Components/Signup'
 import Form from './Components/Form'
@@ -14,7 +14,6 @@ import FavArtContainer from './Containers/FavArtContainer'
 import LearnContainer from './Containers/LearnContainer'
 import NotFound from './Components/NotFound'
 
-const URL= 'http://localhost:3000'
 
 class App extends React.Component {
 
@@ -23,21 +22,21 @@ class App extends React.Component {
     token:""
   }
 
-  // componentDidMount(){
-  //   fetch('http://localhost:3000/arts')
-  //   .then(res => res.json())
-  //   .then(data => console.log(data))
-  // }
+  //username={this.state.user.username} insert in home for testing
+
+  handleHome = () => <Home username={this.state.user.username} />
+
+
 
   renderForm = (routerProps) => {
-    console.log(routerProps)
     if(routerProps.location.pathname === "/login"){
-      return <Form name="Login Form" handleSubmit={this.handleLogin} />
+      return <Login handleSubmit={this.handleLogin} />
     } else if (routerProps.location.pathname === "/signup"){
-      return <Form name="Signup Form" handleSubmit={this.handleSignup} />
+      return <Signup handleSubmit={this.handleSignup} />
     }
   }
 
+  //Remove console.logs after testing
   handleLogin = (info) => {
     console.log('login')
     this.handleAuthFetch(info,'http://localhost:3000/login')
@@ -49,27 +48,67 @@ class App extends React.Component {
     this.handleAuthFetch(info,'http://localhost:3000/users')
   }
 
+  handleAuthFetch = (info, request) => {  
+    fetch(request, {
+      method:'POST',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: info.username,
+        password: info.password
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data)
+      this.setState({user: data.user, token: data.token}, ()  =>{
+        //redirects home after login/signup
+        this.props.history.push('/') 
+      }
+        )
+    })
+  }
+
+  addToFavorites = (art) => {
+
+    fetch('http://localhost:3000/favorites',{
+      method:'POST',
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization' : `Bearer ${this.state.token}`
+      },
+      body: JSON.stringify(({art_id: art.id}))
+    })
+    .then(res => res.json())
+    .then(data => {
+      this.setState({user:data.user})
+    })
+  }
+
+  handleAllPaintings = () =>  <ArtContainer addToFavorites={this.addToFavorites} />
+  handleUserFavorites = () => <FavArtContainer userArts={this.state.user.arts} /> 
+
+
   render(){
   return (
     <div className="App">
-      <Router>
         <Navbar />
       <Switch>
-      <Route exact path='/'  component={Home} />
+      <Route exact path='/'  component={this.handleHome} />
       <Route exact path="/login" component={this.renderForm} />
       <Route exact path="/signup" component={this.renderForm} />
       <Route exact path='/profile' component={UserProfile} />
       <Route exact path='/adopt-a-wall' component={MainContainer} />
       <Route exact path='/my-walls' component={AdoptedWall} />
-      <Route exact path='/get-inspired' component={ArtContainer} />
-      <Route exact path='/my-inspiration' component={FavArtContainer} />
+      <Route exact path='/get-inspired' component={this.handleAllPaintings} />
+      <Route exact path='/my-inspiration' component={this.handleUserFavorites} />
       <Route exact path='/learn' component={LearnContainer} />
       <Route component={NotFound} />
       </Switch>
-      </Router>
     </div>
   );
   }
 }
 
-export default App;
+export default withRouter(App);

@@ -1,6 +1,6 @@
 import React from 'react'
 import ArtCard from '../Components/ArtCard'
-import {Container} from 'semantic-ui-react'
+import {Container, Card} from 'semantic-ui-react'
 
 
 class ArtContainer extends React.Component {
@@ -23,7 +23,8 @@ class ArtContainer extends React.Component {
     const {arts} = this.state
     return(
       <Container textAlign='center'>
-        {arts.map (art => <ArtCard key={art.id} art={art} />)}
+        
+        {arts.map (art => <ArtCard key={art.id} art={art}  addToFavorites={this.props.addToFavorites} />)}
       </Container>
     )
   }
