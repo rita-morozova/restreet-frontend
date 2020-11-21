@@ -13,6 +13,7 @@ import ArtContainer from './Containers/ArtContainer'
 import FavArtContainer from './Containers/FavArtContainer'
 import LearnContainer from './Containers/LearnContainer'
 import NotFound from './Components/NotFound'
+import API from './Adapters/API'
 
 
 
@@ -30,7 +31,7 @@ class App extends React.Component {
 
   //username={this.state.user.username} insert in home for testing
 
-  handleHome = () => <Home username={this.state.user.username} />
+  // handleHome = () => <Home username={this.state.user.username} />
 
 
   //Login and SignUp forms
@@ -46,13 +47,13 @@ class App extends React.Component {
   handleLogin = (info) => {
     console.log('login')
     console.log(info)
-    this.handleAuthFetch(info,'http://localhost:3000/login')
+    this.handleAuthFetch(info,`${URL}/login`)
 
   }
 
   handleSignup = (info) => {
     console.log('sign up')
-    this.handleSignupFetch(info,'http://localhost:3000/users')
+    this.handleSignupFetch(info,`${URL}/users`)
   }
 
   handleAuthFetch = (info, request) => {  
@@ -117,16 +118,15 @@ class App extends React.Component {
     }
   }
 
-
   handleLogout = (user) => {
     localStorage.removeItem('token')
     this.setState({user: user})
-    return <Redirect to="/login" push={true} />
+    return <Redirect to="/" push={true} />
   }
 
   addToFavorites = (art) => {
 
-    fetch('http://localhost:3000/favorites',{
+    fetch(`${URL}/favorites`,{
       method:'POST',
       headers:{
         'Content-Type': 'application/json',
@@ -143,9 +143,9 @@ class App extends React.Component {
    
 
   deleteFromFavorites = (art) =>{
-    // const foundFavorite = this.state.user.arts.find(favorite => favorite.id === art.id)
+    const foundFavorite = this.state.user.favorites.find(favorite => favorite.art_id === art.id)
     
-    fetch(`${URL}/favorites/${art.id}`,{
+    fetch(`${URL}/favorites/${foundFavorite.id}`,{
       method: 'DELETE',
       headers: {
         'Content-Type':'application/json',
@@ -156,6 +156,9 @@ class App extends React.Component {
     .then(data =>{
       this.setState({user:data.user})
       console.log(data)
+      // this.setState({
+      //   users: data.user.arts.filter(userArt => userArt.id !== art.id)
+      // })
     })
   }
 
@@ -173,7 +176,7 @@ class App extends React.Component {
     <div className="App">
         <Navbar user={this.state.user} />
       <Switch>
-      <Route exact path='/'  component={this.handleHome} />
+      <Route exact path='/'  component={Home} />
       <Route exact path='/login' component={this.renderForm} />
       <Route exact path='/signup' component={this.renderForm} />
       <Route exact path='/logout' component={() =>this.handleLogout()} />
