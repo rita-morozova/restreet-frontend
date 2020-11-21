@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../Components/Header'
+import Map from '../Components/Map'
 
 class MainContainer extends React.Component {
 
@@ -9,6 +10,7 @@ class MainContainer extends React.Component {
         <Header />
         <br />
             HELLO!!!!!!!!!
+            <Map />
       </div>
     )
   }
