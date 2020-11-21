@@ -15,12 +15,16 @@ import LearnContainer from './Containers/LearnContainer'
 import NotFound from './Components/NotFound'
 
 
+const URL = 'http://localhost:3000'
+
+
 
 class App extends React.Component {
 
   state ={
     user: '',
-    token:''
+    token:'',
+    favorites: [],
   }
 
   //username={this.state.user.username} insert in home for testing
@@ -111,13 +115,30 @@ class App extends React.Component {
     .then(res => res.json())
     .then(data => {
       console.log(data)
-    
       this.setState({user:data.user})
+     })
+      }
+   
+
+  deleteFromFavorites = (art) =>{
+    // const foundFavorite = this.state.user.arts.find(favorite => favorite.id === art.id)
+    
+    fetch(`${URL}/favorites/${art.id}`,{
+      method: 'DELETE',
+      headers: {
+        'Content-Type':'application/json',
+        'Authorization' : `Bearer ${this.state.token}`
+      }
+    })
+    .then(resp => resp.json())
+    .then(data =>{
+      this.setState({user:data.user})
+      console.log(data)
     })
   }
 
-  handleAllPaintings = () =>  <ArtContainer addToFavorites={this.addToFavorites} />
-  handleUserFavorites = () => <FavArtContainer userArts={this.state.user.arts.map(favorite => favorite)}/> 
+  handleAllPaintings = () =>  <ArtContainer addToFavorites={this.addToFavorites}  />
+  // handleUserFavorites = () => <FavArtContainer userArts={this.state.user.arts} /> 
 
   handleLogout = () => {
     this.setState({user: null, token: null})
@@ -138,7 +159,7 @@ class App extends React.Component {
       <Route exact path='/adopt-a-wall' component={MainContainer} />
       <Route exact path='/my-walls' component={AdoptedWall} />
       <Route exact path='/get-inspired' component={this.handleAllPaintings} />
-      <Route exact path='/my-inspiration' component={this.handleUserFavorites} />
+  <Route exact path='/my-inspiration' component={() =><FavArtContainer userArts={this.state.user.arts} deleteFromFavorites={this.deleteFromFavorites}/>} />
       <Route exact path='/learn' component={LearnContainer} />
       <Route component={NotFound} />
       </Switch>
