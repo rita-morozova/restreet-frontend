@@ -91,6 +91,7 @@ class App extends React.Component {
       console.log(data)
       this.setState({user: data.user, token: data.token}, ()  =>{
         //redirects home after login/signup here
+        // debugger
         // this.props.history.push('/') 
       }
         )
@@ -109,12 +110,14 @@ class App extends React.Component {
     })
     .then(res => res.json())
     .then(data => {
+      console.log(data)
+    
       this.setState({user:data.user})
     })
   }
 
   handleAllPaintings = () =>  <ArtContainer addToFavorites={this.addToFavorites} />
-  handleUserFavorites = () => <FavArtContainer userArts={this.state.user.arts} /> 
+  handleUserFavorites = () => <FavArtContainer userArts={this.state.user.arts.map(favorite => favorite)}/> 
 
   handleLogout = () => {
     this.setState({user: null, token: null})
