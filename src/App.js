@@ -94,12 +94,11 @@ class App extends React.Component {
     .then(resp => resp.json())
     .then(data => {
       console.log(data)
-      this.setState({user: data.user, token: data.token}, ()  =>{
+      this.setState({user: data.user})
+      localStorage.setItem("token", data.token)
         //redirects home after login/signup here
-        // debugger
-        // this.props.history.push('/') 
-      }
-        )
+        return <Redirect to="/login" push={true} />
+        // this.props.history.push('/')  
     })
   }
 
@@ -172,7 +171,7 @@ class App extends React.Component {
   render(){
   return (
     <div className="App">
-        <Navbar />
+        <Navbar user={this.state.user} />
       <Switch>
       <Route exact path='/'  component={this.handleHome} />
       <Route exact path='/login' component={this.renderForm} />
