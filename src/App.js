@@ -15,6 +15,7 @@ import LearnContainer from './Containers/LearnContainer'
 import NotFound from './Components/NotFound'
 
 
+
 const URL = 'http://localhost:3000'
 
 
@@ -32,7 +33,7 @@ class App extends React.Component {
   handleHome = () => <Home username={this.state.user.username} />
 
 
-
+  //Login and SignUp forms
   renderForm = (routerProps) => {
     if(routerProps.location.pathname === "/login"){
       return <Login handleSubmit={this.handleLogin} />
@@ -102,6 +103,28 @@ class App extends React.Component {
     })
   }
 
+  componentDidMount() {
+    let token = localStorage.getItem('token')
+    if (token) {
+      fetch(`${URL}/profile`, {
+        headers: {
+          "Authentication": `Bearer ${this.state.token}`
+        }
+      })
+      .then(res => res.json())
+      .then(user => {
+        this.setState({user: user})
+      })
+    }
+  }
+
+
+  handleLogout = (user) => {
+    localStorage.removeItem('token')
+    this.setState({user: user})
+    return <Redirect to="/login" push={true} />
+  }
+
   addToFavorites = (art) => {
 
     fetch('http://localhost:3000/favorites',{
@@ -140,10 +163,10 @@ class App extends React.Component {
   handleAllPaintings = () =>  <ArtContainer addToFavorites={this.addToFavorites}  />
   // handleUserFavorites = () => <FavArtContainer userArts={this.state.user.arts} /> 
 
-  handleLogout = () => {
-    this.setState({user: null, token: null})
-    this.props.history.push('/') 
-  }
+  // handleLogout = () => {
+  //   this.setState({user: null, token: null})
+  //   this.props.history.push('/') 
+  // }
 
 
   render(){
@@ -159,7 +182,7 @@ class App extends React.Component {
       <Route exact path='/adopt-a-wall' component={MainContainer} />
       <Route exact path='/my-walls' component={AdoptedWall} />
       <Route exact path='/get-inspired' component={this.handleAllPaintings} />
-  <Route exact path='/my-inspiration' component={() =><FavArtContainer userArts={this.state.user.arts} deleteFromFavorites={this.deleteFromFavorites}/>} />
+      <Route exact path='/my-inspiration' component={() =><FavArtContainer userArts={this.state.user.arts} deleteFromFavorites={this.deleteFromFavorites}/>} />
       <Route exact path='/learn' component={LearnContainer} />
       <Route component={NotFound} />
       </Switch>
