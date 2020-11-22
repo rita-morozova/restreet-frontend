@@ -26,7 +26,7 @@ class MainContainer extends React.Component {
         <Header />
         <br />
             HELLO!!!!!!!!!
-            <Map />
+            <Map markers={this.state.listings} />
             {/* {this.state.listings.map(listing => <WallListing key ={listing.id} listing={listing} />)} */}
       </div>
     )

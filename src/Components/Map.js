@@ -2,9 +2,10 @@ import React from 'react'
 import GoogleMapReact from 'google-map-react'
 import Marker from './Marker'
 import {Icon} from 'semantic-ui-react'
-import WallListing from './WallListing'
 
 
+
+//Will render one point on the map
 
 // const renderMarkers = (map, maps) => {
 //   let marker = new maps.Marker({
@@ -25,32 +26,7 @@ class Map extends React.Component {
     zoom: 11
     }
 
-    state = {
-      markers: [],  
-    }
-
-    componentDidMount = () =>{
-      fetch('http://localhost:3000/listings')
-      .then(resp => resp.json())
-      .then (data =>{
-        this.setState({markers: data})
-        console.log(data)
-      })
-    }
-
-  renderMarkers(){
-    return this.state.markers.map(marker => <Marker key={marker.id} title={marker.description} lat={marker.lat} lng={marker.lng}/>)
-  }
-
-  // onClose = props => {
-  //   if (this.state.showingInfoWindow) {
-  //     this.setState({
-  //       showingInfoWindow: false,
-  //       activeMarker: null
-  //     });
-  //   }
-  // };
-
+  
 
   render(){
     return(
@@ -60,10 +36,10 @@ class Map extends React.Component {
         defaultCenter={this.props.center}
         defaultZoom={this.props.zoom}
         yesIWantToUseGoogleMapApiInternals
+        //will render 1 marker
         // onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps)}
-        // onGoogleApiLoaded={() => this.renderMarkers()}
       >
-        {this.state.markers.map(({lat, lng, id, title})=>{
+        {this.props.markers.map(({lat, lng, id, title})=>{
           return(
             <Marker 
               key={id}
