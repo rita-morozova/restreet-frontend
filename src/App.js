@@ -27,6 +27,7 @@ class App extends React.Component {
     user: '',
     token:'',
     favorites: [],
+  
   }
 
   //username={this.state.user.username} insert in home for testing
@@ -161,6 +162,7 @@ class App extends React.Component {
       // })
     })
   }
+
 
   handleAllPaintings = () =>  <ArtContainer addToFavorites={this.addToFavorites}  />
   // handleUserFavorites = () => <FavArtContainer userArts={this.state.user.arts} /> 
