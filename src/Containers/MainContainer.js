@@ -8,9 +8,6 @@ class MainContainer extends React.Component {
 
   state ={
     listings: [],
-    showWall: false,
-    activeMarker: {},
-    selectedWall: {}
   }
   
   componentDidMount = () =>{
@@ -18,9 +15,16 @@ class MainContainer extends React.Component {
     .then(resp => resp.json())
     .then (data =>{
       this.setState({listings: data})
-      console.log(data)
     })
   }
+
+  sortCard = (e) => {
+    let card = this.state.listings.filter(l=> l.id === e.listing.id)
+    console.log(card)
+    this.setState({
+        listings: card
+    })
+}
 
   render(){
     return(
@@ -29,8 +33,8 @@ class MainContainer extends React.Component {
         <br />
             HELLO!!!!!!!!!
 
-            <Map markers={this.state.listings} />
-            <ListingsContainer listings={this.state.listings}/>
+            <Map markers={this.state.listings} sortCard={this.sortCard}/>
+            {/* <ListingsContainer listings={this.state.listings}/> */}
       </div>
     )
   }

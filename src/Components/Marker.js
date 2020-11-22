@@ -2,10 +2,11 @@ import React from 'react'
 import {Icon} from 'semantic-ui-react'
 import '../App.css'
 
-const Marker = ({ text, tooltip }) => {
+const Marker = ({ text, tooltip, props }) => {
     
   const handleClick = () => {
     console.log(`You clicked on ${tooltip}`)
+ 
   }
 
   return(

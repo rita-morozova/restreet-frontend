@@ -5,7 +5,7 @@ const WallListing = ({listing}) => {
   const style = {
     position: 'relative',
     bottom: 150,
-    left: '-45px',
+    left: '45px',
     width: 220,
     backgroundColor: 'white',
     boxShadow: '0 2px 7px 1px rgba(0, 0, 0, 0.3)',
@@ -16,7 +16,7 @@ const WallListing = ({listing}) => {
 
 
     return(
-      <div >
+      <div key={listing.id} style={style}>
           <img src={listing.photo} alt='wall' />
           <h5>{listing.description}</h5>
           <h4>Address: {listing.address}</h4>
