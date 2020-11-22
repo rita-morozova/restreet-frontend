@@ -2,6 +2,7 @@ import React from 'react'
 import GoogleMapReact from 'google-map-react'
 import Marker from './Marker'
 import {Icon} from 'semantic-ui-react'
+import WallListing from './WallListing'
 
 
 
@@ -26,29 +27,23 @@ class Map extends React.Component {
     zoom: 11
     }
 
-    state ={
-      listings: []
-    }
-    
-    componentDidMount = () =>{
-      fetch('http://localhost:3000/listings')
-      .then(resp => resp.json())
-      .then (data =>{
-        this.setState({listings: data})
-        console.log(data)
-      })
-    }
+   
   
 
-    onMarkerClick = () =>{
-
-    }
+    onMarkerClick = (props, marker, e) =>{
+      this.setState({
+        selectedPlace: props,
+        activeMarker: marker,
+        showWall: true
+      })
+      }
+    
 
   
 
   render(){
     return(
-      <div style={{ height: '100vh', width: '100%' }}>
+      <div style={{ height: '50vh', width: '50%' }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY}}
         defaultCenter={this.props.center}
@@ -57,9 +52,9 @@ class Map extends React.Component {
         //will render 1 marker
         // onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps)}
       >
-        {this.state.listings.map(({lat, lng, id, title})=>{
+        {this.props.markers.map(({lat, lng, id, title})=>{
           return(
-            <Marker 
+              <Marker 
               key={id}
               lat={lat}
               lng={lng}
@@ -69,7 +64,7 @@ class Map extends React.Component {
           )
         })
         }
-        
+       
       </GoogleMapReact>
     </div>
     )

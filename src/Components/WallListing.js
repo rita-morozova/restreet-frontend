@@ -16,7 +16,7 @@ const WallListing = ({listing}) => {
 
 
     return(
-      <div style={style}>
+      <div >
           <img src={listing.photo} alt='wall' />
           <h5>{listing.description}</h5>
           <h4>Address: {listing.address}</h4>
