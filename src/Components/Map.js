@@ -26,6 +26,24 @@ class Map extends React.Component {
     zoom: 11
     }
 
+    state ={
+      listings: []
+    }
+    
+    componentDidMount = () =>{
+      fetch('http://localhost:3000/listings')
+      .then(resp => resp.json())
+      .then (data =>{
+        this.setState({listings: data})
+        console.log(data)
+      })
+    }
+  
+
+    onMarkerClick = () =>{
+
+    }
+
   
 
   render(){
@@ -39,7 +57,7 @@ class Map extends React.Component {
         //will render 1 marker
         // onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps)}
       >
-        {this.props.markers.map(({lat, lng, id, title})=>{
+        {this.state.listings.map(({lat, lng, id, title})=>{
           return(
             <Marker 
               key={id}

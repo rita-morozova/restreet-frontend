@@ -6,19 +6,7 @@ import WallListing from '../Components/WallListing'
 
 class MainContainer extends React.Component {
 
-  state ={
-    listings: []
-  }
-  
-  componentDidMount = () =>{
-    fetch('http://localhost:3000/listings')
-    .then(resp => resp.json())
-    .then (data =>{
-      this.setState({listings: data})
-      console.log(data)
-    })
-  }
-
+ 
 
   render(){
     return(
@@ -26,7 +14,8 @@ class MainContainer extends React.Component {
         <Header />
         <br />
             HELLO!!!!!!!!!
-            <Map markers={this.state.listings} />
+
+            <Map  />
             {/* {this.state.listings.map(listing => <WallListing key ={listing.id} listing={listing} />)} */}
       </div>
     )
