@@ -3,6 +3,8 @@ import WallListing from '../Components/WallListing'
 
 class ListingsContainer extends React.Component {
 
+  
+
   render(){
     return(
       <div>
