@@ -14,6 +14,7 @@ import FavArtContainer from './Containers/FavArtContainer'
 import LearnContainer from './Containers/LearnContainer'
 import NotFound from './Components/NotFound'
 import API from './Adapters/API'
+import AdoptedWalls from './Components/AdoptedWalls';
 
 
 
@@ -27,6 +28,7 @@ class App extends React.Component {
     user: '',
     token:'',
     favorites: [],
+    walls: []
   
   }
 
@@ -41,6 +43,21 @@ class App extends React.Component {
       return <Login handleSubmit={this.handleLogin} />
     } else if (routerProps.location.pathname === "/signup"){
       return <Signup handleSubmit={this.handleSignup} />
+    }
+  }
+
+  componentDidMount() {
+    let token = localStorage.getItem('token')
+    if (token) {
+      fetch(`${URL}/profile`, {
+        headers: {
+          "Authentication": `Bearer ${this.state.token}`
+        }
+      })
+      .then(res => res.json())
+      .then(user => {
+        this.setState({user: user})
+      })
     }
   }
 
@@ -104,20 +121,22 @@ class App extends React.Component {
     })
   }
 
-  componentDidMount() {
-    let token = localStorage.getItem('token')
-    if (token) {
-      fetch(`${URL}/profile`, {
+  handleUpdateProfile = (data, route, method='PATCH') => {
+    fetch(`${URL}${route}`, {
+        method: method,
         headers: {
-          "Authentication": `Bearer ${this.state.token}`
-        }
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      this.setState({user: data.user, token: data.token})
       })
-      .then(res => res.json())
-      .then(user => {
-        this.setState({user: user})
-      })
-    }
+    .catch(errors => console.log(errors))
   }
+
+  
 
   handleLogout = (user) => {
     localStorage.removeItem('token')
@@ -126,7 +145,6 @@ class App extends React.Component {
   }
 
   addToFavorites = (art) => {
-
     fetch(`${URL}/favorites`,{
       method:'POST',
       headers:{
@@ -163,30 +181,37 @@ class App extends React.Component {
     })
   }
 
-
-  handleAllPaintings = () =>  <ArtContainer addToFavorites={this.addToFavorites}  />
-  // handleUserFavorites = () => <FavArtContainer userArts={this.state.user.arts} /> 
-
-  // handleLogout = () => {
-  //   this.setState({user: null, token: null})
-  //   this.props.history.push('/') 
-  // }
-
+  adoptWall = (wall) => {
+    fetch(`${URL}/walls`,{
+      method:'POST',
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization' : `Bearer ${this.state.token}`
+      },
+      body: JSON.stringify(({wall_id: wall.id}))
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      this.setState({user:data.user})
+     })
+      }
 
   render(){
+    const {user, walls} = this.state
   return (
     <div className="App">
-        <Navbar user={this.state.user} />
+        <Navbar user={user} />
       <Switch>
       <Route exact path='/'  component={Home} />
       <Route exact path='/login' component={this.renderForm} />
       <Route exact path='/signup' component={this.renderForm} />
       <Route exact path='/logout' component={() =>this.handleLogout()} />
-      <Route exact path='/profile' component={UserProfile} />
-      <Route exact path='/adopt-a-wall' component={MainContainer} />
-      <Route exact path='/my-walls' component={AdoptedWall} />
-      <Route exact path='/get-inspired' component={this.handleAllPaintings} />
-      <Route exact path='/my-inspiration' component={() =><FavArtContainer userArts={this.state.user.arts} deleteFromFavorites={this.deleteFromFavorites}/>} />
+      <Route exact path='/profile' component={() => <UserProfile handleUpdateProfile={this.handleUpdateProfile} user={user} />} />
+      <Route exact path='/adopt-a-wall' component={() => <MainContainer adoptWall={this.adoptWall} />} />
+      <Route exact path='/my-walls' component={() => <AdoptedWalls walls={walls} />} />
+      <Route exact path='/get-inspired' component={() => <ArtContainer addToFavorites={this.addToFavorites} />} />
+      <Route exact path='/my-inspiration' component={() =><FavArtContainer userArts={user.arts} deleteFromFavorites={this.deleteFromFavorites}/>} />
       <Route exact path='/learn' component={LearnContainer} />
       <Route component={NotFound} />
       </Switch>

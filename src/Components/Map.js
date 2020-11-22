@@ -1,3 +1,84 @@
+import React, { Component } from 'react';
+import { Map, GoogleApiWrapper, InfoWindow, Marker} from 'google-maps-react';
+import WallListing from './WallListing';
+
+
+export class MapContainer extends Component {
+
+    state = {
+        listings: [],
+        showingInfoWindow: false,  
+        activeMarker: {},          
+        selectedWall: {}  
+      };
+
+    componentDidMount() {
+      fetch('http://localhost:3000/listings')
+      .then(resp => resp.json())
+      .then( data => this.setState({listings: data}))
+    }
+    
+    onMarkerClick = (props, marker, e) =>{
+      this.setState({
+        selectedWall: props,
+        activeMarker: marker,
+        showingInfoWindow: true
+      })
+      
+    }
+
+    renderMarkers= () => {
+        return this.state.listings.map(listing => {
+          return <Marker 
+            onClick={this.onMarkerClick} name={listing.description} key={listing.id} listing={<WallListing listing={listing} adoptWall={this.props.adoptWall}/>}
+            position={{ lat: listing.lat, lng: listing.lng }}
+          />
+        })
+      }
+
+  onClose = props => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  };
+
+  render() {
+    return (
+      <Map
+        google={this.props.google}
+        zoom={11}
+        initialCenter={
+          {
+            lat: 47.6228,
+            lng: -122.332112
+          }
+        }
+      >
+      {this.renderMarkers()}
+      <InfoWindow
+        // selectedWall={this.state.selectedWall}
+        marker={this.state.activeMarker}
+        visible={this.state.showingInfoWindow}
+        onClose={this.onClose}
+        >
+        
+        <div>
+          <h4>{this.state.selectedWall.listing}</h4>
+        </div>
+      </InfoWindow>
+    </Map>
+    );
+  }
+}
+
+export default GoogleApiWrapper({
+  apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
+})(MapContainer);
+
+
 // import React from 'react'
 // import GoogleMapReact from 'google-map-react'
 // import Marker from './Marker'
@@ -71,92 +152,3 @@
 // }
 
 // export default Map
-
-import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, InfoWindow, Marker} from 'google-maps-react';
-import WallListing from './WallListing';
-
-
-export class MapContainer extends Component {
-
-    state = {
-        listings: [],
-        showingInfoWindow: false,  
-        activeMarker: {},          
-        selectedWall: {}  
-      };
-
-    componentDidMount() {
-      fetch('http://localhost:3000/listings')
-      .then(resp => resp.json())
-      .then( data => this.setState({listings: data}))
-    }
-    
-    // onMarkerClick = (props, marker, e) =>
-     
-    // this.setState({
-    //   selectedPlace: props,
-    //   activeMarker: marker,
-    //   showingInfoWindow: true
-    // });
-
-    onMarkerClick = (props, marker, e) =>{
-      this.setState({
-        selectedWall: props,
-        activeMarker: marker,
-        showingInfoWindow: true
-      })
-      
-    }
-
-    renderMarkers= () => {
-        return this.state.listings.map(listing => {
-          return <Marker 
-            onClick={this.onMarkerClick} name={listing.description} key={listing.id} listing={<WallListing listing={listing}/>}
-            position={{ lat: listing.lat, lng: listing.lng }}
-          />
-        })
-      }
-
-  onClose = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
-  };
-
-  render() {
-    return (
-      <Map
-        google={this.props.google}
-        zoom={11}
-        initialCenter={
-          {
-            lat: 47.6228,
-            lng: -122.332112
-          }
-        }
-      >
-      {this.renderMarkers()}
-      <InfoWindow
-        // selectedWall={this.state.selectedWall}
-        marker={this.state.activeMarker}
-        visible={this.state.showingInfoWindow}
-        onClose={this.onClose}
-        >
-        
-        <div>
-          <h4>{this.state.selectedWall.listing}</h4>
-        </div>
-      </InfoWindow>
-    </Map>
-    );
-  }
-}
-
-export default GoogleApiWrapper({
-  apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
-})(MapContainer);
-

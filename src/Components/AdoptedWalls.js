@@ -1,14 +1,15 @@
 import React from 'react'
+import WallListing from './WallListing'
 
-class AdoptedWalls extends React.Component {
+const AdoptedWalls = ({walls}) => {
 
-  render(){
+ 
     return(
       <div>
-
+        {walls.map(wall => <WallListing  key={wall.id}/>)}
       </div>
     )
   }
-}
+
 
 export default AdoptedWalls

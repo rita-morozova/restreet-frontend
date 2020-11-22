@@ -1,6 +1,6 @@
 import React from 'react'
 
-const WallListing = ({listing}) => {
+const WallListing = ({listing, adoptWall}) => {
 
   const style = {
     position: 'relative',
@@ -14,14 +14,18 @@ const WallListing = ({listing}) => {
     zIndex: 100,
   }
 
-
+    const handleClick =(listing) => adoptWall(listing)
+ 
     return(
       <div key={listing.id} style={style} >
           <img src={listing.photo} alt='wall' />
           <h5>{listing.description}</h5>
           <h4>Address: {listing.address}</h4>
           <h4>Zip Code: {listing.zipcode}</h4>
-          <h4>{listing.adopted ? 'Another artist is already working here' : <button>Adopt Wall</button>}</h4>    
+          <h4>{listing.adopted ? 
+          'Another artist is already working here' : 
+          <button onClick={() =>{console.log('hi')}}>Adopt Wall</button>
+           }</h4>    
       </div>
     )
 }

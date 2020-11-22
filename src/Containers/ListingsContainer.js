@@ -8,7 +8,7 @@ class ListingsContainer extends React.Component {
   render(){
     return(
       <div>
-        {this.props.listings.map (listing => <WallListing listing={listing}/>)}
+        {/* {this.props.listings.map (listing => <WallListing listing={listing}/>)} */}
       </div>
     )
   }
