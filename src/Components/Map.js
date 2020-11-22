@@ -74,6 +74,7 @@
 
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, InfoWindow, Marker} from 'google-maps-react';
+import WallListing from './WallListing';
 
 
 export class MapContainer extends Component {
@@ -111,7 +112,7 @@ export class MapContainer extends Component {
     renderMarkers= () => {
         return this.state.listings.map(listing => {
           return <Marker 
-            onClick={this.onMarkerClick} name={listing.address} key={listing.id} listing={listing}
+            onClick={this.onMarkerClick} name={listing.description} key={listing.id} listing={<WallListing listing={listing}/>}
             position={{ lat: listing.lat, lng: listing.lng }}
           />
         })
@@ -147,7 +148,7 @@ export class MapContainer extends Component {
         >
         
         <div>
-          <h4>{this.state.selectedWall.name}</h4>
+          <h4>{this.state.selectedWall.listing}</h4>
         </div>
       </InfoWindow>
     </Map>
