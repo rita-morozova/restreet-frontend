@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { Map, GoogleApiWrapper, InfoWindow, Marker} from 'google-maps-react';
 import WallListing from './WallListing';
 import CurrentLocation from './CurrentLocation'
+import ListingsContainer from '../Containers/ListingsContainer'
+import {Link} from 'react-router-dom'
 
 const style = {
   width: '50%',
@@ -15,8 +17,8 @@ export class MapContainer extends Component {
         listings: [],
         showingInfoWindow: false,  
         activeMarker: {},          
-        selectedWall: {}  
-      };
+        selectedWall: {},
+      }
 
     componentDidMount() {
       fetch('http://localhost:3000/listings')
@@ -51,16 +53,19 @@ export class MapContainer extends Component {
       this.setState({
         showingInfoWindow: false,
         activeMarker: null
-      });
+      })
     }
-  };
+  }
+
 
   render() {
     return (
       <div>
+         <Link to='/post-wall'><button>Add Wall</button></Link>
          <CurrentLocation
         centerAroundCurrentLocation
         google={this.props.google}
+        
       >
       {/* <Map
         google={this.props.google}
@@ -88,6 +93,7 @@ export class MapContainer extends Component {
         </div>
       </InfoWindow>
       </CurrentLocation>
+      {/* <ListingsContainer listings={this.state.listings}/> */}
     {/* </Map> */}
     </div>
     );

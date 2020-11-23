@@ -15,6 +15,7 @@ import NotFound from './Components/NotFound'
 import API from './Adapters/API'
 import AdoptedWalls from './Components/AdoptedWalls';
 import MapContainer from './Containers/MapContainer'
+import PostWall from './Components/PostWall';
 
 
 
@@ -163,6 +164,22 @@ class App extends React.Component {
       this.setState({user:data.user})
      })
       }
+
+      handlePostWall= (wall) => {
+        fetch(`${URL}/listings`,{
+          method:'POST',
+          headers:{
+            'Content-Type': 'application/json',
+            'Authorization' : `Bearer ${this.state.token}`
+          },
+          body: JSON.stringify(({listing_id: wall.id}))
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data)
+          this.setState({user:data.user})
+         })
+          }
    
 
   deleteFromFavorites = (art) =>{
@@ -213,8 +230,9 @@ class App extends React.Component {
       <Route exact path='/signup' component={this.renderForm} />
       <Route exact path='/logout' component={() =>this.handleLogout()} />
       <Route exact path='/profile' component={() => <UserProfile handleUpdateProfile={this.handleUpdateProfile} user={user} />} />
-      <Route exact path='/adopt-a-wall' component={() => <MapContainer adoptWall={this.adoptWall} />} />
+      <Route exact path='/adopt-a-wall' component={() => <MapContainer adoptWall={this.adoptWall}  />} />
       <Route exact path='/my-walls' component={() => <AdoptedWalls walls={walls} />} />
+      <Route exact path='/post-wall' component={() => <PostWall handlePostWall={this.handlePostWall} />} />
       <Route exact path='/get-inspired' component={() => <ArtContainer addToFavorites={this.addToFavorites} />} />
       <Route exact path='/my-inspiration' component={() =><FavArtContainer userArts={user.arts} deleteFromFavorites={this.deleteFromFavorites}/>} />
       <Route exact path='/learn' component={LearnContainer} />

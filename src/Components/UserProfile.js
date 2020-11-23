@@ -6,7 +6,6 @@ class UserProfile extends React.Component {
         name: this.props.user.name,
         location: this.props.user.location,
         bio: this.props.user.bio,
-        bio: this.props.user.bio,
         picture: this.props.user.picture,
         password: ''
     }

@@ -1,5 +1,6 @@
 import React from 'react'
 import WallListing from '../Components/WallListing'
+import '../App.css'
 
 class ListingsContainer extends React.Component {
 
@@ -7,8 +8,8 @@ class ListingsContainer extends React.Component {
 
   render(){
     return(
-      <div>
-        {/* {this.props.listings.map (listing => <WallListing listing={listing}/>)} */}
+      <div className='listingContainer'>
+        {this.props.listings.map (listing => <WallListing  key={listing.id} listing={listing}/>)}
       </div>
     )
   }
