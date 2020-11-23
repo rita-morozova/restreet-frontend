@@ -27,11 +27,12 @@ const URL = 'http://localhost:3000'
 class App extends React.Component {
 
   state ={
-    user: '',
+    user: {arts: []},
     token:'',
     favorites: [],
     walls: [],
-  
+    
+    
   }
 
   //username={this.state.user.username} insert in home for testing
@@ -51,20 +52,20 @@ class App extends React.Component {
 
   }
 
-  // componentDidMount() {
-  //   let token = localStorage.getItem('token')
-  //   if (token) {
-  //     fetch(`${URL}/profile`, {
-  //       headers: {
-  //         "Authentication": `Bearer ${this.state.token}`
-  //       }
-  //     })
-  //     .then(res => res.json())
-  //     .then(user => {
-  //       this.setState({user: user})
-  //     })
-  //   }
-  // }
+  componentDidMount() {
+    let token = localStorage.getItem('token')
+    if (token) {
+      fetch(`${URL}/profile`, {
+        headers: {
+          "Authentication": `Bearer ${this.state.token}`
+        }
+      })
+      .then(res => res.json())
+      .then(user => {
+        this.setState({user: user})
+      })
+    }
+  }
 
   //Remove console.logs after testing
   handleLogin = (info) => {
@@ -161,11 +162,34 @@ class App extends React.Component {
     .then(res => res.json())
     .then(data => {
       console.log(data)
-      this.setState({user:data.user})
+      this.setState({user: data.user})
      })
       }
+        
+  deleteFromFavorites = (art) =>{
+    const foundFavorite = this.state.user.favorites.find(favorite => favorite.art_id === art.id)
+    fetch(`${URL}/favorites/${foundFavorite.id}`,{
+      method: 'DELETE',
+      headers: {
+        'Content-Type':'application/json',
+        // 'Authorization' : `Bearer ${this.state.token}`
+      }
+    })
+    .then(resp => resp.json())
+    .then(data =>{
+      // console.log(data)
+      // console.log(this.state.user.arts)
+      this.setState((prevState) =>({
+        user: {...prevState.user, arts: [...prevState.user.arts.filter(userArt => userArt.id !==data.art_id)]}
+      })
+      )
+    })
+        // user: this.state.user.arts.filter(userArt => userArt.art_id !== data.art_id)
+        // user: this.state.user.arts.filter(userArt => userArt.id !== data.art_id)
+    
+  }
 
-      // addToList = (video) => {
+  // addToList = (video) => {
       //   fetch(`${URL}/favvideos`,{
       //     method:'POST',
       //     headers:{
@@ -180,61 +204,43 @@ class App extends React.Component {
       //     })
       //   }
 
-      handlePostWall= (wall) => {
-        fetch(`${URL}/listings`,{
-          method:'POST',
-          headers:{
-            'Content-Type': 'application/json',
-            'Authorization' : `Bearer ${this.state.token}`
-          },
-          body: JSON.stringify(({listing_id: wall.id}))
-        })
-        .then(res => res.json())
-        .then(data => {
-          console.log(data)
-          this.setState({user:data.user})
-         })
-          }
+      // handlePostWall= (wall) => {
+      //   fetch(`${URL}/listings`,{
+      //     method:'POST',
+      //     headers:{
+      //       'Content-Type': 'application/json',
+      //       'Authorization' : `Bearer ${this.state.token}`
+      //     },
+      //     body: JSON.stringify(({listing_id: wall.id}))
+      //   })
+      //   .then(res => res.json())
+      //   .then(data => {
+      //     console.log(data)
+      //     this.setState({user:data.user})
+      //    })
+      //     }
    
 
-  deleteFromFavorites = (art) =>{
-    const foundFavorite = this.state.user.favorites.find(favorite => favorite.art_id === art.id)
-    fetch(`${URL}/favorites/${foundFavorite.id}`,{
-      method: 'DELETE',
-      headers: {
-        'Content-Type':'application/json',
-        // 'Authorization' : `Bearer ${this.state.token}`
-      }
-    })
-    .then(resp => resp.json())
-    .then(data =>{
-      // this.setState({user:data.user})
-      console.log(data)
-      this.setState({
-        user: this.state.user.arts.filter(userArt => userArt.art_id !== data.art_id)
-        // user: this.state.user.arts.filter(userArt => userArt.id !== data.art_id)
-      })
-    })  
-  }
 
-  adoptWall = (wall) => {
-    fetch(`${URL}/walls`,{
-      method:'POST',
-      headers:{
-        'Content-Type': 'application/json',
-        'Authorization' : `Bearer ${this.state.token}`
-      },
-      body: JSON.stringify(({wall_id: wall.id}))
-    })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      this.setState({user:data.user})
-     })
-      }
+  // adoptWall = (wall) => {
+  //   fetch(`${URL}/walls`,{
+  //     method:'POST',
+  //     headers:{
+  //       'Content-Type': 'application/json',
+  //       'Authorization' : `Bearer ${this.state.token}`
+  //     },
+  //     body: JSON.stringify(({wall_id: wall.id}))
+  //   })
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     console.log(data)
+  //     this.setState({user:data.user})
+  //    })
+  //     }
 
   render(){
     const {user, walls} = this.state
+    // console.log(user.arts)
   return (
     <div className="App">
         <Navbar user={user} />

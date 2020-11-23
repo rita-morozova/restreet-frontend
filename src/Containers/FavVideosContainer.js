@@ -7,11 +7,11 @@ class FavVideosContainer extends React.Component {
     return(
       <div>
         <h1>My Library</h1>
-        {this.props.videos.map(video => (
+        {/* {this.props.videos.map(video => (
           <li>
             <ReactPlayer url={video.url} />
             {video.name}
-          </li>
+          </li> */}
         ))}
       </div>
     )
