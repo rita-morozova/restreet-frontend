@@ -16,6 +16,7 @@ import API from './Adapters/API'
 import AdoptedWalls from './Components/AdoptedWalls';
 import MapContainer from './Containers/MapContainer'
 import PostWall from './Components/PostWall';
+import FavVideoContainer from './Containers/FavVideosContainer'
 
 
 
@@ -30,7 +31,6 @@ class App extends React.Component {
     token:'',
     favorites: [],
     walls: [],
-   
   
   }
 
@@ -165,6 +165,21 @@ class App extends React.Component {
      })
       }
 
+      // addToList = (video) => {
+      //   fetch(`${URL}/favvideos`,{
+      //     method:'POST',
+      //     headers:{
+      //       'Content-Type': 'application/json',
+      //       'Authorization' : `Bearer ${this.state.token}`
+      //     },
+      //     body: JSON.stringify(({video_id: video.id}))
+      //   })
+      //   .then(res => res.json())
+      //   .then(data => {
+      //     this.setState({user:data.user})
+      //     })
+      //   }
+
       handlePostWall= (wall) => {
         fetch(`${URL}/listings`,{
           method:'POST',
@@ -220,7 +235,6 @@ class App extends React.Component {
 
   render(){
     const {user, walls} = this.state
-    // console.log(user.favorites)
   return (
     <div className="App">
         <Navbar user={user} />
@@ -232,10 +246,11 @@ class App extends React.Component {
       <Route exact path='/profile' component={() => <UserProfile handleUpdateProfile={this.handleUpdateProfile} user={user} />} />
       <Route exact path='/adopt-a-wall' component={() => <MapContainer adoptWall={this.adoptWall}  />} />
       <Route exact path='/my-walls' component={() => <AdoptedWalls walls={walls} />} />
+      <Route exact path='/my-library' component={() => <FavVideoContainer videos={user.favvideos}/>} />
       <Route exact path='/post-wall' component={() => <PostWall handlePostWall={this.handlePostWall} />} />
       <Route exact path='/get-inspired' component={() => <ArtContainer addToFavorites={this.addToFavorites} />} />
       <Route exact path='/my-inspiration' component={() =><FavArtContainer userArts={user.arts} deleteFromFavorites={this.deleteFromFavorites}/>} />
-      <Route exact path='/learn' component={LearnContainer} />
+      <Route exact path='/learn' component={() => <LearnContainer user={user}/>} />
       <Route component={NotFound} />
       </Switch>
     </div>
