@@ -3,19 +3,19 @@ import Video from '../Components/Video'
 
 class LearnContainer extends React.Component {
 
-  state ={
-    videos:[],
-    favVideos: [],
-    userid: null,
-  }
+  // state ={
+  //   videos:[],
+  //   favVideos: [],
+  //   userid: null,
+  // }
 
-  componentDidMount = () => {
-    fetch('http://localhost:3000/videos')
-    .then(resp => resp.json())
-    .then(data =>{
-      this.setState({videos: data})
-    })
-  }
+  // componentDidMount = () => {
+  //   fetch('http://localhost:3000/videos')
+  //   .then(resp => resp.json())
+  //   .then(data =>{
+  //     this.setState({videos: data})
+  //   })
+  // }
 
   addToList = (video) => {
     fetch('http://localhost:3000/favvideos',{
@@ -38,7 +38,7 @@ class LearnContainer extends React.Component {
   render() {
     return(
       <div>
-        {this.state.videos.map(video => <Video id={video.id} video={video} addToList={this.addToList}/>)}
+        {this.props.videos.map(video => <Video id={video.id} video={video} addToList={this.addToList}/>)}
       </div>
     )
   }

@@ -31,8 +31,8 @@ class App extends React.Component {
     token:'',
     favorites: [],
     walls: [],
-    
-    
+    videos: [],
+    favvideos: [],
   }
 
   //username={this.state.user.username} insert in home for testing
@@ -48,16 +48,13 @@ class App extends React.Component {
       return <Signup handleSubmit={this.handleSignup} />
     }
   }
-  componentDidMount(){
-
-  }
 
   componentDidMount() {
     let token = localStorage.getItem('token')
     if (token) {
       fetch(`${URL}/profile`, {
         headers: {
-          "Authentication": `Bearer ${this.state.token}`
+          'Authentication': `Bearer ${token}`,
         }
       })
       .then(res => res.json())
@@ -65,6 +62,30 @@ class App extends React.Component {
         this.setState({user: user})
       })
     }
+    this.autoLogin()
+
+    fetch('http://localhost:3000/videos')
+    .then(resp => resp.json())
+    .then(data =>{
+      this.setState({videos: data})
+    })
+  }
+
+  autoLogin = () => {
+    fetch('http://localhost:3000/auto_login', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': `${localStorage.getItem('token')}`
+      }
+    })
+      .then(resp => resp.json())
+      .then(user => {
+        this.setState({
+        user: user.user
+      })
+    })
   }
 
   //Remove console.logs after testing
@@ -81,6 +102,7 @@ class App extends React.Component {
   }
 
   handleAuthFetch = (info, request) => {  
+    
     fetch(request, {
       method:'POST',
       headers:{
@@ -101,6 +123,8 @@ class App extends React.Component {
         )
     })
   }
+
+  // {user: data.user, token: data.token}
 
   handleSignupFetch = (info, request) => {  
     fetch(request, {
@@ -150,6 +174,8 @@ class App extends React.Component {
     return <Redirect to="/" push={true} />
   }
 
+
+  //handle favorite arts
   addToFavorites = (art) => {
     fetch(`${URL}/favorites`,{
       method:'POST',
@@ -183,10 +209,7 @@ class App extends React.Component {
         user: {...prevState.user, arts: [...prevState.user.arts.filter(userArt => userArt.id !==data.art_id)]}
       })
       )
-    })
-        // user: this.state.user.arts.filter(userArt => userArt.art_id !== data.art_id)
-        // user: this.state.user.arts.filter(userArt => userArt.id !== data.art_id)
-    
+    })      
   }
 
   // addToList = (video) => {
@@ -239,7 +262,7 @@ class App extends React.Component {
   //     }
 
   render(){
-    const {user, walls} = this.state
+    const {user, walls, videos} = this.state
     // console.log(user.arts)
   return (
     <div className="App">
@@ -256,7 +279,7 @@ class App extends React.Component {
       <Route exact path='/post-wall' component={() => <PostWall handlePostWall={this.handlePostWall} />} />
       <Route exact path='/get-inspired' component={() => <ArtContainer addToFavorites={this.addToFavorites} />} />
       <Route exact path='/my-inspiration' component={() =><FavArtContainer userArts={user.arts} deleteFromFavorites={this.deleteFromFavorites}/>} />
-      <Route exact path='/learn' component={() => <LearnContainer user={user}/>} />
+      <Route exact path='/learn' component={() => <LearnContainer user={user} videos={videos} />} />
       <Route component={NotFound} />
       </Switch>
     </div>
