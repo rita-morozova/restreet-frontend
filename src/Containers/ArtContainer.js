@@ -1,12 +1,13 @@
 import React from 'react'
 import ArtCard from '../Components/ArtCard'
 import {Container, Card} from 'semantic-ui-react'
+import ArtInfo from '../Components/ArtInfo'
 
 
-class ArtContainer extends React.Component {
+class ArtContainer extends React.Component{
   
   state ={
-    arts: []
+    arts: [],
   }
 
   componentDidMount(){
@@ -23,8 +24,7 @@ class ArtContainer extends React.Component {
     const {arts} = this.state
     return(
       <Container textAlign='center'>
-        
-        {arts.map (art => <ArtCard key={art.id} art={art}  addToFavorites={this.props.addToFavorites} />)}
+      {arts.map (art => <ArtCard key={art.id} art={art} addToFavorites={this.props.addToFavorites} />)}
       </Container>
     )
   }

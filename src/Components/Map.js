@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { Map, GoogleApiWrapper, InfoWindow, Marker} from 'google-maps-react';
 import WallListing from './WallListing';
+import CurrentLocation from './CurrentLocation'
 
+const style = {
+  width: '50%',
+  height: '50%'
+}
 
 export class MapContainer extends Component {
 
@@ -24,8 +30,12 @@ export class MapContainer extends Component {
         activeMarker: marker,
         showingInfoWindow: true
       })
-      
     }
+
+    // onInfoWindowOpen = (props, e) =>{
+    //   const button= (<button onClick={e => {console.log('button')}}>mapbutton</button>)
+    //   ReactDOM.render(React.Children.only(button), document.getElementById("iwc"));
+    // }
 
     renderMarkers= () => {
         return this.state.listings.map(listing => {
@@ -47,29 +57,39 @@ export class MapContainer extends Component {
 
   render() {
     return (
-      <Map
+      <div>
+         <CurrentLocation
+        centerAroundCurrentLocation
+        google={this.props.google}
+      >
+      {/* <Map
         google={this.props.google}
         zoom={11}
+        style={style}
         initialCenter={
           {
             lat: 47.6228,
             lng: -122.332112
           }
         }
-      >
+      > */}
       {this.renderMarkers()}
       <InfoWindow
         // selectedWall={this.state.selectedWall}
         marker={this.state.activeMarker}
         visible={this.state.showingInfoWindow}
         onClose={this.onClose}
+        onOpen={e => {
+          this.onInfoWindowOpen(this.props.e)
+        }}
         >
-        
-        <div>
+        <div id='iwc'>
           <h4>{this.state.selectedWall.listing}</h4>
         </div>
       </InfoWindow>
-    </Map>
+      </CurrentLocation>
+    {/* </Map> */}
+    </div>
     );
   }
 }

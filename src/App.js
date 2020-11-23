@@ -1,6 +1,5 @@
 import React from 'react'
 import './App.css';
-import MainContainer from './Containers/MainContainer'
 import {Route, Switch, withRouter, Redirect, Link} from 'react-router-dom'
 import Login from './Components/Login'
 import Signup from './Components/Signup'
@@ -15,6 +14,7 @@ import LearnContainer from './Containers/LearnContainer'
 import NotFound from './Components/NotFound'
 import API from './Adapters/API'
 import AdoptedWalls from './Components/AdoptedWalls';
+import MapContainer from './Containers/MapContainer'
 
 
 
@@ -28,7 +28,8 @@ class App extends React.Component {
     user: '',
     token:'',
     favorites: [],
-    walls: []
+    walls: [],
+   
   
   }
 
@@ -45,21 +46,24 @@ class App extends React.Component {
       return <Signup handleSubmit={this.handleSignup} />
     }
   }
+  componentDidMount(){
 
-  componentDidMount() {
-    let token = localStorage.getItem('token')
-    if (token) {
-      fetch(`${URL}/profile`, {
-        headers: {
-          "Authentication": `Bearer ${this.state.token}`
-        }
-      })
-      .then(res => res.json())
-      .then(user => {
-        this.setState({user: user})
-      })
-    }
   }
+
+  // componentDidMount() {
+  //   let token = localStorage.getItem('token')
+  //   if (token) {
+  //     fetch(`${URL}/profile`, {
+  //       headers: {
+  //         "Authentication": `Bearer ${this.state.token}`
+  //       }
+  //     })
+  //     .then(res => res.json())
+  //     .then(user => {
+  //       this.setState({user: user})
+  //     })
+  //   }
+  // }
 
   //Remove console.logs after testing
   handleLogin = (info) => {
@@ -163,22 +167,22 @@ class App extends React.Component {
 
   deleteFromFavorites = (art) =>{
     const foundFavorite = this.state.user.favorites.find(favorite => favorite.art_id === art.id)
-    
     fetch(`${URL}/favorites/${foundFavorite.id}`,{
       method: 'DELETE',
       headers: {
         'Content-Type':'application/json',
-        'Authorization' : `Bearer ${this.state.token}`
+        // 'Authorization' : `Bearer ${this.state.token}`
       }
     })
     .then(resp => resp.json())
     .then(data =>{
-      this.setState({user:data.user})
+      // this.setState({user:data.user})
       console.log(data)
-      // this.setState({
-      //   users: data.user.arts.filter(userArt => userArt.id !== art.id)
-      // })
-    })
+      this.setState({
+        user: this.state.user.arts.filter(userArt => userArt.art_id !== data.art_id)
+        // user: this.state.user.arts.filter(userArt => userArt.id !== data.art_id)
+      })
+    })  
   }
 
   adoptWall = (wall) => {
@@ -199,6 +203,7 @@ class App extends React.Component {
 
   render(){
     const {user, walls} = this.state
+    console.log(user.favorites)
   return (
     <div className="App">
         <Navbar user={user} />
@@ -208,7 +213,7 @@ class App extends React.Component {
       <Route exact path='/signup' component={this.renderForm} />
       <Route exact path='/logout' component={() =>this.handleLogout()} />
       <Route exact path='/profile' component={() => <UserProfile handleUpdateProfile={this.handleUpdateProfile} user={user} />} />
-      <Route exact path='/adopt-a-wall' component={() => <MainContainer adoptWall={this.adoptWall} />} />
+      <Route exact path='/adopt-a-wall' component={() => <MapContainer adoptWall={this.adoptWall} />} />
       <Route exact path='/my-walls' component={() => <AdoptedWalls walls={walls} />} />
       <Route exact path='/get-inspired' component={() => <ArtContainer addToFavorites={this.addToFavorites} />} />
       <Route exact path='/my-inspiration' component={() =><FavArtContainer userArts={user.arts} deleteFromFavorites={this.deleteFromFavorites}/>} />

@@ -4,7 +4,7 @@ import Map from '../Components/Map'
 import ListingsContainer from './ListingsContainer'
 
 
-class MainContainer extends React.Component {
+class MapContainer extends React.Component {
 
 
 
@@ -24,4 +24,4 @@ class MainContainer extends React.Component {
   }
 }
 
-export default MainContainer
+export default MapContainer

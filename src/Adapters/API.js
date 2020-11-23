@@ -29,5 +29,6 @@ const handleServerResponse = resp => {
   }
 }
 
-// export default{
-// }
+export default{
+  handleServerResponse,
+}
