@@ -1,4 +1,6 @@
 import React from 'react'
+import {Link} from 'react-router-dom' 
+import {Button} from 'semantic-ui-react'
 
 const WallListing = ({listing, adoptWall}) => {
 
@@ -24,7 +26,8 @@ const WallListing = ({listing, adoptWall}) => {
           <h4>Zip Code: {listing.zipcode}</h4>
           <h4>{listing.adopted ? 
           'Another artist is already working here' : 
-          <button onClick={() =>{console.log('hi')}}>Adopt Wall</button>
+          // <button onClick={() =>{console.log('hi')}}>Adopt Wall</button>
+          <a href='mailto: hello@wall.com'><Button basic>Email To Adopt</Button></a>
            }</h4>    
       </div>
     )

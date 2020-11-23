@@ -79,9 +79,9 @@ export class MapContainer extends Component {
         marker={this.state.activeMarker}
         visible={this.state.showingInfoWindow}
         onClose={this.onClose}
-        onOpen={e => {
-          this.onInfoWindowOpen(this.props.e)
-        }}
+        // onOpen={e => {
+        //   this.onInfoWindowOpen(this.props.e)
+        // }}
         >
         <div id='iwc'>
           <h4>{this.state.selectedWall.listing}</h4>

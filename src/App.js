@@ -203,7 +203,7 @@ class App extends React.Component {
 
   render(){
     const {user, walls} = this.state
-    console.log(user.favorites)
+    // console.log(user.favorites)
   return (
     <div className="App">
         <Navbar user={user} />
