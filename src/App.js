@@ -27,12 +27,13 @@ const URL = 'http://localhost:3000'
 class App extends React.Component {
 
   state ={
-    user: {arts: []},
+    user: {arts: [], username:'', name:''},
     token:'',
     favorites: [],
     walls: [],
     videos: [],
     favvideos: [],
+    // loggedIn: false,
   }
 
   //username={this.state.user.username} insert in home for testing
@@ -54,15 +55,16 @@ class App extends React.Component {
     if (token) {
       fetch(`${URL}/profile`, {
         headers: {
-          'Authentication': `Bearer ${token}`,
+          'Authorization': `Bearer ${token}`,
         }
       })
       .then(res => res.json())
       .then(user => {
-        this.setState({user: user})
+        console.log(user.user)
+        this.setState({user: user.user})
       })
     }
-    this.autoLogin()
+    // this.autoLogin()
 
     fetch('http://localhost:3000/videos')
     .then(resp => resp.json())
@@ -71,22 +73,22 @@ class App extends React.Component {
     })
   }
 
-  autoLogin = () => {
-    fetch('http://localhost:3000/auto_login', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': `${localStorage.getItem('token')}`
-      }
-    })
-      .then(resp => resp.json())
-      .then(user => {
-        this.setState({
-        user: user.user
-      })
-    })
-  }
+  // autoLogin = () => {
+  //   fetch('http://localhost:3000/auto_login', {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json',
+  //       'Authorization': `${localStorage.getItem('token')}`
+  //     }
+  //   })
+  //     .then(resp => resp.json())
+  //     .then(user => {
+  //       this.setState({
+  //       user: user.user
+  //     })
+  //   })
+  // }
 
   //Remove console.logs after testing
   handleLogin = (info) => {
@@ -116,11 +118,11 @@ class App extends React.Component {
     .then(resp => resp.json())
     .then(data => {
       console.log(data)
-      this.setState({user: data.user, token: data.token}, ()  =>{
+      localStorage.setItem("token", data.token)
+      this.setState({user: data.user, loggedIn: true}, ()  =>{
         //redirects home after login/signup
         this.props.history.push('/') 
-      }
-        )
+      })
     })
   }
 
@@ -177,11 +179,12 @@ class App extends React.Component {
 
   //handle favorite arts
   addToFavorites = (art) => {
+    const userToken = localStorage.getItem('token')
     fetch(`${URL}/favorites`,{
       method:'POST',
       headers:{
         'Content-Type': 'application/json',
-        'Authorization' : `Bearer ${this.state.token}`
+        'Authorization' : `Bearer ${userToken}`
       },
       body: JSON.stringify(({art_id: art.id}))
     })
@@ -215,11 +218,12 @@ class App extends React.Component {
   //handle Favorite Videos
 
   addToList = (video) => {
+    const userToken = localStorage.getItem('token')
     fetch('http://localhost:3000/favvideos',{
       method:'POST',
       headers:{
         'Content-Type': 'application/json',
-        'Authorization' : `Bearer ${this.state.token}`
+        'Authorization' : `Bearer ${userToken}`
       },
       body: JSON.stringify(({video_id: video.id}))
     })
