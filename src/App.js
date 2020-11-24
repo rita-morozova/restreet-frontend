@@ -228,6 +228,24 @@ class App extends React.Component {
       this.setState({user:data.user})
       })
     }
+
+    deleteFromList = (video) =>{
+      const foundFavorite = this.state.user.favvideos.find(favorite => favorite.video_id === video.id)
+      fetch(`${URL}/favvideos/${foundFavorite.id}`,{
+        method: 'DELETE',
+        headers: {
+          'Content-Type':'application/json',
+        }
+      })
+      .then(resp => resp.json())
+      .then(data =>{
+        // console.log(data)
+        this.setState((prevState) =>({
+          user: {...prevState.user, videos: [...prevState.user.videos.filter(userVideo => userVideo.id !==data.video_id)]}
+        })
+        )
+      })      
+    }
   
 
       // handlePostWall= (wall) => {
@@ -278,7 +296,7 @@ class App extends React.Component {
       <Route exact path='/profile' component={() => <UserProfile handleUpdateProfile={this.handleUpdateProfile} user={user} />} />
       <Route exact path='/adopt-a-wall' component={() => <MapContainer adoptWall={this.adoptWall}  />} />
       <Route exact path='/my-walls' component={() => <AdoptedWalls walls={walls} />} />
-      <Route exact path='/my-library' component={() => <FavVideoContainer videos={user.videos}/>} />
+      <Route exact path='/my-library' component={() => <FavVideoContainer videos={user.videos} deleteFromList={this.deleteFromList}/>} />
       <Route exact path='/post-wall' component={() => <PostWall handlePostWall={this.handlePostWall} />} />
       <Route exact path='/get-inspired' component={() => <ArtContainer addToFavorites={this.addToFavorites} />} />
       <Route exact path='/my-inspiration' component={() =><FavArtContainer userArts={user.arts} deleteFromFavorites={this.deleteFromFavorites}/>} />

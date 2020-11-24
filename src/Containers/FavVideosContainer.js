@@ -11,7 +11,7 @@ class FavVideosContainer extends React.Component {
           <span key={video.id}>
               <h1> {video.name}</h1>
             <ReactPlayer url={video.url} />
-            <button>Delete from Library</button>
+            <button onClick={() => this.props.deleteFromList(video)}>Delete from Library</button>
             <br />
             <br />
          </span>
