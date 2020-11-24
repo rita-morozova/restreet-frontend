@@ -19,7 +19,7 @@ class ArtCard extends React.Component {
       <Card> 
         <Image src={art.image_url} alt="Painting" wrapped ui={false} onClick={handleClick} />
         {/* <button onClick={() => addToFavorites(art) }>Add to Favorites</button> */}
-        {deleteFromFavorites ? <button onClick={() => deleteFromFavorites(art)}>Delete</button> : null}
+        {/* {deleteFromFavorites ? <button onClick={() => deleteFromFavorites(art)}>Delete</button> : null} */}
       </Card>
       </div>
     )
