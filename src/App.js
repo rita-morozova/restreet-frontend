@@ -33,21 +33,6 @@ class App extends React.Component {
     walls: [],
     videos: [],
     favvideos: [],
-    // loggedIn: false,
-  }
-
-  //username={this.state.user.username} insert in home for testing
-
-  // handleHome = () => <Home username={this.state.user.username} />
-
-
-  //Login and SignUp forms
-  renderForm = (routerProps) => {
-    if(routerProps.location.pathname === "/login"){
-      return <Login handleSubmit={this.handleLogin} />
-    } else if (routerProps.location.pathname === "/signup"){
-      return <Signup handleSubmit={this.handleSignup} />
-    }
   }
 
   componentDidMount() {
@@ -64,8 +49,6 @@ class App extends React.Component {
         this.setState({user: user.user})
       })
     }
-    // this.autoLogin()
-
     fetch('http://localhost:3000/videos')
     .then(resp => resp.json())
     .then(data =>{
@@ -73,23 +56,14 @@ class App extends React.Component {
     })
   }
 
-  // autoLogin = () => {
-  //   fetch('http://localhost:3000/auto_login', {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json',
-  //       'Authorization': `${localStorage.getItem('token')}`
-  //     }
-  //   })
-  //     .then(resp => resp.json())
-  //     .then(user => {
-  //       this.setState({
-  //       user: user.user
-  //     })
-  //   })
-  // }
-
+   ////////////Handle Login and SignUp 
+   renderForm = (routerProps) => {
+    if(routerProps.location.pathname === "/login"){
+      return <Login handleSubmit={this.handleLogin} />
+    } else if (routerProps.location.pathname === "/signup"){
+      return <Signup handleSubmit={this.handleSignup} />
+    }
+  }
   //Remove console.logs after testing
   handleLogin = (info) => {
     console.log('login')
@@ -104,7 +78,6 @@ class App extends React.Component {
   }
 
   handleAuthFetch = (info, request) => {  
-    
     fetch(request, {
       method:'POST',
       headers:{
@@ -119,14 +92,12 @@ class App extends React.Component {
     .then(data => {
       console.log(data)
       localStorage.setItem("token", data.token)
-      this.setState({user: data.user, loggedIn: true}, ()  =>{
+      this.setState({user: data.user}, ()  =>{
         //redirects home after login/signup
         this.props.history.push('/') 
       })
     })
   }
-
-  // {user: data.user, token: data.token}
 
   handleSignupFetch = (info, request) => {  
     fetch(request, {
@@ -144,12 +115,12 @@ class App extends React.Component {
     })
     .then(resp => resp.json())
     .then(data => {
-      console.log(data)
-      this.setState({user: data.user})
+      // console.log(data)
       localStorage.setItem("token", data.token)
-        //redirects home after login/signup here
-        return <Redirect to="/login" push={true} />
-        // this.props.history.push('/')  
+      this.setState({user: data.user}, ()  =>{
+          //redirects home after login/signup
+          this.props.history.push('/') 
+        }) 
     })
   }
 
@@ -168,8 +139,6 @@ class App extends React.Component {
     .catch(errors => console.log(errors))
   }
 
-  
-
   handleLogout = (user) => {
     localStorage.removeItem('token')
     this.setState({user: user})
@@ -177,7 +146,7 @@ class App extends React.Component {
   }
 
 
-  //handle favorite arts
+  /////////// handle favorite arts
   addToFavorites = (art) => {
     const userToken = localStorage.getItem('token')
     fetch(`${URL}/favorites`,{
@@ -201,13 +170,10 @@ class App extends React.Component {
       method: 'DELETE',
       headers: {
         'Content-Type':'application/json',
-        // 'Authorization' : `Bearer ${this.state.token}`
       }
     })
     .then(resp => resp.json())
     .then(data =>{
-      // console.log(data)
-      // console.log(this.state.user.arts)
       this.setState((prevState) =>({
         user: {...prevState.user, arts: [...prevState.user.arts.filter(userArt => userArt.id !==data.art_id)]}
       })
@@ -215,7 +181,7 @@ class App extends React.Component {
     })      
   }
 
-  //handle Favorite Videos
+  /////////// handle Favorite Videos
 
   addToList = (video) => {
     const userToken = localStorage.getItem('token')
@@ -288,12 +254,11 @@ class App extends React.Component {
 
   render(){
     const {user, walls, videos} = this.state
-    // console.log(user.arts)
   return (
     <div className="App">
         <Navbar user={user} />
       <Switch>
-      <Route exact path='/'  component={Home} />
+      <Route exact path='/'  component={() => <Home/>} />
       <Route exact path='/login' component={this.renderForm} />
       <Route exact path='/signup' component={this.renderForm} />
       <Route exact path='/logout' component={() =>this.handleLogout()} />
