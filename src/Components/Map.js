@@ -20,12 +20,6 @@ export class MapContainer extends Component {
         selectedWall: {},
       }
 
-    // componentDidMount() {
-    //   fetch('http://localhost:3000/listings')
-    //   .then(resp => resp.json())
-    //   .then( data => this.setState({listings: data}))
-    // }
-    
     onMarkerClick = (props, marker, e) =>{
       this.setState({
         selectedWall: props,
@@ -34,15 +28,10 @@ export class MapContainer extends Component {
       })
     }
 
-    // onInfoWindowOpen = (props, e) =>{
-    //   const button= (<button onClick={e => {console.log('button')}}>mapbutton</button>)
-    //   ReactDOM.render(React.Children.only(button), document.getElementById("iwc"));
-    // }
-
     renderMarkers= () => {
         return this.props.listings.map(listing => {
           return <Marker 
-            onClick={this.onMarkerClick} name={listing.description} key={listing.id} listing={<WallListing listing={listing} adoptWall={this.props.adoptWall}/>}
+            onClick={this.onMarkerClick} name={listing.description} key={listing.id} listing={<WallListing listing={listing} />}
             position={{ lat: listing.lat, lng: listing.lng }}
           />
         })

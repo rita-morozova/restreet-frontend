@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom' 
 import {Button, Card} from 'semantic-ui-react'
 
-const WallListing = ({listing, adoptWall}) => {
+const WallListing = ({listing}) => {
 
   const style = {
     position: 'relative',
@@ -16,7 +16,7 @@ const WallListing = ({listing, adoptWall}) => {
     zIndex: 100,
   }
 
-    const handleClick =(listing) => adoptWall(listing)
+   
  
     return(
       <div key={listing.id} style={style} >
@@ -27,7 +27,6 @@ const WallListing = ({listing, adoptWall}) => {
           <h4>Zip Code: {listing.zipcode}</h4>
           <h4>{listing.adopted ? 
           'Another artist is already working here' : 
-          // <button onClick={() =>{console.log('hi')}}>Adopt Wall</button>
           <a href={'mailto:' + listing.owner.email}><Button basic>Email To Adopt</Button></a>
            }</h4>   
            </Card> 

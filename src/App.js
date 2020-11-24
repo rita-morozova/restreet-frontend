@@ -33,7 +33,8 @@ class App extends React.Component {
     walls: [],
     videos: [],
     favvideos: [],
-    listings: []
+    listings: [],
+    adopted: false
   }
 
   componentDidMount() {
@@ -130,7 +131,7 @@ class App extends React.Component {
     })
   }
 
-////////////Update User Profile
+//////////// Update User Profile
   handleUpdateProfile = (data, route, method='PATCH') => {
     fetch(`${URL}${route}`, {
         method: method,
@@ -153,7 +154,7 @@ class App extends React.Component {
   }
 
 
-  /////////// handle favorite arts
+  ////////////////////// Handle favorite arts
   addToFavorites = (art) => {
     const userToken = localStorage.getItem('token')
     fetch(`${URL}/favorites`,{
@@ -188,7 +189,7 @@ class App extends React.Component {
     })      
   }
 
-  /////////// handle Favorite Videos
+  /////////////////////// Handle Favorite Videos
 
   addToList = (video) => {
     const userToken = localStorage.getItem('token')
@@ -224,7 +225,7 @@ class App extends React.Component {
       })      
     }
 
-    ////////Handle Wall Listings
+    ///////////////////Handle Wall Listings
 
     handlePostWall = (listing) => {
       const userToken = localStorage.getItem('token')
@@ -271,11 +272,46 @@ class App extends React.Component {
           )
         })      
       }
-  
+
+      handleWallAdoption = (data, route, method='PATCH') => {
+        fetch(`${URL}${route}`, {
+            method: method,
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(resp => resp.json())
+        .then(data => {
+          this.setState({listings: data})
+          })
+        .catch(errors => console.log(errors))
+      }
+
+
+    //   handleAdoption (listing) {
+    //    const adopted = () => {
+    //      this.state.listings.filter(l => l.id === listing.id)
+    //      this.setState({adopted: !this.state.adopted})
+    //    }
+    //     fetch(`http://localhost:3000/listings/${listing.id}`, {
+    //         method: 'PATCH',
+    //         headers: {
+    //             'Content-Type' : 'application/json',
+    //             'Accept': 'application/json'
+    //         },
+    //         body: JSON.stringify(adopted)
+    //     })
+    //     .then(resp => resp.json())
+    //     .then(data => {
+    //         console.log(data)
+      
+    //     })
+    //     .catch (error => error.message)
+    // }
+
+
     
-
-
-
   
   render(){
     const {user, videos, listings} = this.state
@@ -288,8 +324,8 @@ class App extends React.Component {
       <Route exact path='/signup' component={this.renderForm} />
       <Route exact path='/logout' component={() =>this.handleLogout()} />
       <Route exact path='/profile' component={() => <UserProfile handleUpdateProfile={this.handleUpdateProfile} user={user} />} />
-      <Route exact path='/adopt-a-wall' component={() => <MapContainer adoptWall={this.adoptWall} listings={listings} />} />
-      <Route exact path='/my-listings' component={() => <UserListings listings={user.listings} deleteListing={this.deleteListing} />} />
+      <Route exact path='/adopt-a-wall' component={() => <MapContainer listings={listings} />} />
+      <Route exact path='/my-listings' component={() => <UserListings listings={user.listings} deleteListing={this.deleteListing} handleWallAdoption={this.handleWallAdoption}/>} />
       <Route exact path='/my-library' component={() => <FavVideoContainer videos={user.videos} deleteFromList={this.deleteFromList}/>} />
       <Route exact path='/post-wall' component={() => <PostWall handlePostWall={this.handlePostWall} user={user}/>} />
       <Route exact path='/get-inspired' component={() => <ArtContainer addToFavorites={this.addToFavorites} />} />
