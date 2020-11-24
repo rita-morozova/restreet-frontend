@@ -239,7 +239,8 @@ class App extends React.Component {
           zipcode: listing.zipcode,
           description: listing.description.toString(),
           photo: listing.photo.toString(),
-          user_id: listing.user_id
+          user_id: listing.user_id,
+          adopted: false
         }))
       })
       .then(res => res.json())
@@ -248,8 +249,6 @@ class App extends React.Component {
         this.setState((prevState) =>({
           listings: [...prevState.listings, listing] 
         }))
-      //   this.setState({listings: data})
-      //  })
         })
       }
   

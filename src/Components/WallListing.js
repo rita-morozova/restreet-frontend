@@ -28,7 +28,7 @@ const WallListing = ({listing, adoptWall}) => {
           <h4>{listing.adopted ? 
           'Another artist is already working here' : 
           // <button onClick={() =>{console.log('hi')}}>Adopt Wall</button>
-          <a href='mailto: hello@wall.com'><Button basic>Email To Adopt</Button></a>
+          <a href={'mailto:' + listing.owner.email}><Button basic>Email To Adopt</Button></a>
            }</h4>   
            </Card> 
       </div>

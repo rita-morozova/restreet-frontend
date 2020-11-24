@@ -10,7 +10,8 @@ class PostWall extends React.Component {
     zipcode: '',
     description: '',
     photo: '',
-    user_id: this.props.user.id
+    user_id: this.props.user.id,
+    adopted: false
 }
 
 handleChange = (event) => {
@@ -48,6 +49,8 @@ handleSubmit = (event) => {
             <Form.Input fluid placeholder='Image URL' type='text' name='photo' value={this.state.photo} onChange={this.handleChange} /><br />
 
             <Form.Input fluid placeholder='Owner' type='hidden' name='user_id' value={this.state.user_id} onChange={this.handleChange} /><br />
+
+            <Form.Input fluid placeholder='Adopted' type='hidden' name='adopted' value={this.state.adopted} onChange={this.handleChange} /><br />
 
 
             {/* <Form.Input fluid placeholder='Your Name' type='text' name='name' value={this.state.name} onChange={this.handleChange} /><br />
