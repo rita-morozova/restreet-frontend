@@ -4,14 +4,13 @@ import { Form, Button, Header, Image, Modal, Grid, Segment } from 'semantic-ui-r
 class PostWall extends React.Component {
  
   state = {
-    latitude: '',
-    longitude: '',
+    lat: '',
+    lng: '',
     address: '',
     zipcode: '',
     description: '',
     photo: '',
-    name: '',
-    email: ''
+    user_id: this.props.user.id
 }
 
 handleChange = (event) => {
@@ -36,9 +35,9 @@ handleSubmit = (event) => {
 
             <Form className='wall-form' onSubmit={(event) => this.handleSubmit(event)} size='large'>
                <Segment stacked>          
-            <Form.Input fluid placeholder='Latitude' type='float' name='latitude' value={this.state.latitude} onChange={this.handleChange} /><br />
+            <Form.Input fluid placeholder='Latitude' type='float' name='lat' value={this.state.lat} onChange={this.handleChange} /><br />
 
-            <Form.Input fluid placeholder='Longitude' type='float' name='longitude' value={this.state.longitude} onChange={this.handleChange} /><br />
+            <Form.Input fluid placeholder='Longitude' type='float' name='lng' value={this.state.lng} onChange={this.handleChange} /><br />
 
             <Form.Input fluid placeholder='Address' type='text' name='address' value={this.state.address} onChange={this.handleChange} /><br />
 
@@ -47,6 +46,9 @@ handleSubmit = (event) => {
             <Form.Input fluid placeholder='Describe the wall' type='text' name='description' value={this.state.description} onChange={this.handleChange} /><br />
 
             <Form.Input fluid placeholder='Image URL' type='text' name='photo' value={this.state.photo} onChange={this.handleChange} /><br />
+
+            <Form.Input fluid placeholder='Owner' type='hidden' name='user_id' value={this.state.user_id} onChange={this.handleChange} /><br />
+
 
             {/* <Form.Input fluid placeholder='Your Name' type='text' name='name' value={this.state.name} onChange={this.handleChange} /><br />
 

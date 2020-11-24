@@ -17,7 +17,7 @@ class MapContainer extends React.Component {
         <br />
             HELLO!!!!!!!!!
 
-            <Map adoptWall={this.props.adoptWall}  />
+            <Map adoptWall={this.props.adoptWall} listings={this.props.listings} />
             {/* <ListingsContainer listings={this.state.listings}/> */}
       </div>
     )

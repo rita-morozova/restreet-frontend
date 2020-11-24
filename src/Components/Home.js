@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Home = props => {
+const Home = ({user}) => {
 
     return(
       <div>
-        Welcome {props.username}!
+        {user? `Welcome ${user.username}!` : 'Welcome'}
       </div>
     )
 }

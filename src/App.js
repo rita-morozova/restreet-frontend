@@ -33,6 +33,7 @@ class App extends React.Component {
     walls: [],
     videos: [],
     favvideos: [],
+    listings: []
   }
 
   componentDidMount() {
@@ -49,11 +50,16 @@ class App extends React.Component {
         this.setState({user: user.user})
       })
     }
+
     fetch('http://localhost:3000/videos')
     .then(resp => resp.json())
     .then(data =>{
       this.setState({videos: data})
     })
+
+    fetch('http://localhost:3000/listings')
+    .then(resp => resp.json())
+    .then( data => this.setState({listings: data}))
   }
 
    ////////////Handle Login and SignUp 
@@ -124,6 +130,7 @@ class App extends React.Component {
     })
   }
 
+////////////Update User Profile
   handleUpdateProfile = (data, route, method='PATCH') => {
     fetch(`${URL}${route}`, {
         method: method,
@@ -216,24 +223,37 @@ class App extends React.Component {
         )
       })      
     }
+
+    handlePostWall = (listing) => {
+      const userToken = localStorage.getItem('token')
+      fetch(`${URL}/listings`,{
+        method:'POST',
+        headers:{
+          'Content-Type': 'application/json',
+          'Authorization' : `Bearer ${userToken}`
+        },
+        body: JSON.stringify(({
+          lat: listing.lat,
+          lng: listing.lng,
+          address: listing.address.toString(),
+          zipcode: listing.zipcode,
+          description: listing.description.toString(),
+          photo: listing.photo.toString(),
+          user_id: listing.user_id
+        }))
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        this.setState((prevState) =>({
+          listings: [...prevState.listings, listing] 
+        }))
+      //   this.setState({listings: data})
+      //  })
+        })
+      }
   
 
-      // handlePostWall= (wall) => {
-      //   fetch(`${URL}/listings`,{
-      //     method:'POST',
-      //     headers:{
-      //       'Content-Type': 'application/json',
-      //       'Authorization' : `Bearer ${this.state.token}`
-      //     },
-      //     body: JSON.stringify(({listing_id: wall.id}))
-      //   })
-      //   .then(res => res.json())
-      //   .then(data => {
-      //     console.log(data)
-      //     this.setState({user:data.user})
-      //    })
-      //     }
-   
 
 
   // adoptWall = (wall) => {
@@ -253,20 +273,20 @@ class App extends React.Component {
   //     }
 
   render(){
-    const {user, walls, videos} = this.state
+    const {user, walls, videos, listings} = this.state
   return (
     <div className="App">
         <Navbar user={user} />
       <Switch>
-      <Route exact path='/'  component={() => <Home/>} />
+      <Route exact path='/'  component={() => <Home user={user}/>} />
       <Route exact path='/login' component={this.renderForm} />
       <Route exact path='/signup' component={this.renderForm} />
       <Route exact path='/logout' component={() =>this.handleLogout()} />
       <Route exact path='/profile' component={() => <UserProfile handleUpdateProfile={this.handleUpdateProfile} user={user} />} />
-      <Route exact path='/adopt-a-wall' component={() => <MapContainer adoptWall={this.adoptWall}  />} />
+      <Route exact path='/adopt-a-wall' component={() => <MapContainer adoptWall={this.adoptWall} listings={listings} />} />
       <Route exact path='/my-walls' component={() => <AdoptedWalls walls={walls} />} />
       <Route exact path='/my-library' component={() => <FavVideoContainer videos={user.videos} deleteFromList={this.deleteFromList}/>} />
-      <Route exact path='/post-wall' component={() => <PostWall handlePostWall={this.handlePostWall} />} />
+      <Route exact path='/post-wall' component={() => <PostWall handlePostWall={this.handlePostWall} user={user}/>} />
       <Route exact path='/get-inspired' component={() => <ArtContainer addToFavorites={this.addToFavorites} />} />
       <Route exact path='/my-inspiration' component={() =><FavArtContainer userArts={user.arts} deleteFromFavorites={this.deleteFromFavorites}/>} />
       <Route exact path='/learn' component={() => <LearnContainer user={user} videos={videos} addToList={this.addToList} />} />

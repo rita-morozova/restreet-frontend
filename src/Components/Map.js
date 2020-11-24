@@ -14,17 +14,17 @@ const style = {
 export class MapContainer extends Component {
 
     state = {
-        listings: [],
+        
         showingInfoWindow: false,  
         activeMarker: {},          
         selectedWall: {},
       }
 
-    componentDidMount() {
-      fetch('http://localhost:3000/listings')
-      .then(resp => resp.json())
-      .then( data => this.setState({listings: data}))
-    }
+    // componentDidMount() {
+    //   fetch('http://localhost:3000/listings')
+    //   .then(resp => resp.json())
+    //   .then( data => this.setState({listings: data}))
+    // }
     
     onMarkerClick = (props, marker, e) =>{
       this.setState({
@@ -40,7 +40,7 @@ export class MapContainer extends Component {
     // }
 
     renderMarkers= () => {
-        return this.state.listings.map(listing => {
+        return this.props.listings.map(listing => {
           return <Marker 
             onClick={this.onMarkerClick} name={listing.description} key={listing.id} listing={<WallListing listing={listing} adoptWall={this.props.adoptWall}/>}
             position={{ lat: listing.lat, lng: listing.lng }}
