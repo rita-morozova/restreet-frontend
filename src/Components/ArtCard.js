@@ -1,21 +1,29 @@
 import React from 'react'
 import {Card, Image} from 'semantic-ui-react'
 
-const ArtCard =({art, addToFavorites, deleteFromFavorites}) => {
+class ArtCard extends React.Component {
 
+  
+ 
+  
+  render(){
+    const {art, addToFavorites, deleteFromFavorites} = this.props
 
-
+    const handleClick = () => {
+      this.props.selectArt(art.id)
+     
+    }
+    
     return(
+      <div key={art.id}>
       <Card> 
-        <Image src={art.image_url} alt="Painting" wrapped ui={false} />
-        <h2>{art.artist}</h2>
-        <h3>{art.name}</h3>
-        <h3>{art.year}</h3>
-        <button onClick={() => addToFavorites(art) }>Add to Favorites</button>
+        <Image src={art.image_url} alt="Painting" wrapped ui={false} onClick={handleClick} />
+        {/* <button onClick={() => addToFavorites(art) }>Add to Favorites</button> */}
         {deleteFromFavorites ? <button onClick={() => deleteFromFavorites(art)}>Delete</button> : null}
-        {/* <button onClick={()=> deleteFromFavorites(art)}>Delete from Favorites</button> */}
       </Card>
+      </div>
     )
   }
+}
 
 export default ArtCard
