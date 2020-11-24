@@ -7,13 +7,13 @@ import Form from './Components/Form'
 import Navbar from './Components/Navbar'
 import Home from './Components/Home'
 import UserProfile from './Components/UserProfile'
-import AdoptedWall from './Components/AdoptedWalls'
+import UserListings from './Components/UserListings'
 import ArtContainer from './Containers/ArtContainer'
 import FavArtContainer from './Containers/FavArtContainer'
 import LearnContainer from './Containers/LearnContainer'
 import NotFound from './Components/NotFound'
 import API from './Adapters/API'
-import AdoptedWalls from './Components/AdoptedWalls';
+import AdoptedWalls from './Components/UserListings';
 import MapContainer from './Containers/MapContainer'
 import PostWall from './Components/PostWall';
 import FavVideoContainer from './Containers/FavVideosContainer'
@@ -27,7 +27,7 @@ const URL = 'http://localhost:3000'
 class App extends React.Component {
 
   state ={
-    user: {arts: [], username:'', name:''},
+    user: {arts: [], listings: [], username:'', name:''},
     token:'',
     favorites: [],
     walls: [],
@@ -224,6 +224,8 @@ class App extends React.Component {
       })      
     }
 
+    ////////Handle Wall Listings
+
     handlePostWall = (listing) => {
       const userToken = localStorage.getItem('token')
       fetch(`${URL}/listings`,{
@@ -251,28 +253,32 @@ class App extends React.Component {
         }))
         })
       }
+
+      deleteListing = (listing) =>{
+        const wall = this.state.user.listings.find(wall => wall.id=== listing.id)
+        fetch(`${URL}/listings/${wall.id}`,{
+          method: 'DELETE',
+          headers: {
+            'Content-Type':'application/json',
+          }
+        })
+        .then(resp => resp.json())
+        .then(data =>{
+          // console.log(data)
+          this.setState((prevState) =>({
+            user: {...prevState.user, listings: [...prevState.user.listings.filter(wall => wall.id !==data.id)]}
+          })
+          )
+        })      
+      }
   
+    
 
 
 
-  // adoptWall = (wall) => {
-  //   fetch(`${URL}/walls`,{
-  //     method:'POST',
-  //     headers:{
-  //       'Content-Type': 'application/json',
-  //       'Authorization' : `Bearer ${this.state.token}`
-  //     },
-  //     body: JSON.stringify(({wall_id: wall.id}))
-  //   })
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     console.log(data)
-  //     this.setState({user:data.user})
-  //    })
-  //     }
-
+  
   render(){
-    const {user, walls, videos, listings} = this.state
+    const {user, videos, listings} = this.state
   return (
     <div className="App">
         <Navbar user={user} />
@@ -283,7 +289,7 @@ class App extends React.Component {
       <Route exact path='/logout' component={() =>this.handleLogout()} />
       <Route exact path='/profile' component={() => <UserProfile handleUpdateProfile={this.handleUpdateProfile} user={user} />} />
       <Route exact path='/adopt-a-wall' component={() => <MapContainer adoptWall={this.adoptWall} listings={listings} />} />
-      <Route exact path='/my-walls' component={() => <AdoptedWalls walls={walls} />} />
+      <Route exact path='/my-listings' component={() => <UserListings listings={user.listings} deleteListing={this.deleteListing} />} />
       <Route exact path='/my-library' component={() => <FavVideoContainer videos={user.videos} deleteFromList={this.deleteFromList}/>} />
       <Route exact path='/post-wall' component={() => <PostWall handlePostWall={this.handlePostWall} user={user}/>} />
       <Route exact path='/get-inspired' component={() => <ArtContainer addToFavorites={this.addToFavorites} />} />
