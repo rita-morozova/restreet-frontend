@@ -268,13 +268,15 @@ class App extends React.Component {
           listings: [...prevState.listings, listing] 
         }))
         })
-        // this.props.history.push('my-listings')
+        this.props.history.push('my-listings')
       }
      
 
       deleteListing = (listing) =>{
-        const wall = this.state.user.listings.find(wall => wall.id=== listing.id)
-        fetch(`${URL}/listings/${wall.id}`,{
+        // const wall = this.state.user.listings.find(wall => wall.id=== listing.id)
+        const wall = this.state.listings.filter(l => l.user_id === this.state.user.id)
+        const walla= wall.find(w => w.id === listing.id)
+        fetch(`${URL}/listings/${walla.id}`,{
           method: 'DELETE',
           headers: {
             'Content-Type':'application/json',
@@ -282,9 +284,13 @@ class App extends React.Component {
         })
         .then(resp => resp.json())
         .then(data =>{
-          // console.log(data)
+          console.log(data)
+          // this.setState((prevState) =>({
+          //   user: {...prevState.user, listings: [...prevState.user.listings.filter(wall => wall.id !==data.id)]}
+          // })
+          // )
           this.setState((prevState) =>({
-            user: {...prevState.user, listings: [...prevState.user.listings.filter(wall => wall.id !==data.id)]}
+            listings: prevState.listings.filter(l => l.id !== walla.id)
           })
           )
         })      
@@ -321,7 +327,7 @@ class App extends React.Component {
       <Route exact path='/logout' component={() =>this.handleLogout()} />
       <Route exact path='/profile' component={() => <UserProfile handleUpdateProfile={this.handleUpdateProfile} user={user}  deleteUser={this.deleteUser}/>} />
       <Route exact path='/adopt-a-wall' component={() => <MapContainer listings={listings} />} />
-      <Route exact path='/my-listings' component={() => <UserListings listings={user.listings} deleteListing={this.deleteListing} handleWallAdoption={this.handleWallAdoption}/>} />
+      <Route exact path='/my-listings' component={() => <UserListings listings={listings.filter(l => l.user_id === user.id)} deleteListing={this.deleteListing} />} />
       <Route exact path='/my-library' component={() => <FavVideoContainer videos={user.videos} deleteFromList={this.deleteFromList}/>} />
       <Route exact path='/post-wall' component={() => <PostWall handlePostWall={this.handlePostWall} user={user}/>} />
       <Route exact path='/get-inspired' component={() => <ArtContainer addToFavorites={this.addToFavorites} />} />
