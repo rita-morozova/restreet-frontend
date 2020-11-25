@@ -1,8 +1,9 @@
-import React from 'react';
+import React from 'react'
+
 class Form extends React.Component {
     state = {
-        username: "",
-        password: ""
+        username: '',
+        password: ''
       }
     
       handleSubmit = (e) => {

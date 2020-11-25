@@ -17,6 +17,7 @@ import AdoptedWalls from './Components/UserListings';
 import MapContainer from './Containers/MapContainer'
 import PostWall from './Components/PostWall';
 import FavVideoContainer from './Containers/FavVideosContainer'
+import ArtPhotosContainer from './Containers/ArtPhotosContainer'
 
 
 
@@ -34,7 +35,7 @@ class App extends React.Component {
     videos: [],
     favvideos: [],
     listings: [],
-    adopted: false
+    adopted: false,
   }
 
   componentDidMount() {
@@ -84,10 +85,12 @@ class App extends React.Component {
   }
 
   handleAuthFetch = (info, request) => {  
+    this.setState({error: null})
     fetch(request, {
       method:'POST',
       headers:{
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
       body: JSON.stringify({
         username: info.username,
@@ -103,6 +106,7 @@ class App extends React.Component {
         this.props.history.push('/') 
       })
     })
+    .catch(errors => console.log(errors))
   }
 
   handleSignupFetch = (info, request) => {  
@@ -128,6 +132,7 @@ class App extends React.Component {
           this.props.history.push('/') 
         }) 
     })
+    .catch(errors => console.log(errors))
   }
 
 //////////// Update User Profile
@@ -158,7 +163,7 @@ class App extends React.Component {
       method: 'DELETE'
     })
     this.props.history.push('/')
-    localStorage.clear();
+    localStorage.clear()
     this.setState({user: null})
   }
 
@@ -242,6 +247,7 @@ class App extends React.Component {
         method:'POST',
         headers:{
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
           'Authorization' : `Bearer ${userToken}`
         },
         body: JSON.stringify(({
@@ -262,8 +268,9 @@ class App extends React.Component {
           listings: [...prevState.listings, listing] 
         }))
         })
-        .catch (error => error.message)
+        // this.props.history.push('my-listings')
       }
+     
 
       deleteListing = (listing) =>{
         const wall = this.state.user.listings.find(wall => wall.id=== listing.id)
@@ -283,48 +290,26 @@ class App extends React.Component {
         })      
       }
 
-      handleWallAdoption = (data, route, method='PATCH') => {
-        fetch(`${URL}${route}`, {
-            method: method,
-            headers: {
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(resp => resp.json())
-        .then(data => {
-          this.setState({listings: data})
-          })
-        .catch(errors => console.log(errors))
-      }
+      // handleWallAdoption = (data, route, method='PATCH') => {
+      //   fetch(`${URL}${route}`, {
+      //       method: method,
+      //       headers: {
+      //           'Content-Type':'application/json'
+      //       },
+      //       body: JSON.stringify(data)
+      //   })
+      //   .then(resp => resp.json())
+      //   .then(data => {
+      //     this.setState({listings: data})
+      //     })
+      //   .catch(errors => console.log(errors))
+      // }
 
-
-    //   handleAdoption (listing) {
-    //    const adopted = () => {
-    //      this.state.listings.filter(l => l.id === listing.id)
-    //      this.setState({adopted: !this.state.adopted})
-    //    }
-    //     fetch(`http://localhost:3000/listings/${listing.id}`, {
-    //         method: 'PATCH',
-    //         headers: {
-    //             'Content-Type' : 'application/json',
-    //             'Accept': 'application/json'
-    //         },
-    //         body: JSON.stringify(adopted)
-    //     })
-    //     .then(resp => resp.json())
-    //     .then(data => {
-    //         console.log(data)
-      
-    //     })
-    //     .catch (error => error.message)
-    // }
-
-
-    
-  
   render(){
     const {user, videos, listings} = this.state
+    // const dynamicArts = (routerProps) => { 
+    //   return  <ArtPhotosContainer artId={routerProps.match.params.id} />
+    // }
     console.log(listings)
   return (
     <div className="App">
@@ -340,6 +325,7 @@ class App extends React.Component {
       <Route exact path='/my-library' component={() => <FavVideoContainer videos={user.videos} deleteFromList={this.deleteFromList}/>} />
       <Route exact path='/post-wall' component={() => <PostWall handlePostWall={this.handlePostWall} user={user}/>} />
       <Route exact path='/get-inspired' component={() => <ArtContainer addToFavorites={this.addToFavorites} />} />
+      {/* <Route path='/get-inspired/:id' render={dynamicArts} /> */}
       <Route exact path='/my-inspiration' component={() =><FavArtContainer userArts={user.arts} deleteFromFavorites={this.deleteFromFavorites}/>} />
       <Route exact path='/learn' component={() => <LearnContainer user={user} videos={videos} addToList={this.addToList} />} />
       <Route component={NotFound} />
