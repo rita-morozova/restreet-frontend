@@ -54,9 +54,8 @@ class App extends React.Component {
 
     fetch('http://localhost:3000/videos')
     .then(resp => resp.json())
-    .then(data =>{
-      this.setState({videos: data})
-    })
+    .then(data =>this.setState({videos: data}))
+    
 
     fetch('http://localhost:3000/listings')
     .then(resp => resp.json())
@@ -151,6 +150,16 @@ class App extends React.Component {
     localStorage.removeItem('token')
     this.setState({user: user})
     return <Redirect to="/" push={true} />
+  }
+
+  //////// DELETE USER
+  deleteUser = () => {
+    fetch(`http://localhost:3000/users/${this.state.user.id}`, {
+      method: 'DELETE'
+    })
+    this.props.history.push('/')
+    localStorage.clear();
+    this.setState({user: null})
   }
 
 
@@ -253,6 +262,7 @@ class App extends React.Component {
           listings: [...prevState.listings, listing] 
         }))
         })
+        .catch (error => error.message)
       }
 
       deleteListing = (listing) =>{
@@ -315,6 +325,7 @@ class App extends React.Component {
   
   render(){
     const {user, videos, listings} = this.state
+    console.log(listings)
   return (
     <div className="App">
         <Navbar user={user} />
@@ -323,7 +334,7 @@ class App extends React.Component {
       <Route exact path='/login' component={this.renderForm} />
       <Route exact path='/signup' component={this.renderForm} />
       <Route exact path='/logout' component={() =>this.handleLogout()} />
-      <Route exact path='/profile' component={() => <UserProfile handleUpdateProfile={this.handleUpdateProfile} user={user} />} />
+      <Route exact path='/profile' component={() => <UserProfile handleUpdateProfile={this.handleUpdateProfile} user={user}  deleteUser={this.deleteUser}/>} />
       <Route exact path='/adopt-a-wall' component={() => <MapContainer listings={listings} />} />
       <Route exact path='/my-listings' component={() => <UserListings listings={user.listings} deleteListing={this.deleteListing} handleWallAdoption={this.handleWallAdoption}/>} />
       <Route exact path='/my-library' component={() => <FavVideoContainer videos={user.videos} deleteFromList={this.deleteFromList}/>} />

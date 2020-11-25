@@ -17,7 +17,6 @@ const WallListing = ({listing}) => {
   }
 
    
- 
     return(
       <div key={listing.id} style={style} >
         <Card>

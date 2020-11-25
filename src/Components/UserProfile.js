@@ -56,6 +56,10 @@ class UserProfile extends React.Component {
                                 <Button color='olive' fluid size='large'>
                                     Update Profile
                                 </Button> 
+                                <br />
+                                <Button color='olive' fluid size='large' onClick={this.props.deleteUser}>
+                                    Delete Profile
+                                </Button>
                             </Segment>
                         </Form>
                 </Grid.Column>
