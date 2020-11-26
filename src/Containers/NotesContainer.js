@@ -1,5 +1,5 @@
-import { tile2LatLng } from 'google-map-react'
 import React from 'react'
+import Note from '../Components/Note'
 
 
 class NotesContainer extends React.Component {
@@ -7,14 +7,13 @@ class NotesContainer extends React.Component {
   state = {
     notes: [],
     note: '',
-    newNote: false,
-    video: ''
   }
 
   componentDidMount = () =>{
     fetch('http://localhost:3000/notes')
     .then(resp => resp.json())
     .then(data => {
+      console.log(data)
       this.setState({notes: data})
     })
   }
@@ -46,60 +45,31 @@ class NotesContainer extends React.Component {
         console.log(this.state.note)
         console.log(data)
         this.setState((prevState) =>({
-          notes: [...prevState.notes, data], note:''
+          notes: [...prevState.notes, data], 
         })
         )
       })
   }
 
-
-  videoNotes = (video) => {
-    // const id = parseInt(this.props.match.params.id, 0)
-    this.state.notes.filter(note => note.video_id === video.id)
-  }
-
-  // displayNotes = () => {
-  //   this.videoNotes().map(note =>{
-  //     return(
-  //       <div key={note.id}>
-  //         <h4>{note.content}</h4>
-  //         {note.user.id === this.props.user ? <button onClick={this.deleteNote}>X</button> : null}
-  //       </div>
-  //     )
-  //   })
-  // }
-
-  // renderNotes = () => {
-  //   return(
-  //     <div>
-  //       <h3>My Notes</h3> 
-  //       {newNote ? this.newNote() : <button onClick={() => this.setState({newNote: true})}>Add Note</button> }
-  //       <div>
-  //         {this.displayNotes}
-  //       </div>
-  //     </div>
-  //   )
-  // }
-
- 
   
-
-  // handleDeleteNote = e => {
-  //   const id = parseInt(e.target.value, 0)
-  //   fetch(`http://localhost:3000/notes/${id}`, {
-  //     method: 'DELETE'
-  //   })
-  //   .then(resp => resp.json())
-  //   .then(data => {
-  //     this.setState((prevState) => ({
-  //      notes: [...prevState.notes.filter(n => n.id !==id)]
-  //     })
-  //     )
-  //     })
-  // }
+  deleteNote = (note) => {
+    let currentNote = this.props.video.notes.find(n => n.id === note.id)
+    fetch(`http://localhost:3000/notes/${currentNote.id}`, {
+      method: 'DELETE'
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      this.setState((prevState) => ({
+       notes: [...prevState.notes.filter(n => n.id !== data.id)]
+      })
+      )
+      })
+  }
 
 
   render(){
+    const videoNotes =this.props.user.notes.filter(note => note.video_id === this.props.video.id)
+  
     return(
       <div>
         <h4>Write Note:</h4>
@@ -107,6 +77,7 @@ class NotesContainer extends React.Component {
         <div>
           <button onClick={this.handleSubmitNote}>Add</button>
         </div>
+        {videoNotes.map(note => <Note key={note.id} note={note} user={this.props.user} deleteNote={this.deleteNote} />)}
       </div>
     )
   }
