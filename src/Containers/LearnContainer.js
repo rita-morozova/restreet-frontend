@@ -21,12 +21,11 @@ class LearnContainer extends React.Component {
   }
 
   render() {
-    const {videos, addToList} =this.props
-    console.log(this.state.selectedVideo)
+    const {videos, addToList, user} =this.props
     return(
       <div>
         {this.state.selectedVideo ? 
-        <VideoPage selectedVideo={this.state.selectedVideo} goBackToAllVideos={this.goBackToAllVideos} addToList={addToList} />
+        <VideoPage selectedVideo={this.state.selectedVideo} goBackToAllVideos={this.goBackToAllVideos} addToList={addToList} user={user} />
         :
         <VideoContainer videos={videos} selectVideo={this.selectVideo} addToList={addToList}/>
         }

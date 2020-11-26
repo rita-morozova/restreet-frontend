@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactPlayer from 'react-player'
+import NotesContainer from '../Containers/NotesContainer'
 
 class VideoPage extends React.Component {
 
@@ -12,6 +13,7 @@ class VideoPage extends React.Component {
         <h4>{description}</h4>
         <button onClick={() =>this.props.addToList(this.props.selectedVideo)}>Add To My List</button>
         <button onClick={this.props.goBackToAllVideos}>Go Back To All Lessons</button>
+        <NotesContainer user={this.props.user} video={this.props.selectedVideo} />
       </div>
     )
   }

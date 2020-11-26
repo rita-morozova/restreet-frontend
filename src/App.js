@@ -37,6 +37,7 @@ class App extends React.Component {
     favvideos: [],
     listings: [],
     adopted: false,
+    playlist: []
   }
 
   componentDidMount() {
