@@ -21,6 +21,7 @@ import ArtPhotosContainer from './Containers/ArtPhotosContainer'
 
 
 
+
 const URL = 'http://localhost:3000'
 
 
@@ -53,20 +54,19 @@ class App extends React.Component {
       })
     }
 
-    fetch('http://localhost:3000/videos')
-    .then(resp => resp.json())
-    .then(data =>this.setState({videos: data}))
-    
-
     fetch('http://localhost:3000/listings')
     .then(resp => resp.json())
     .then( data => this.setState({listings: data}))
+
+    fetch('http://localhost:3000/videos')
+    .then(resp => resp.json())
+    .then(data =>this.setState({videos: data}))
   }
 
    ////////////Handle Login and SignUp 
    renderForm = (routerProps) => {
     if(routerProps.location.pathname === "/login"){
-      return <Login handleSubmit={this.handleLogin} />
+      return <Login handleSubmit={this.handleLogin}/>
     } else if (routerProps.location.pathname === "/signup"){
       return <Signup handleSubmit={this.handleSignup} />
     }
@@ -76,7 +76,6 @@ class App extends React.Component {
     console.log('login')
     console.log(info)
     this.handleAuthFetch(info,`${URL}/login`)
-
   }
 
   handleSignup = (info) => {
@@ -203,10 +202,9 @@ class App extends React.Component {
     })      
   }
 
-  /////////////////////// Handle Favorite Videos
-
   addToList = (video) => {
     const userToken = localStorage.getItem('token')
+  
     fetch('http://localhost:3000/favvideos',{
       method:'POST',
       headers:{
@@ -217,8 +215,11 @@ class App extends React.Component {
     })
     .then(res => res.json())
     .then(data => {
+      console.log(data)
+      // debugger
       this.setState({user:data.user})
       })
+      .catch(errors => console.log(errors))
     }
 
     deleteFromList = (video) =>{
