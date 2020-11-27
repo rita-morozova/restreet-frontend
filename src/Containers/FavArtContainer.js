@@ -9,7 +9,7 @@ class FavArtContainer extends React.Component {
     return(
       <div>
         <h1>You Liked These</h1>
-      {this.props.userArts.map(art => <FavoriteArtCard  art={art} deleteFromFavorites={this.props.deleteFromFavorites} selectArt={this.selectArt}/>)}
+      {this.props.userArts.map(art => <FavoriteArtCard key={art.id} art={art} deleteFromFavorites={this.props.deleteFromFavorites} selectArt={this.selectArt}/>)}
       </div>
     )
   }

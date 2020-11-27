@@ -14,7 +14,7 @@ class Video extends React.Component {
       <div>
         <ReactPlayer url={video.url} />
         <h2>{video.name}</h2>
-        <button onClick={() =>this.props.addToList(this.props.video)}>Add To My List</button>
+        <button onClick={() => this.props.addToList(this.props.video)}>Add To My List</button>
         <button onClick={handleClick}>Go to this lesson</button>
       </div>
     )
