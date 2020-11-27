@@ -3,7 +3,6 @@ import './App.css';
 import {Route, Switch, withRouter, Redirect, Link} from 'react-router-dom'
 import Login from './Components/Login'
 import Signup from './Components/Signup'
-import Form from './Components/Form'
 import Navbar from './Components/Navbar'
 import Home from './Components/Home'
 import UserProfile from './Components/UserProfile'
@@ -16,7 +15,7 @@ import MapContainer from './Containers/MapContainer'
 import PostWall from './Components/PostWall';
 import FavVideoContainer from './Containers/FavVideosContainer'
 import ArtPhotosContainer from './Containers/ArtPhotosContainer'
-import {gql, useQuery} from '@apollo/client'
+import API from './Adapters/API'
 
 
 
@@ -99,13 +98,14 @@ class App extends React.Component {
     .then(resp => resp.json())
     .then(data => {
       console.log(data)
+      if(data.error) throw Error(data.error)
       localStorage.setItem("token", data.token)
       this.setState({user: data.user}, ()  =>{
         //redirects home after login/signup
         this.props.history.push('/') 
       })
     })
-    .catch(errors => console.log(errors))
+    .catch(errors =>alert(errors))
   }
 
   handleSignupFetch = (info, request) => {  
@@ -124,14 +124,14 @@ class App extends React.Component {
     })
     .then(resp => resp.json())
     .then(data => {
-      // console.log(data)
+      if(data.error) throw Error(data.error)
       localStorage.setItem("token", data.token)
       this.setState({user: data.user}, ()  =>{
           //redirects home after login/signup
           this.props.history.push('/') 
         }) 
     })
-    .catch(errors => console.log(errors))
+    .catch(error => alert(error))
   }
 
 //////////// Update User Profile

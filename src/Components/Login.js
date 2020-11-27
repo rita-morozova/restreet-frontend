@@ -1,11 +1,13 @@
 import React from 'react'
 import {Form, Grid, Button, Header, Message, Segment} from 'semantic-ui-react'
+import axios from 'axios'
 
 
 class Login extends React.Component {
   state = {
     username: '',
     password: '',
+    errors: false
   }
 
   handleSubmit = (e) => {
@@ -15,16 +17,17 @@ class Login extends React.Component {
 
   handleChange = (e) => {
     let {name, value} = e.target
-    this.setState({
-      [name]: value
-    })
+    this.setState({[name]: value})
   }
 
- 
-  
+  validate = () => {
+    if(this.state.username === '' || this.state.password === '') return false
+    else return true
+  } 
+
 
 render(){
-
+  const isEnabled = this.validate()
 return (
   <div>
     <br />
@@ -33,6 +36,9 @@ return (
             <Header as='h2' textAlign='center'>
                 LOGIN
             </Header>
+            <p>
+              {this.state.errors ? 'Invalid Username or Password' : null}
+            </p>
     <Form className='login-form' size='large' onSubmit={this.handleSubmit}>
       <Segment stacked>
           <Form.Input  fluid icon='user' iconPosition='left' type='text' name='username' placeholder='Username' value={this.state.username} onChange={this.handleChange}/><br />
