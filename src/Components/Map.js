@@ -11,7 +11,7 @@ const style = {
   height: '50%'
 }
 
-export class MapContainer extends Component {
+export class MapContainer extends React.Component {
 
     state = {
         

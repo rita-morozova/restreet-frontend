@@ -5,6 +5,8 @@ import ArtInfo from '../Components/ArtInfo'
 import ArtPhotosContainer from './ArtPhotosContainer'
 
 
+
+
 class ArtContainer extends React.Component{
   
   state ={
@@ -45,6 +47,7 @@ class ArtContainer extends React.Component{
         <ArtInfo chosenArt={chosenArt} goBackToAllArts={this.goBackToAllArts} addToFavorites={this.props.addToFavorites}/>
         }
       </Container>
+     
       </div>
     )
   }

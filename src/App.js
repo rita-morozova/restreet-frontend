@@ -12,12 +12,11 @@ import ArtContainer from './Containers/ArtContainer'
 import FavArtContainer from './Containers/FavArtContainer'
 import LearnContainer from './Containers/LearnContainer'
 import NotFound from './Components/NotFound'
-import API from './Adapters/API'
-import AdoptedWalls from './Components/UserListings';
 import MapContainer from './Containers/MapContainer'
 import PostWall from './Components/PostWall';
 import FavVideoContainer from './Containers/FavVideosContainer'
 import ArtPhotosContainer from './Containers/ArtPhotosContainer'
+import {gql, useQuery} from '@apollo/client'
 
 
 
@@ -26,7 +25,7 @@ const URL = 'http://localhost:3000'
 
 
 class App extends React.Component {
-
+  
   state ={
     user: {arts: [], listings: [], username:'', name:''},
     token:'',
@@ -326,7 +325,7 @@ class App extends React.Component {
       <Route exact path='/signup' component={this.renderForm} />
       <Route exact path='/logout' component={() =>this.handleLogout()} />
       <Route exact path='/profile' component={() => <UserProfile handleUpdateProfile={this.handleUpdateProfile} user={user}  deleteUser={this.deleteUser}/>} />
-      <Route exact path='/adopt-a-wall' component={() => <MapContainer listings={listings} />} />
+      <Route exact path='/adopt-a-wall' component={() => <MapContainer listings={listings} user={user} handlePostWall={this.handlePostWall}/>} />
       <Route exact path='/my-listings' component={() => <UserListings listings={listings.filter(l => l.user_id === user.id)} deleteListing={this.deleteListing} />} />
       <Route exact path='/my-library' component={() => <FavVideoContainer videos={user.videos} deleteFromList={this.deleteFromList}/>} />
       <Route exact path='/post-wall' component={() => <PostWall handlePostWall={this.handlePostWall} user={user}/>} />

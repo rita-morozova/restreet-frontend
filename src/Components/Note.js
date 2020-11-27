@@ -1,14 +1,16 @@
+
 import React from 'react'
 
-class Note extends React.Component {
+const Note = ({note, deleteNote}) => {
 
-  render(){
+ 
     return(
       <div>
-
+          <h4>{note.content}</h4>
+          <button onClick={deleteNote}>X</button>
+        {/* {note.user_id === this.props.user.id ? <button onClick={props.deleteNote}>X</button> : null} */}
       </div>
     )
-  }
 }
 
 export default Note
