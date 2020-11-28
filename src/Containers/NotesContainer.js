@@ -13,7 +13,6 @@ class NotesContainer extends React.Component {
     fetch('http://localhost:3000/notes')
     .then(resp => resp.json())
     .then(data => {
-      console.log(data)
       this.setState({notes: data})
     })
   }
@@ -44,16 +43,15 @@ class NotesContainer extends React.Component {
       .then(data =>{
         console.log(this.state.note)
         console.log(data)
-        this.setState((prevState) =>({
-          notes: [...prevState.notes, data], 
-        })
-        )
+        this.setState((prevState) => ({
+          notes: [...prevState.notes, data.notes]
+        }) )
       })
   }
 
   
   deleteNote = (note) => {
-    let currentNote = this.props.video.notes.find(n => n.id === note.id)
+    let currentNote = this.state.notes.filter(n => n.id ===note.id)
     fetch(`http://localhost:3000/notes/${currentNote.id}`, {
       method: 'DELETE'
     })
@@ -68,8 +66,7 @@ class NotesContainer extends React.Component {
 
 
   render(){
-    const videoNotes =this.props.user.notes.filter(note => note.video_id === this.props.video.id)
-  
+    const videoNotes = this.props.video.notes.filter(note => note.user_id === this.props.user.id)
     return(
       <div>
         <h4>Write Note:</h4>

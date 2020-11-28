@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import {Form, Button, Grid, Header, Segment} from 'semantic-ui-react'
-import FormErrors from './FormErrors'
+
 
 const validEmailRegex = RegExp(
   /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
@@ -18,7 +18,6 @@ class Signup extends React.Component {
     username: '',
     password: '',
     confirmPassword: '',
-    email: '',
     errors: {
       username: '',
       email: '',
@@ -44,7 +43,7 @@ class Signup extends React.Component {
     switch (name) {
       case 'username': 
         errors.username = 
-          value.length < 5
+          value.length < 3
             ? 'Username must be at least 5 characters long'
             : '';
         break;
@@ -56,16 +55,16 @@ class Signup extends React.Component {
         break;
       case 'password': 
         errors.password = 
-          value.length < 6
+          value.length < 3
             ? 'Password must be at least 6 characters long'
             : '';
         break;
-      case 'confirmPassword': 
-        errors.confirmPassword = 
-          value !== this.state.password
-            ? "Passwords don't match"
-            : '';
-        break;
+      // case 'confirmPassword': 
+      //   errors.confirmPassword = 
+      //    value !== this.setState.password
+      //       ? "Passwords don't match"
+      //       : '';
+      //   break;
       default:
         break;
     }
@@ -84,7 +83,8 @@ return (
               <Header as='h2' textAlign='center'>
                         SIGNUP
               </Header>
-    <Form className='signup-form' size='large' onSubmit={this.handleSubmit} noValidate>
+            
+    <Form className='signup-form' size='large' onSubmit={this.handleSubmit} noValidate > 
           <Segment stacked>
         <Form.Input fluid placeholder='Username' type='text' name='username' value={this.state.username} onChange={this.handleChange} noValidate/><br />
         {errors.username.length > 0 && 
@@ -99,7 +99,7 @@ return (
                 <span className='error'>{errors.password}</span>}
 
         <Form.Input fluid placeholder='Confirm Password' type='password' name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange} noValidate/><br/>
-        {errors.confirmPassword.value === this.state.password && 
+        {errors.confirmPassword !== this.setState.password &&
                 <span className='error'>{errors.confirmPassword}</span>}
 
         <Button color='olive' fluid size='large' >

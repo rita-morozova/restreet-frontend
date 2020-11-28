@@ -7,7 +7,7 @@ class UserProfile extends React.Component {
         location: this.props.user.location,
         bio: this.props.user.bio,
         picture: this.props.user.picture,
-        password: ''
+        password: '',
     }
 
     handleChange = (event) => {
@@ -18,6 +18,8 @@ class UserProfile extends React.Component {
         event.preventDefault()
         this.props.handleUpdateProfile(this.state, `/users/${this.props.user.id}`, 'PATCH')
     }
+
+
 
     render(){
         return(
@@ -30,6 +32,19 @@ class UserProfile extends React.Component {
           <h3>Your location: {this.props.user.location}</h3>
           <h3>Your bio: {this.props.user.bio}</h3>
           {/* <h3>Your picture: {this.props.user.picture.toString}</h3> */}
+          {/* <div style={{
+                height: '60px',
+                width: '60px'
+                }}
+            >
+            <img alt ='your photo' style={{
+                    width: '20%',
+                    height: '20%',
+                    position: 'absolute'
+                }}  
+            />
+            </div> */}
+         
           <br />
           <br />
             <Grid textAlign='center' verticalAlign='middle'>
@@ -46,9 +61,8 @@ class UserProfile extends React.Component {
 
                              <Form.Input fluid placeholder='Bio' type='text' name='bio' value={this.state.bio} onChange={this.handleChange} /><br />
 
-                             {/* <Form.Input  fluid placeholder='Picture' type='text' name='picture' value={this.state.picture} onChange={this.handleChange}/><br /> */}
-               
-                            <Form.Input  fluid placeholder='Password' type='password' name='password' value={this.state.password} onChange={this.handleChange}/><br />
+                             <Form.Input  fluid placeholder='Password' type='password' name='password' value={this.state.password} onChange={this.handleChange}/><br />
+
 
                             {/* <Form.Input  fluid placeholder='Confirm Password' type='password' name='confirm-password' value={this.state.password} onChange={this.handleChange}/><br /> */}
                 

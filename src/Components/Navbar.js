@@ -24,6 +24,7 @@ const Navbar =({user})=> {
           <NavLink to='/learn' exact style={link} activeStyle={{background: '#f1f3f3'}}> Learn to Paint </NavLink>
           <NavLink to='/my-library' exact style={link} activeStyle={{background: '#f1f3f3'}}> Library </NavLink>
           <NavLink to='/my-listings' exact style={link} activeStyle={{background: '#f1f3f3'}}> Listings </NavLink>
+          <NavLink to='/share' exact style={link} activeStyle={{background: '#f1f3f3'}}> Share Art </NavLink>
           <NavLink to='/profile' exact style={link} activeStyle={{background: '#f1f3f3'}}> Profile </NavLink>
           <NavLink to='/logout' exact style={link} activeStyle={{background: '#f1f3f3'}}> Logout </NavLink>
           </>

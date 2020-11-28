@@ -12,6 +12,7 @@
     "google-map-react": "^2.1.9",
     "google-maps-react": "^2.0.6",
     "graphql": "^15.4.0",
+    "indicative": "^7.4.4",
     "node-fetch": "^2.6.1",
     "react": "^17.0.1",
     "react-color-extractor": "^1.1.2",

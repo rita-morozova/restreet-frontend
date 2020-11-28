@@ -15,7 +15,8 @@ import MapContainer from './Containers/MapContainer'
 import PostWall from './Components/PostWall';
 import FavVideoContainer from './Containers/FavVideosContainer'
 import ArtPhotosContainer from './Containers/ArtPhotosContainer'
-import API from './Adapters/API'
+import ArtCard from './Components/ArtCard'
+import PhotosContainer from './Containers/PhotosContainer'
 
 
 
@@ -35,7 +36,9 @@ class App extends React.Component {
     favvideos: [],
     listings: [],
     adopted: false,
-    playlist: []
+    playlist: [],
+   
+   
   }
 
   componentDidMount() {
@@ -53,11 +56,11 @@ class App extends React.Component {
       })
     }
 
-    fetch('http://localhost:3000/listings')
+    fetch(`${URL}/listings`)
     .then(resp => resp.json())
     .then( data => this.setState({listings: data}))
 
-    fetch('http://localhost:3000/videos')
+    fetch(`${URL}/videos`)
     .then(resp => resp.json())
     .then(data =>this.setState({videos: data}))
   }
@@ -269,6 +272,7 @@ class App extends React.Component {
           listings: [...prevState.listings, listing] 
         }))
         })
+        ///handle it here differently
         this.props.history.push('my-listings')
       }
      
@@ -311,12 +315,12 @@ class App extends React.Component {
       //     })
       //   .catch(errors => console.log(errors))
       // }
+     
+  
 
   render(){
     const {user, videos, listings} = this.state
-    // const dynamicArts = (routerProps) => { 
-    //   return  <ArtPhotosContainer artId={routerProps.match.params.id} />
-    // }
+   
     console.log(listings)
   return (
     <div className="App">
@@ -332,9 +336,10 @@ class App extends React.Component {
       <Route exact path='/my-library' component={() => <FavVideoContainer videos={user.videos} deleteFromList={this.deleteFromList}/>} />
       <Route exact path='/post-wall' component={() => <PostWall handlePostWall={this.handlePostWall} user={user}/>} />
       <Route exact path='/get-inspired' component={() => <ArtContainer addToFavorites={this.addToFavorites} />} />
-      {/* <Route path='/get-inspired/:id' render={dynamicArts} /> */}
+      {/* <Route path='/get-inspired/:id' component={ArtCard} /> */}
       <Route exact path='/my-inspiration' component={() =><FavArtContainer userArts={user.arts} deleteFromFavorites={this.deleteFromFavorites}/>} />
       <Route exact path='/learn' component={() => <LearnContainer user={user} videos={videos} addToList={this.addToList} />} />
+      <Route exact path='/share' component={PhotosContainer} />
       <Route component={NotFound} />
       </Switch>
     </div>

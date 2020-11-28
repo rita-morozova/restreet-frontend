@@ -3,7 +3,7 @@ import ArtCard from '../Components/ArtCard'
 import {Container, Card} from 'semantic-ui-react'
 import ArtInfo from '../Components/ArtInfo'
 import ArtPhotosContainer from './ArtPhotosContainer'
-
+import {Link} from 'react-router-dom'
 
 
 

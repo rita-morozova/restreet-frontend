@@ -4,6 +4,7 @@ import ArtInfo from '../Components/ArtInfo'
 import FavoriteArtCard from '../Components/FavoriteArtCard'
 
 class FavArtContainer extends React.Component {
+  
 
   render(){
     return(

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {Icon} from 'semantic-ui-react'
 import {ColorExtractor} from 'react-color-extractor'
+import {Link} from 'react-router-dom'
 
 class ArtInfo  extends React.Component {
 
