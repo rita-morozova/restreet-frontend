@@ -3,7 +3,9 @@ import React from 'react'
  class NewPhoto extends React.Component {
 
     state = {
-        image: {}
+        // username: this.props.user.username,
+        image: {},
+        likes: 0,
     }
 
     onChange = (e) => {
@@ -17,20 +19,34 @@ import React from 'react'
 
     onSubmit = (e) => {
         e.preventDefault()
-        const form = new FormData()
-        form.append("image", this.state.image)
-        fetch(`http://localhost:3000/photos`, {
-            method: "POST",
-            body: form
+        const userToken = localStorage.getItem('token')
+        const formData = new FormData()
+        formData.append('image', this.state.image)
+        formData.append('likes', this.state.likes)
+        // formData.append('username', this.state.username)
+        fetch('http://localhost:3000/photos', {
+            method:'POST',
+            headers:{
+              'Accept': 'application/json',
+              'Authorization' : `Bearer ${userToken}`
+            },
+            body: formData
         })
+        .then(resp => resp.json())
+        .then(data => {
+            console.log(data)
+            this.setState({image: data})
+        })
+        
     }
     render(){
         return (
-            <div className="form">
+            <div className='form'>
                 <h1>New Upload</h1>
                 <form onSubmit={this.onSubmit}>
                     <label>Image Upload</label>
-                    <input type="file" name="image" onChange={this.onChange}/>
+                    <input type='file' name='image' accept='image/*'  onChange={this.onChange}/>
+                    <input type='submit' value='Submit' />
                     <br/>
                 </form>
             </div>

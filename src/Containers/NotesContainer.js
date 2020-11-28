@@ -10,12 +10,17 @@ class NotesContainer extends React.Component {
   }
 
   componentDidMount = () =>{
-    fetch('http://localhost:3000/notes')
-    .then(resp => resp.json())
-    .then(data => {
-      this.setState({notes: data})
-    })
+    this.updateNotes()
   }
+
+  updateNotes = () => {
+    fetch('http://localhost:3000/notes')
+      .then(resp => resp.json())
+      .then(data => {
+        this.setState({notes: data})
+      })
+  }
+
 
   handleNewNote = e => {
     this.setState({[e.target.name]: e.target.value})
@@ -40,13 +45,17 @@ class NotesContainer extends React.Component {
         body: JSON.stringify(({user_id: user_id, video_id: video_id, content: this.state.note}))
       })
       .then(resp => resp.json())
-      .then(data =>{
-        console.log(this.state.note)
-        console.log(data)
-        this.setState((prevState) => ({
-          notes: [...prevState.notes, data.notes]
-        }) )
+      // .then(data =>{
+      //   console.log(this.state.note)
+      //   console.log(data)
+      //   this.setState((prevState) => ({
+      //     notes: [...prevState.notes, data.notes]
+      //   }) )
+      // })
+      .then(data => {
+        this.setState({notes: data})
       })
+      this.updateNotes()
   }
 
   
