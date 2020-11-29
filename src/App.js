@@ -37,6 +37,8 @@ class App extends React.Component {
     listings: [],
     adopted: false,
     playlist: [],
+    currentUser: {}
+   
    
    
   }
@@ -320,8 +322,7 @@ class App extends React.Component {
 
   render(){
     const {user, videos, listings} = this.state
-   
-    console.log(listings)
+    // console.log(listings)
   return (
     <div className="App">
         <Navbar user={user} />
@@ -339,7 +340,7 @@ class App extends React.Component {
       {/* <Route path='/get-inspired/:id' component={ArtCard} /> */}
       <Route exact path='/my-inspiration' component={() =><FavArtContainer userArts={user.arts} deleteFromFavorites={this.deleteFromFavorites}/>} />
       <Route exact path='/learn' component={() => <LearnContainer user={user} videos={videos} addToList={this.addToList} />} />
-      <Route exact path='/share' component={PhotosContainer} />
+      <Route exact path='/share' component={() => <PhotosContainer user={user}  />} />
       <Route component={NotFound} />
       </Switch>
     </div>
