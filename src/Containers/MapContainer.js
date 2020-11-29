@@ -12,8 +12,8 @@ class MapContainer extends React.Component {
       <div>
         <Header />
         <br />
-            {/* <Map listings={this.props.listings} /> */}
-            <MapTest listings={this.props.listings} user={this.props.user} handlePostWall={this.props.handlePostWall} />
+            <Map listings={this.props.listings} user={this.props.user} handlePostWall={this.props.handlePostWall} />
+            {/* <MapTest listings={this.props.listings} user={this.props.user} handlePostWall={this.props.handlePostWall} /> */}
       </div>
     )
   }

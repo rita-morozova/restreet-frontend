@@ -1,6 +1,7 @@
 import React from 'react'
 import { Form, Button, Header, Image, Modal, Grid, Segment } from 'semantic-ui-react'
 
+
 class PostWall extends React.Component {
  
   state = {

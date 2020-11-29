@@ -275,7 +275,7 @@ class App extends React.Component {
         }))
         })
         ///handle it here differently
-        this.props.history.push('my-listings')
+        this.props.history.push('adopt-a-wall')
       }
      
 

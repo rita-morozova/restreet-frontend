@@ -6,7 +6,6 @@ class PhotosContainer extends React.Component{
 
   state ={
     photos: [],
-    
   }
 
   componentDidMount = () =>{
@@ -39,6 +38,7 @@ class PhotosContainer extends React.Component{
     })
   }
 
+ 
 
 
   // deletePhoto = (photo) =>{
@@ -57,8 +57,8 @@ class PhotosContainer extends React.Component{
   handleLike = (photo) =>{
     const userToken = localStorage.getItem('token')
     photo.likes = photo.likes + 1
-    fetch(`http://localhost:3000/likes/${photo.id}`, {
-      method: "PATCH",
+    fetch('http://localhost:3000/likes', {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
@@ -70,7 +70,7 @@ class PhotosContainer extends React.Component{
     })
     .then(resp => resp.json())
     .then(data => {
-      console.log(data)
+     
       const updatePhoto = this.state.photos.map(photo => {
         if(photo.id === data.id){
           photo.likes = data.likes
@@ -88,7 +88,7 @@ class PhotosContainer extends React.Component{
     const {user} = this.props
     return(
       <div>
-        <PhotosGrid  photos={this.state.photos} user={user} handleUploadPhoto={this.handleUploadPhoto} handleLike={this.handleLike} />
+        <PhotosGrid  photos={this.state.photos} user={user} handleUploadPhoto={this.handleUploadPhoto} handleLike={this.handleLike}/>
       </div>
     )
   }

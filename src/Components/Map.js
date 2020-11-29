@@ -46,19 +46,26 @@ export class MapContainer extends React.Component {
     }
   }
 
+  mapClicked(mapProps, map, clickEvent) {
+    const newLatitude = clickEvent.latLng.lat()
+    const newLongitude = clickEvent.latLng.lng()
+    alert(`Please copy your location: ${newLatitude} ${newLongitude }`)
+  }
+
 
   render() {
     return (
       <div>
          <Link to='/post-wall'><button>Add Wall</button></Link>
-         <CurrentLocation
+         {/* <CurrentLocation
         centerAroundCurrentLocation
         google={this.props.google}
         
-      >
-      {/* <Map
+      > */}
+      <Map
         google={this.props.google}
         zoom={11}
+        onClick={this.mapClicked}
         style={style}
         initialCenter={
           {
@@ -66,7 +73,7 @@ export class MapContainer extends React.Component {
             lng: -122.332112
           }
         }
-      > */}
+      >
       {this.renderMarkers()}
       <InfoWindow
         marker={this.state.activeMarker}
@@ -77,9 +84,9 @@ export class MapContainer extends React.Component {
           <h4>{this.state.selectedWall.listing}</h4>
         </div>
       </InfoWindow>
-      </CurrentLocation>
+      {/* </CurrentLocation> */}
       {/* <ListingsContainer listings={this.state.listings}/> */}
-    {/* </Map> */}
+    </Map>
     </div>
     );
   }

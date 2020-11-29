@@ -6,6 +6,10 @@ import CurrentLocation from './CurrentLocation'
 import ListingsContainer from '../Containers/ListingsContainer'
 import {Link} from 'react-router-dom'
 import PostModal from './PostModal'
+import PostWall from './PostWall'
+import { render } from '@testing-library/react';
+import Geocode from 'react-geocode'
+
 
 
 const style = {
@@ -20,9 +24,6 @@ export class MapContainer extends Component {
         showingInfoWindow: false,  
         activeMarker: {},          
         selectedWall: {},
-        newLat: '',
-        newLng: ''
-       
       }
     
 
@@ -34,9 +35,6 @@ export class MapContainer extends Component {
        
       })
     }
-
-  
-   
 
     renderMarkers= () => {
         return this.props.listings.map(listing => {
@@ -56,29 +54,27 @@ export class MapContainer extends Component {
     }
   }
 
+ 
   mapClicked(mapProps, map, clickEvent) {
     const newLatitude = clickEvent.latLng.lat()
     const newLongitude = clickEvent.latLng.lng()
-    const newMarker = {
-      lat: newLatitude,
-      lng: newLongitude
-    }
-    
-    return  <PostModal onClick={() => console.log('hi')}/>
-    return <Marker position={{lat: newLatitude, lng: newLongitude}} />
+    alert(`Please copy your position: ${newLatitude} ${newLongitude }`)
+
   }
+
 
 
   render() {
     return (
       <div>
          <Link to='/post-wall'><button>Add Wall</button></Link>
-         {/* <CurrentLocation
+         <CurrentLocation
         centerAroundCurrentLocation
         google={this.props.google}
+        onClick={this.mapClicked}
         
-      > */}
-      <Map
+      >
+      {/* <Map
         google={this.props.google}
         zoom={11}
         style={style}
@@ -90,7 +86,7 @@ export class MapContainer extends Component {
             lng: -122.332112
           }
         }
-      >
+      > */}
         {/* {this.state.markers.map(marker => <Marker key={marker.id} 
         position={{lat: marker.lat, lng: marker.lng }}
         icon={{
@@ -102,6 +98,7 @@ export class MapContainer extends Component {
         {/* />
         )} */}
       {this.renderMarkers()}
+     
       <InfoWindow
         marker={this.state.activeMarker}
         visible={this.state.showingInfoWindow}
@@ -113,8 +110,8 @@ export class MapContainer extends Component {
       </InfoWindow>
       {/* //post method here */}
      
-      {/* </CurrentLocation> */}
-    </Map>
+      </CurrentLocation>
+    {/* </Map> */}
     </div>
     );
   }
