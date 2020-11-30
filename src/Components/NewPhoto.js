@@ -34,6 +34,7 @@ import React from 'react'
                     <label>Image Upload</label>
                     <input type='file' name='image' accept='image/*' onChange={this.onChange}/>
                     <input  type='hidden' name='username' value={this.state.username}  />
+                    <input  type='hidden' name='likes' value={this.state.likes}  />
                     <br />
                     <br />
                     <input type='submit' value='Submit'/>

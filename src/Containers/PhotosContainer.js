@@ -104,10 +104,7 @@ class PhotosContainer extends React.Component{
 //            body: JSON.stringify(({likes: photo.likes}))
    
 //    })
-//    .this(resp => resp.json())
-//   //  .then(data =>{
-//   //    this.setState({count: this.state.count +=1})
-//   //  })
+//  
 //   .then(data => {
 //     console.log(data)
 //         const updatePhoto = this.state.photos.map(photo => {

@@ -7,7 +7,8 @@ class NotesContainer extends React.Component {
   state = {
     notes: [],
     note: '',
-    user: {notes:[]}
+    videoNotes: []
+    // user: {notes:[]}
   }
 
   componentDidMount = () =>{
@@ -18,7 +19,10 @@ class NotesContainer extends React.Component {
     fetch('http://localhost:3000/notes')
       .then(resp => resp.json())
       .then(data => {
-        this.setState({user: data.user})
+        this.setState({
+          notes: data,
+          videoNotes: data.filter(note => note.video_id === this.props.video.id)
+        })
       })
   }
 
@@ -47,21 +51,29 @@ class NotesContainer extends React.Component {
       })
       .then(resp => resp.json())
       .then(data => {
-        this.setState({user: data.user})
+        console.log(data)
+        // this.setState(prevState => ({
+        //   videoNotes: [...prevState.videoNotes, data.user.notes.filter(n => n.video_id ===video_id)]
+        // }))
+        this.setState(prevState =>({
+          videoNotes: [...prevState.videoNotes, data]
+        }))
       })
+      // .then(this.updateNotes())
       
   }
 
   
   deleteNote = (note) => {
-    let currentNote = this.state.notes.filter(n => n.id ===note.id)
+    let currentNote = this.state.notes.filter(n => n.id ===note.id)[0]
     fetch(`http://localhost:3000/notes/${currentNote.id}`, {
       method: 'DELETE'
     })
     .then(resp => resp.json())
     .then(data => {
+      console.log(data)
       this.setState((prevState) => ({
-       notes: [...prevState.notes.filter(n => n.id !== data.id)]
+       videoNotes: prevState.videoNotes.filter(n => n.id !== data.id)
       })
       )
       })
@@ -69,7 +81,7 @@ class NotesContainer extends React.Component {
 
 
   render(){
-    const videoNotes = this.props.video.notes.filter(note => note.user_id === this.props.user.id)
+    const videoComments = this.state.videoNotes.filter(note => note.user_id === this.props.user.id)
     return(
       <div>
         <h4>Write Note:</h4>
@@ -77,7 +89,7 @@ class NotesContainer extends React.Component {
         <div>
           <button onClick={this.handleSubmitNote}>Add</button>
         </div>
-        {videoNotes.map(note => <Note key={note.id} note={note} user={this.props.user} deleteNote={this.deleteNote} />)}
+        {videoComments.map(note => <Note key={note.id} note={note} user={this.props.user} deleteNote={this.deleteNote} />)}
       </div>
     )
   }
