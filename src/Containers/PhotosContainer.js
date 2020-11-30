@@ -9,13 +9,16 @@ class PhotosContainer extends React.Component{
   }
 
   componentDidMount = () =>{
+   this.getPhotos()
+  }
+
+  getPhotos = () =>{
     fetch ('http://localhost:3000/photos')
     .then(resp => resp.json())
     .then(data => {
       this.setState({photos: data})
     })
-
-  }
+  } 
 
   handleUploadPhoto = (formData) =>{
     const userToken = localStorage.getItem('token')
@@ -33,8 +36,9 @@ class PhotosContainer extends React.Component{
        photos: [...prevState.photos, data],
        newPhoto: false
      }))
-     //image doesn't render right away
-    //  window.scrollTo(0,document.body.scrollHeight)
+     this.getPhotos()
+     //scroll down to the uploaded photo
+     window.scrollTo(0,document.body.scrollHeight)
     })
   }
 
