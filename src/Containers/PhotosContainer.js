@@ -2,11 +2,12 @@ import React from 'react'
 import PhotosGrid from '../Components/PhotosGrid'
 
 
+
 class PhotosContainer extends React.Component{
 
   state ={
     photos: [],
-    count: 0,
+    count: 0
   }
 
   componentDidMount = () =>{
@@ -119,14 +120,13 @@ class PhotosContainer extends React.Component{
 //       })
 //  }
 
-
-
   
   render(){
+   
     const {user} = this.props
     return(
       <div>
-        <PhotosGrid  photos={this.state.photos} user={user} handleUploadPhoto={this.handleUploadPhoto} handleLike={this.handleLike}/>
+        <PhotosGrid  photos={this.state.photos} user={user} handleUploadPhoto={this.handleUploadPhoto} handleLike={this.handleLike} selectPhoto={this.selectPhoto} />   
       </div>
     )
   }

@@ -11,7 +11,7 @@ const PhotoModal =({photos, user, handleUploadPhoto}) => {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button photos={photos} user={user} handleUploadPhoto={handleUploadPhoto} >Upload Photo</Button>}
+      trigger={<Button photos={photos} user={user} >Upload Photo</Button>}
     >
       <Modal.Header>Upload Photo</Modal.Header>
       <Modal.Content image>

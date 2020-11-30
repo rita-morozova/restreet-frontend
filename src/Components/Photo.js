@@ -68,6 +68,7 @@ class Photo extends React.Component {
           <img src={photo.image}  width={300} height={300}  alt='art' />
           <h2>By: {photo.username}</h2>
           {/* <h3><Icon name='heart' color='red' />{photo.likes.length > 0 ? photo.likes.length : 0}</h3> */}
+          {/* <h3>Likes: {photo.likes}</h3> */}
           {/* <button key={photo.id}  onClick={() => this.handleLike(photo)}>Like</button> */}
          
           {/* {this.state.liked ?

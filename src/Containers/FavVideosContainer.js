@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactPlayer from 'react-player'
+import {Link} from 'react-router-dom'
 
 class FavVideosContainer extends React.Component {
 
@@ -11,6 +12,7 @@ class FavVideosContainer extends React.Component {
           <span key={video.id}>
               <h1> {video.name}</h1>
             <ReactPlayer url={video.url} />
+            {/* <button>Go To This Lesson</button> */}
             <button onClick={() => this.props.deleteFromList(video)}>Delete from Library</button>
             <br />
             <br />

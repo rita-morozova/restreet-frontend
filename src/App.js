@@ -37,10 +37,7 @@ class App extends React.Component {
     listings: [],
     adopted: false,
     playlist: [],
-    currentUser: {}
-   
-   
-   
+    currentUser: {},
   }
 
   componentDidMount() {
@@ -207,6 +204,7 @@ class App extends React.Component {
     })      
   }
 
+  /////////HANDLE VIDEOS
   addToList = (video) => {
     const userToken = localStorage.getItem('token')
   
@@ -244,6 +242,7 @@ class App extends React.Component {
         )
       })      
     }
+    
 
     ///////////////////Handle Wall Listings
 
@@ -274,7 +273,6 @@ class App extends React.Component {
           listings: [...prevState.listings, listing] 
         }))
         })
-        ///handle it here differently
         this.props.history.push('adopt-a-wall')
       }
      

@@ -4,7 +4,7 @@ import React from 'react'
 
     state = {
         username: this.props.user,
-        image: {},
+        image: null,
         likes: 0,
     }
 
@@ -34,7 +34,7 @@ import React from 'react'
                     <label>Image Upload</label>
                     <input type='file' name='image' accept='image/*' onChange={this.onChange}/>
                     <input  type='hidden' name='username' value={this.state.username}  />
-                    <input  type='hidden' name='likes' value={this.state.likes}  />
+                    <input  type='hidden' name='likes' value='0'  />
                     <br />
                     <br />
                     <input type='submit' value='Submit'/>
