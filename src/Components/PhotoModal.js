@@ -11,7 +11,7 @@ const PhotoModal =({photos, user, handleUploadPhoto}) => {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button photos={photos} user={user} handleUploadPhoto={handleUploadPhoto}>Upload Photo</Button>}
+      trigger={<Button photos={photos} user={user} handleUploadPhoto={handleUploadPhoto} >Upload Photo</Button>}
     >
       <Modal.Header>Upload Photo</Modal.Header>
       <Modal.Content image>
@@ -22,7 +22,7 @@ const PhotoModal =({photos, user, handleUploadPhoto}) => {
       <Modal.Actions>
         <Button onClick={() => setOpen(false)}>Cancel</Button>
         <Button onClick={() => setOpen(false)} positive>
-          Ok
+         Let's see my art!
         </Button>
       </Modal.Actions>
     </Modal>

@@ -30,13 +30,13 @@ import React from 'react'
     render(){
         return (
             <div className='form'>
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.onSubmit} >
                     <label>Image Upload</label>
                     <input type='file' name='image' accept='image/*' onChange={this.onChange}/>
                     <input  type='hidden' name='username' value={this.state.username}  />
                     <br />
                     <br />
-                    <input type='submit' value='Submit' />
+                    <input type='submit' value='Submit'/>
                     <br/>
                 </form>
             </div>

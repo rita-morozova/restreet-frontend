@@ -6,6 +6,7 @@ class PhotosContainer extends React.Component{
 
   state ={
     photos: [],
+    count: 0,
   }
 
   componentDidMount = () =>{
@@ -33,8 +34,7 @@ class PhotosContainer extends React.Component{
   .then(data => {
     console.log(data)
      this.setState((prevState) =>({
-       photos: [...prevState.photos, data],
-       newPhoto: false
+       photos: [...prevState.photos, data]
      }))
      this.getPhotos()
      //scroll down to the uploaded photo
@@ -58,34 +58,71 @@ class PhotosContainer extends React.Component{
   // })
   // }
 
-  handleLike = (photo) =>{
-    const userToken = localStorage.getItem('token')
-    photo.likes = photo.likes + 1
-    fetch('http://localhost:3000/likes', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": `Bearer ${userToken}`
-      },
-      body: JSON.stringify({
-        likes: photo.likes
-      }) 
-    })
-    .then(resp => resp.json())
-    .then(data => {
+  // handleLike = (photo) =>{
+  //   const userToken = localStorage.getItem('token')
+  //   photo.likes = photo.likes + 1
+  //   fetch('http://localhost:3000/likes', {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "Accept": "application/json",
+  //       "Authorization": `Bearer ${userToken}`
+  //     },
+  //     body: JSON.stringify({
+  //       likes: photo.likes
+  //     }) 
+  //   })
+  //   .then(resp => resp.json())
+  //   .then(data => {
      
-      const updatePhoto = this.state.photos.map(photo => {
-        if(photo.id === data.id){
-          photo.likes = data.likes
-        }
-        return photo
-      })
-      this.setState({
-        photos: updatePhoto,
-      })
-    })
-  }
+  //     const updatePhoto = this.state.photos.map(photo => {
+  //       if(photo.id === data.id){
+  //         photo.likes = data.likes
+  //       }
+  //       return photo
+  //     })
+  //     this.setState({
+  //       photos: updatePhoto,
+  //     })
+  //   })
+  // }
+
+
+//  handleLike = (photo) => {
+//   console.log(photo)
+//   // console.log(user)
+//   // const userId= this.props.user.id
+//  const userToken = localStorage.getItem('token')
+//  photo.likes.length = photo.likes.length + 1
+//  fetch(`http://localhost:3000/photo/${photo.id}/likes`, {
+//      method: "PATCH",
+//      headers: {
+//              "Content-Type": "application/json",
+//              "Accept": "application/json",
+//              "Authorization": `Bearer ${userToken}`
+//            },
+//            body: JSON.stringify(({likes: photo.likes}))
+   
+//    })
+//    .this(resp => resp.json())
+//   //  .then(data =>{
+//   //    this.setState({count: this.state.count +=1})
+//   //  })
+//   .then(data => {
+//     console.log(data)
+//         const updatePhoto = this.state.photos.map(photo => {
+//           if(photo.id === data.id){
+//             photo.likes = data.likes
+//           }
+//           return photo
+//         })
+//         this.setState({
+//           photos: updatePhoto,
+//         })
+//       })
+//  }
+
+
 
   
   render(){
