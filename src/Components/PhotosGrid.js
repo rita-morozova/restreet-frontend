@@ -3,16 +3,22 @@ import {Card, Icon} from 'semantic-ui-react'
 import NewPhoto from './NewPhoto' 
 import Photo from './Photo'
 import PhotoModal from './PhotoModal'
+import PhotoInfo from './PhotoInfo'
 
 
-const PhotosGrid = ({photos, user, handleUploadPhoto, handleLike}) => {
+const PhotosGrid = ({photos, user, handleUploadPhoto, handleLike, chosenPhoto, selectPhoto, seeAllPhotos}) => {
 
 
     return(
       <div >
-        <PhotoModal photos={photos} user={user} handleUploadPhoto={handleUploadPhoto}/>
-        {/* <NewPhoto photos={photos} user={user} handleUploadPhoto={handleUploadPhoto}/> */}
-       {photos.map(photo => <Photo key={photo.id} photo={photo} handleLike={handleLike} user={user}  />)}
+        <PhotoModal photos={photos} user={user} handleUploadPhoto={handleUploadPhoto} />
+        {chosenPhoto ?
+        <PhotoInfo chosenPhoto={chosenPhoto} seeAllPhotos={seeAllPhotos}/>
+        :
+        <>
+       {photos.map(photo => <Photo key={photo.id} photo={photo} handleLike={handleLike} user={user} selectPhoto={selectPhoto} />)}
+       </>
+       }
        
       </div>
     )

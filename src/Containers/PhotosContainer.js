@@ -7,7 +7,8 @@ class PhotosContainer extends React.Component{
 
   state ={
     photos: [],
-    count: 0
+    count: 0,
+    chosenPhoto: null,
   }
 
   componentDidMount = () =>{
@@ -120,13 +121,22 @@ class PhotosContainer extends React.Component{
 //       })
 //  }
 
+  selectPhoto = photo =>{
+    this.setState({
+      chosenPhoto: this.state.photos.find(p => p ===photo)
+    })
+  }
+
+  seeAllPhotos = () => {
+    this.setState({chosenPhoto: null})
+  }
+
   
   render(){
-   
     const {user} = this.props
     return(
       <div>
-        <PhotosGrid  photos={this.state.photos} user={user} handleUploadPhoto={this.handleUploadPhoto} handleLike={this.handleLike} selectPhoto={this.selectPhoto} />   
+        <PhotosGrid  photos={this.state.photos} user={user} handleUploadPhoto={this.handleUploadPhoto} handleLike={this.handleLike} selectPhoto={this.selectPhoto} chosenPhoto={this.state.chosenPhoto} seeAllPhotos={this.seeAllPhotos} />   
       </div>
     )
   }
