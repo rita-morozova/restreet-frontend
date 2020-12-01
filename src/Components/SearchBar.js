@@ -19,16 +19,14 @@ const SearchBar = ({panTo}) =>{
 };
 
 const handleSelect = async (address) => {
-    console.log("address", address)
     setValue(address, false);
     clearSuggestions();
     try {
         const results = await getGeocode({ address });
         const { lat, lng } = await getLatLng(results[0]);
         panTo({ lat, lng });
-        console.log("location", lat, lng)
     } catch (error) {
-        console.log("error", error);
+        console.log('error', error);
     }
     }
 
