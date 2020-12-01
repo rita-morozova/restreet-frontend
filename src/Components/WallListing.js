@@ -16,8 +16,9 @@ const WallListing = ({listing}) => {
     zIndex: 100,
   }
 
-   
+   console.log(listing)
     return(
+    
       <div key={listing.id} style={style} >
         <Card>
           <img src={listing.photo} alt='wall' />
@@ -27,6 +28,7 @@ const WallListing = ({listing}) => {
           <h4>{listing.adopted ? 
           'Another artist is already working here' : 
           <a href={'mailto:' + 'test@test.com'}><Button basic>Email To Adopt</Button></a>
+          // <a href={`mailto: ${listing.owner.email}`}><Button basic>Email To Adopt</Button></a>
            }</h4>   
            </Card> 
       </div>

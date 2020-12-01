@@ -1,8 +1,10 @@
 import React from 'react'
 import ReactPlayer from 'react-player'
-import {Link} from 'react-router-dom'
+import VideoPage from '../Components/VideoPage'
 
 class FavVideosContainer extends React.Component {
+
+ 
 
   render(){
     return(
@@ -12,7 +14,6 @@ class FavVideosContainer extends React.Component {
           <span key={video.id}>
               <h1> {video.name}</h1>
             <ReactPlayer url={video.url} />
-            {/* <button>Go To This Lesson</button> */}
             <button onClick={() => this.props.deleteFromList(video)}>Delete from Library</button>
             <br />
             <br />

@@ -5,20 +5,22 @@ import WallListing from './WallListing';
 import CurrentLocation from './CurrentLocation'
 import ListingsContainer from '../Containers/ListingsContainer'
 import {Link} from 'react-router-dom'
+import usePlacesAutocomplete, {getGeocode, getLatLng} from 'use-places-autocomplete'
+import SearchBar from './SearchBar'
 
 const style = {
   width: '50%',
   height: '50%'
 }
 
-export class MapContainer extends React.Component {
+export class Maps extends React.Component {
 
-    state = {
-        
-        showingInfoWindow: false,  
-        activeMarker: {},          
-        selectedWall: {},
-      }
+   state = {  
+      showingInfoWindow: false,  
+      activeMarker: {},          
+      selectedWall: {},
+    }  
+  
 
     onMarkerClick = (props, marker, e) =>{
       this.setState({
@@ -62,6 +64,7 @@ export class MapContainer extends React.Component {
         google={this.props.google}
         
       > */}
+      {/* <SearchBar panTo={this.props.panTo} /> */}
       <Map
         google={this.props.google}
         zoom={11}
@@ -94,7 +97,7 @@ export class MapContainer extends React.Component {
 
 export default GoogleApiWrapper({
   apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
-})(MapContainer);
+})(Maps);
 
 
 // import React from 'react'
