@@ -5,16 +5,9 @@ import WallListing from './WallListing'
 
 class UserListings extends React.Component {
 
-  state ={
-    adopted: false
-  }
-
-  toggle =() => {
-    this.setState({adopted: !this.state.adopted})
-  }
-
  
   render(){
+    console.log(this.props.listings)
     return(
       <div>
         {this.props.listings.map(wall => (
@@ -24,9 +17,11 @@ class UserListings extends React.Component {
               <h3>{wall.address}</h3>
               <h4>{wall.zipcode}</h4>
            <button onClick={() => this.props.deleteListing(wall)}>Delete Listing</button>
-           <button onClick={this.toggle}>
-        {this.state.adopted ? "List again" : "Click here if it was adopted"}
-        </button>
+           {!wall.adopted ?
+           <button onClick={()=>this.props.handleWallAdoption(wall)}>Click if was adopted </button>
+           :
+           <button onClick={()=>this.props.handleListAgain(wall)}>List again</button>
+           }     
       </Card>
         ))} 
       </div>

@@ -4,6 +4,7 @@ import PhotosGrid from '../Components/PhotosGrid'
 
 
 class PhotosContainer extends React.Component{
+  _isMounted=false
 
   state ={
     photos: [],
@@ -12,16 +13,22 @@ class PhotosContainer extends React.Component{
   }
 
   componentDidMount = () =>{
+    this._isMounted=true
    this.getPhotos()
   }
 
   getPhotos = () =>{
     fetch ('http://localhost:3000/photos')
     .then(resp => resp.json())
-    .then(data => {
+    .then(data => { 
+      if(this._isMounted){
       this.setState({photos: data})
-    })
+    }})
   } 
+
+  componentWillUnmount(){
+    this._isMounted=false
+  }
 
   handleUploadPhoto = (formData) =>{
     const userToken = localStorage.getItem('token')
@@ -43,6 +50,31 @@ class PhotosContainer extends React.Component{
      window.scrollTo(0,document.body.scrollHeight)
     })
   }
+
+  // handleLike = (photo) =>{
+  //   const userToken = localStorage.getItem('token')
+  //   photo.likes = photo.likes + 1
+  //   fetch(`http://localhost:3000/photos/${photo.id}`, {
+  //     method: 'PATCH',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json',
+  //       'Authorization': `Bearer ${userToken}`
+  //     },
+  //      body: JSON.stringify(({likes: photo.likes, liked: true }))
+  //     })
+  //     .then(resp => resp.json())
+  //     .then(data => {
+  //       const updatedPhotoLikes = this.state.photos.map(photo =>{
+  //         if(photo.id === data.id){
+  //           photo.likes = data.likes 
+           
+  //         }
+  //         return photo
+  //       })
+  //       this.setState({photos: updatedPhotoLikes})
+  //     })
+  // }
 
  
 

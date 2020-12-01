@@ -268,9 +268,9 @@ class App extends React.Component {
       })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        // console.log(data)
         this.setState((prevState) =>({
-          listings: [...prevState.listings, listing] 
+          listings: [...prevState.listings, data] 
         }))
         })
         this.props.history.push('adopt-a-wall')
@@ -278,7 +278,6 @@ class App extends React.Component {
      
 
       deleteListing = (listing) =>{
-        // const wall = this.state.user.listings.find(wall => wall.id=== listing.id)
         const wall = this.state.listings.filter(l => l.user_id === this.state.user.id)
         const walla= wall.find(w => w.id === listing.id)
         fetch(`${URL}/listings/${walla.id}`,{
@@ -290,10 +289,6 @@ class App extends React.Component {
         .then(resp => resp.json())
         .then(data =>{
           console.log(data)
-          // this.setState((prevState) =>({
-          //   user: {...prevState.user, listings: [...prevState.user.listings.filter(wall => wall.id !==data.id)]}
-          // })
-          // )
           this.setState((prevState) =>({
             listings: prevState.listings.filter(l => l.id !== walla.id)
           })
@@ -301,20 +296,49 @@ class App extends React.Component {
         })      
       }
 
-      // handleWallAdoption = (data, route, method='PATCH') => {
-      //   fetch(`${URL}${route}`, {
-      //       method: method,
-      //       headers: {
-      //           'Content-Type':'application/json'
-      //       },
-      //       body: JSON.stringify(data)
-      //   })
-      //   .then(resp => resp.json())
-      //   .then(data => {
-      //     this.setState({listings: data})
-      //     })
-      //   .catch(errors => console.log(errors))
-      // }
+    /////////////IF THE WALL WAS RESERVED FOR AN ARTIST - TAKE THE OFFER OFF THE MAP
+      handleWallAdoption =(wall) =>{
+        const userToken = localStorage.getItem('token')
+        fetch(`${URL}/listings/${wall.id}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${userToken}`
+          },
+           body: JSON.stringify(({adopted: true }))
+          })
+          .then(resp => resp.json())
+          .then(data => {
+            this.setState((prevState) =>({
+              listings: [...prevState.listings.filter(l => l.id !== data.id), data]
+            }))
+          })
+          this.props.history.push('adopt-a-wall')
+      }
+
+    
+      /////MAKE THE LISTING AVAILABLE FOR ARTISTS AGAIN
+      handleListAgain =(wall) =>{
+        const userToken = localStorage.getItem('token')
+        fetch(`${URL}/listings/${wall.id}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${userToken}`
+          },
+           body: JSON.stringify(({adopted: false }))
+          })
+          .then(resp => resp.json())
+          .then(data => {
+            console.log(data)
+            this.setState((prevState) =>({
+              listings: [...prevState.listings.filter(l => l.id !== data.id), data]
+            }))
+          })
+          this.props.history.push('adopt-a-wall')
+      }
      
   
 
@@ -331,7 +355,7 @@ class App extends React.Component {
       <Route exact path='/logout' component={() =>this.handleLogout()} />
       <Route exact path='/profile' component={() => <UserProfile handleUpdateProfile={this.handleUpdateProfile} user={user}  deleteUser={this.deleteUser}/>} />
       <Route exact path='/adopt-a-wall' component={() => <MapContainer listings={listings} user={user} handlePostWall={this.handlePostWall}/>} />
-      <Route exact path='/my-listings' component={() => <UserListings listings={listings.filter(l => l.user_id === user.id)} deleteListing={this.deleteListing} />} />
+      <Route exact path='/my-listings' component={() => <UserListings listings={listings.filter(l => l.user_id === user.id)} deleteListing={this.deleteListing} handleWallAdoption={this.handleWallAdoption} handleListAgain={this.handleListAgain}/>} />
       <Route exact path='/my-library' component={() => <FavVideoContainer videos={user.videos} deleteFromList={this.deleteFromList}/>} />
       <Route exact path='/post-wall' component={() => <PostWall />} />
       <Route exact path='/get-inspired' component={() => <ArtContainer addToFavorites={this.addToFavorites} />} />

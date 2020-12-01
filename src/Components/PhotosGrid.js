@@ -13,10 +13,10 @@ const PhotosGrid = ({photos, user, handleUploadPhoto, handleLike, chosenPhoto, s
       <div >
         <PhotoModal photos={photos} user={user} handleUploadPhoto={handleUploadPhoto} />
         {chosenPhoto ?
-        <PhotoInfo chosenPhoto={chosenPhoto} seeAllPhotos={seeAllPhotos} user={user}/>
+        <PhotoInfo chosenPhoto={chosenPhoto} seeAllPhotos={seeAllPhotos} user={user} handleLike={handleLike}/>
         :
         <>
-       {photos.map(photo => <Photo key={photo.id} photo={photo} handleLike={handleLike} user={user} selectPhoto={selectPhoto} />)}
+       {photos.map(photo => <Photo key={photo.id} photo={photo} user={user} selectPhoto={selectPhoto} />)}
        </>
        }
        
