@@ -333,7 +333,7 @@ class App extends React.Component {
       <Route exact path='/adopt-a-wall' component={() => <MapContainer listings={listings} user={user} handlePostWall={this.handlePostWall}/>} />
       <Route exact path='/my-listings' component={() => <UserListings listings={listings.filter(l => l.user_id === user.id)} deleteListing={this.deleteListing} />} />
       <Route exact path='/my-library' component={() => <FavVideoContainer videos={user.videos} deleteFromList={this.deleteFromList}/>} />
-      <Route exact path='/post-wall' component={() => <PostWall handlePostWall={this.handlePostWall} user={user}/>} />
+      <Route exact path='/post-wall' component={() => <PostWall />} />
       <Route exact path='/get-inspired' component={() => <ArtContainer addToFavorites={this.addToFavorites} />} />
       {/* <Route path='/get-inspired/:id' component={ArtCard} /> */}
       <Route exact path='/my-inspiration' component={() =><FavArtContainer userArts={user.arts} deleteFromFavorites={this.deleteFromFavorites}/>} />
