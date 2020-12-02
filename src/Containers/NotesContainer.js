@@ -31,6 +31,7 @@ class NotesContainer extends React.Component {
   handleSubmitNote = e =>{
     e.preventDefault()
     this.postNote()
+    this.setState({note:''})
   }
 
   postNote = () =>{

@@ -7,7 +7,7 @@ class UserProfile extends React.Component {
         location: this.props.user.location,
         bio: this.props.user.bio,
         picture: this.props.user.picture,
-        password: '',
+        password: this.props.user.password,
     }
 
     handleChange = (event) => {

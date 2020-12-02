@@ -1,4 +1,5 @@
 import React from 'react'
+import Timeago from 'react-timeago'
 
  class NewPhoto extends React.Component {
 
@@ -6,6 +7,7 @@ import React from 'react'
         username: this.props.user,
         image: null,
         likes: 0,
+       
     }
 
     onChange = (e) => {

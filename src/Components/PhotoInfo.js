@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import {Icon} from 'semantic-ui-react'
-import Timeago from 'react-timeago'
+
 
 
 
@@ -99,6 +99,7 @@ class PhotoInfo extends React.Component {
           <button onClick={seeAllPhotos}>Go Back</button>
           <img src={chosenPhoto.image}  width={300} height={300}  alt='art' />
           <h2>By: {chosenPhoto.username}</h2>
+         
           {/* <h3><Icon name='heart' color='red' />{this.state.photoLikes > 0 ? this.state.photoLikes : 0}</h3> */}
           <h3><Icon name='heart' color='red' />{chosenPhoto.count > 0 ? chosenPhoto.count : 0}</h3>
      
