@@ -51,34 +51,6 @@ class PhotosContainer extends React.Component{
     })
   }
 
-  // handleLike = (photo) =>{
-  //   const userToken = localStorage.getItem('token')
-  //   photo.likes = photo.likes + 1
-  //   fetch(`http://localhost:3000/photos/${photo.id}`, {
-  //     method: 'PATCH',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json',
-  //       'Authorization': `Bearer ${userToken}`
-  //     },
-  //      body: JSON.stringify(({likes: photo.likes, liked: true }))
-  //     })
-  //     .then(resp => resp.json())
-  //     .then(data => {
-  //       const updatedPhotoLikes = this.state.photos.map(photo =>{
-  //         if(photo.id === data.id){
-  //           photo.likes = data.likes 
-           
-  //         }
-  //         return photo
-  //       })
-  //       this.setState({photos: updatedPhotoLikes})
-  //     })
-  // }
-
- 
-
-
   // deletePhoto = (photo) =>{
   //   let chosenPhoto = this.state.photos.filter(p=> p.id === photo.id)
   //   fetch(`http://localhost:3000/photos/${chosenPhoto.id}`,{
@@ -122,36 +94,8 @@ class PhotosContainer extends React.Component{
   // }
 
 
-//  handleLike = (photo) => {
-//   console.log(photo)
-//   // console.log(user)
-//   // const userId= this.props.user.id
-//  const userToken = localStorage.getItem('token')
-//  photo.likes.length = photo.likes.length + 1
-//  fetch(`http://localhost:3000/photo/${photo.id}/likes`, {
-//      method: "PATCH",
-//      headers: {
-//              "Content-Type": "application/json",
-//              "Accept": "application/json",
-//              "Authorization": `Bearer ${userToken}`
-//            },
-//            body: JSON.stringify(({likes: photo.likes}))
-   
-//    })
-//  
-//   .then(data => {
-//     console.log(data)
-//         const updatePhoto = this.state.photos.map(photo => {
-//           if(photo.id === data.id){
-//             photo.likes = data.likes
-//           }
-//           return photo
-//         })
-//         this.setState({
-//           photos: updatePhoto,
-//         })
-//       })
-//  }
+
+ 
 
   selectPhoto = photo =>{
     this.setState({
