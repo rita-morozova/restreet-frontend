@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../Components/Header'
 import Maps from '../Components/Maps'
 import ListingsContainer from './ListingsContainer'
-import MapTest from '../Components/MapTest'
+import Maps from '../Components/Maps'
 
 
 class MapContainer extends React.Component {
@@ -12,8 +12,7 @@ class MapContainer extends React.Component {
       <div>
         <Header />
         <br />
-            {/* <Maps listings={this.props.listings} user={this.props.user} handlePostWall={this.props.handlePostWall} /> */}
-            <MapTest listings={this.props.listings} user={this.props.user} handlePostWall={this.props.handlePostWall} />
+            <Maps listings={this.props.listings} user={this.props.user} handlePostWall={this.props.handlePostWall} />
       </div>
     )
   }

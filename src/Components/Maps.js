@@ -1,175 +1,115 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { Map, GoogleApiWrapper, InfoWindow, Marker} from 'google-maps-react';
-import WallListing from './WallListing';
-import CurrentLocation from './CurrentLocation'
-import ListingsContainer from '../Containers/ListingsContainer'
+import React, { useContext } from 'react'
 import {Link} from 'react-router-dom'
-import usePlacesAutocomplete, {getGeocode, getLatLng} from 'use-places-autocomplete'
+import { GoogleMap, useLoadScript, Marker, InfoWindow} from '@react-google-maps/api'
+import Locate from './Locate'
 import SearchBar from './SearchBar'
+import WallListing from './WallListing'
+import PostWall from './PostWall'
 
-const style = {
-  width: '50%',
-  height: '50%'
+
+const libraries = ['places']
+const type = ['listing']
+const mapContainerStyle = {
+  width: '100%',
+  height: '70vh'
+}
+const options = {
+  zoomControl: true
+}
+const center ={
+  lat: 47.6228, 
+  lng: -122.332112
 }
 
-export class Maps extends React.Component {
 
-   state = {  
-      showingInfoWindow: false,  
-      activeMarker: {},          
-      selectedWall: {},
-    }  
-  
+const Maps =({listings, user, handlePostWall})=> {  
 
-    onMarkerClick = (props, marker, e) =>{
-      this.setState({
-        selectedWall: props,
-        activeMarker: marker,
-        showingInfoWindow: true
-      })
-    }
-
-    renderMarkers= () => {
-        return this.props.listings.map(listing => {
-          return <Marker 
-            onClick={this.onMarkerClick} name={listing.description} key={listing.id} listing={<WallListing listing={listing} />}
-            position={{ lat: listing.lat, lng: listing.lng }}
-          />
-        })
-      }
-
-  onClose = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      })
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+    libraries,
+    type
+  })
+  const [markers, setMarkers] = React.useState([])
+  const [chosen, setChosen] = React.useState(null)
+    
+    
+  const checkMarker = (chosen) => {
+    if(listings.find(l => l.id === chosen.id)){ 
+      return <WallListing key={chosen.id}  listing={chosen}/>
+    }else{
+      return <PostWall  position={{lat: chosen.lat, lng: chosen.lng}}  user={user} handlePostWall={handlePostWall} />
     }
   }
 
-  mapClicked(mapProps, map, clickEvent) {
-    const newLatitude = clickEvent.latLng.lat()
-    const newLongitude = clickEvent.latLng.lng()
-    alert(`Please copy your location: ${newLatitude} ${newLongitude }`)
-  }
+  const onMapClick = React.useCallback((e) => {
+    setMarkers(current => [...current, {
+      lat: e.latLng.lat(),
+      lng: e.latLng.lng(),
+      },
+    ])
+  },[])
+    
+  const mapRef = React.useRef()
+  const onMapLoad = React.useCallback((map) => {
+    mapRef.current = map
+  }, [])
 
 
-  render() {
-    return (
-      <div>
-         <Link to='/post-wall'><button>Add Wall</button></Link>
-         {/* <CurrentLocation
-        centerAroundCurrentLocation
-        google={this.props.google}
+ const panTo = React.useCallback(({lat, lng}) => {
+   mapRef.current.panTo({ lat, lng })
+   mapRef.current.setZoom(15)
+  }, [])
+    
+ if (loadError) return 'Error'
+ if (!isLoaded) return 'Loading...'
         
-      > */}
-      {/* <SearchBar panTo={this.props.panTo} /> */}
-      <Map
-        google={this.props.google}
-        zoom={11}
-        onClick={this.mapClicked}
-        style={style}
-        initialCenter={
-          {
-            lat: 47.6228,
-            lng: -122.332112
-          }
-        }
-      >
-      {this.renderMarkers()}
-      <InfoWindow
-        marker={this.state.activeMarker}
-        visible={this.state.showingInfoWindow}
-        onClose={this.onClose}
-        >
-        <div id='iwc'>
-          <h4>{this.state.selectedWall.listing}</h4>
+    return (
+        <div >
+            <section className="map-header">
+            <h2 className="header2-text">Walls</h2>
+            <SearchBar panTo={panTo} />
+            <Locate panTo={panTo} />
+            </section>     
+            <GoogleMap 
+            mapContainerStyle={mapContainerStyle} 
+            zoom={11} 
+            center={center}
+            options={options}
+            onLoad={onMapLoad}
+            onClick={onMapClick}
+            >
+                {listings.map((listing) => ( 
+                    <Marker 
+                        key={listing.id}
+                        position={{lat: listing.lat, lng: listing.lng}}
+                        onClick={() => {
+                            setChosen(listing)
+                        }}
+                    />
+                ))}
+                {chosen && (
+                    <InfoWindow
+                        position={{
+                            lat: chosen.lat,
+                            lng: chosen.lng
+                        }}
+                        onCloseClick={() => {
+                            setChosen(null)
+                        }}
+                        >   
+                        {checkMarker(chosen)}
+                    </InfoWindow>
+                )}
+                {markers.map((marker) =>  
+                    <Marker 
+                        key={`${marker.lat}-${marker.lng}`}
+                        position={{lat: marker.lat, lng: marker.lng}} 
+                        onClick ={() => {setChosen(marker)}}
+                    /> 
+                )}
+            </GoogleMap>
         </div>
-      </InfoWindow>
-      {/* </CurrentLocation> */}
-      {/* <ListingsContainer listings={this.state.listings}/> */}
-    </Map>
-    </div>
-    );
-  }
+    )
 }
 
-export default GoogleApiWrapper({
-  apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
-})(Maps);
-
-
-// import React from 'react'
-// import GoogleMapReact from 'google-map-react'
-// import Marker from './Marker'
-// import {Icon} from 'semantic-ui-react'
-// import WallListing from './WallListing'
-// import {InfoWindow} from "react-google-maps"
-
-
-
-
-
-// //Will render one point on the map
-
-// // const renderMarkers = (map, maps) => {
-// //   let marker = new maps.Marker({
-// //   position: { lat: 47.605676, lng: -122.333440 },
-// //   map,
-// //   title: 'Hello World!'
-// //   });
-// //   return marker;
-// //  };
-
-// class Map extends React.Component {
-
-//   static defaultProps = {
-//    center: {
-//       lat: 47.62,
-//       lng: -122.34
-//       },
-//     zoom: 11
-//     }
-
-//     state ={
-//     showWall: false,
-//     activeMarker: {},
-//     selectedWall: null
-//     }
-  
-
-//   render(){
-//     return(
-//       <div style={{ height: '50vh', width: '50%' }}>
-//       <GoogleMapReact
-//         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY}}
-//         defaultCenter={this.props.center}
-//         defaultZoom={this.props.zoom}
-//         yesIWantToUseGoogleMapApiInternals
-//         //will render 1 marker
-//         // onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps)}
-//       >
-//         {this.props.markers.map(({lat, lng, id, title})=>{
-//           // const onClick=this.props.onClick.bind(this, id)
-//           return(
-//               <Marker 
-//               key={id}
-//               lat={lat}
-//               lng={lng}
-//               text={'w'}
-//               tooltip={title}
-//               // onClick={onClick}
-//               />
-               
-//           )
-//         })
-//         }
-     
-//       </GoogleMapReact>
-//     </div>
-//     )
-//   }
-// }
-
-// export default Map
+export default Maps
