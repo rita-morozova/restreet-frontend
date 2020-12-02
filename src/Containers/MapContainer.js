@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../Components/Header'
 import Maps from '../Components/Maps'
 import ListingsContainer from './ListingsContainer'
-import Maps from '../Components/Maps'
+
 
 
 class MapContainer extends React.Component {

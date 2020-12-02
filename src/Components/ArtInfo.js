@@ -5,30 +5,29 @@ import {Link} from 'react-router-dom'
 
 class ArtInfo  extends React.Component {
 
-  //DOESN'T WORK BECAUSE OF CORS - FIX IT!!!
-  // state ={
-  //   colors: []
-  // }
+  state ={
+    colors: []
+  }
 
-  // renderPalette = () =>{
-  //   const {colors} = this.state
-  //     return colors.map((color, id) => {
-  //       return(
-  //         <div key={id}
-  //           style={{
-  //             backgroundColor: color, 
-  //             width: 100, 
-  //             height: 100
-  //           }}
-  //           />
-  //       )
-  //     })
-  // }
+  renderPalette = () =>{
+    const {colors} = this.state
+      return colors.map((color, id) => {
+        return(
+          <div key={id}
+            style={{
+              backgroundColor: color, 
+              width: 100, 
+              height: 100
+            }}
+            />
+        )
+      })
+  }
 
-  // getColors = colors => 
-  //   this.setState(state => (
-  //     {colors: [...state.colors, ...colors]}
-  //   ))
+  getColors = colors => 
+    this.setState(state => (
+      {colors: [...state.colors, ...colors]}
+    ))
 
   
   render(){
@@ -40,12 +39,12 @@ class ArtInfo  extends React.Component {
     )
     return(
       <div>
-          {/* <ColorExtractor getColors={this.getColors}> */}
+          <ColorExtractor getColors={this.getColors}>
               <img src={chosenArt.image_url} alt='art' />
-          {/* </ColorExtractor>
+          </ColorExtractor>
           <div style={{marginTop: 20, display: 'flex', justifyContent: 'center'}}>
           {this.renderPalette()}
-          </div> */}
+          </div>
           <div>
               <h1>{chosenArt.artist}</h1>
               <h2>{chosenArt.name}</h2>

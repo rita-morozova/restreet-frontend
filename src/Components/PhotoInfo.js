@@ -4,15 +4,13 @@ import {Icon} from 'semantic-ui-react'
 
 
 
-
-
 class PhotoInfo extends React.Component {
 
   state = {
     liked: false,
     likes: [],	    
     photoLikes: [],
-    disabledButton: false
+    disabledButton: false,
   }
 
   componentDidMount = () => {
@@ -80,7 +78,6 @@ class PhotoInfo extends React.Component {
   // }
  
  
-
   render(){
     const {chosenPhoto, seeAllPhotos, user} = this.props
     return(
