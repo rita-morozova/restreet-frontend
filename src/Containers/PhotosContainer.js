@@ -10,11 +10,12 @@ class PhotosContainer extends React.Component{
     photos: [],
     count: 0,
     chosenPhoto: null,
+    chosenPhotoLikes: 0
   }
 
   componentDidMount = () =>{
     this._isMounted=true
-   this.getPhotos()
+    this.getPhotos()
   }
 
   getPhotos = () =>{
@@ -63,39 +64,9 @@ class PhotosContainer extends React.Component{
   //   }))
   // })
   // }
-
-  // handleLike = (photo) =>{
-  //   const userToken = localStorage.getItem('token')
-  //   photo.likes = photo.likes + 1
-  //   fetch('http://localhost:3000/likes', {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "Accept": "application/json",
-  //       "Authorization": `Bearer ${userToken}`
-  //     },
-  //     body: JSON.stringify({
-  //       likes: photo.likes
-  //     }) 
-  //   })
-  //   .then(resp => resp.json())
-  //   .then(data => {
-     
-  //     const updatePhoto = this.state.photos.map(photo => {
-  //       if(photo.id === data.id){
-  //         photo.likes = data.likes
-  //       }
-  //       return photo
-  //     })
-  //     this.setState({
-  //       photos: updatePhoto,
-  //     })
-  //   })
-  // }
-
-
-
  
+
+
 
   selectPhoto = photo =>{
     this.setState({
@@ -103,6 +74,7 @@ class PhotosContainer extends React.Component{
     })
   }
 
+ 
   seeAllPhotos = () => {
     this.setState({chosenPhoto: null})
   }
