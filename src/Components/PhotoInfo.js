@@ -79,11 +79,17 @@ class PhotoInfo extends React.Component {
  
  
   render(){
-    const {chosenPhoto, seeAllPhotos, user} = this.props
+    const {chosenPhoto, seeAllPhotos, user, deletePhoto} = this.props
+   
     return(
       <div >
         <div key={chosenPhoto.id}> 
           <button onClick={seeAllPhotos}>Go Back</button>
+          {user.id === chosenPhoto.user_id ? 
+          <button onClick={() => deletePhoto(chosenPhoto)}>Delete</button>
+          :
+          null
+          }
           <img src={chosenPhoto.image}  width={300} height={300}  alt='art' />
           <h2>By: {chosenPhoto.username}</h2>
           <h3><Icon name='heart' color='red' />{this.state.photoLikes.length}</h3>

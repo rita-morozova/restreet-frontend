@@ -10,8 +10,6 @@ const ArtPhotosContainer = ({arts, selectArt}) => {
   return(
     <div>
       {arts.map (art =><ArtCard key={art.id} art={art}  selectArt={selectArt}/>)}
-      {/* <Link to={`/get-inspired/${art.id}`}></Link> */}
-     
     </div>
   )
 }

@@ -52,22 +52,19 @@ class PhotosContainer extends React.Component{
     })
   }
 
-  // deletePhoto = (photo) =>{
-  //   let chosenPhoto = this.state.photos.filter(p=> p.id === photo.id)
-  //   fetch(`http://localhost:3000/photos/${chosenPhoto.id}`,{
-  //     method: 'DELETE'
-  //   })
-  //   .then(resp => resp.json())
-  //   .then(data => {
-  //   this.setState((prevState) =>({
-  //     photos: [...prevState.photos.filter(p => p.id !== data.id)]
-  //   }))
-  // })
-  // }
+  deletePhoto = (photo) =>{
+    fetch(`http://localhost:3000/photos/${photo.id}`,{
+      method: 'DELETE'
+    })
+    .then(resp => resp.json())
+    .then(data => {
+    this.setState((prevState) =>({
+      photos: [...prevState.photos.filter(p => p.id !== data.id)],
+      chosenPhoto: null
+    }))
+  })
+  }
  
-
-
-
   selectPhoto = photo =>{
     this.setState({
       chosenPhoto: this.state.photos.find(p => p ===photo)
@@ -84,7 +81,15 @@ class PhotosContainer extends React.Component{
     const {user} = this.props
     return(
       <div>
-        <PhotosGrid  photos={this.state.photos} user={user} handleUploadPhoto={this.handleUploadPhoto} handleLike={this.handleLike} selectPhoto={this.selectPhoto} chosenPhoto={this.state.chosenPhoto} seeAllPhotos={this.seeAllPhotos} />   
+        <PhotosGrid  
+          photos={this.state.photos} 
+          user={user} 
+          handleUploadPhoto={this.handleUploadPhoto} 
+          selectPhoto={this.selectPhoto} 
+          chosenPhoto={this.state.chosenPhoto} 
+          seeAllPhotos={this.seeAllPhotos}
+          deletePhoto={this.deletePhoto}
+           />   
       </div>
     )
   }
