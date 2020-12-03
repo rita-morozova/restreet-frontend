@@ -5,6 +5,7 @@
   "dependencies": {
     "@apollo/client": "^3.2.9",
     "@material-ui/core": "^4.11.1",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "@reach/combobox": "^0.12.1",
     "@react-google-maps/api": "^1.13.0",
     "@testing-library/jest-dom": "^5.11.4",
@@ -25,6 +26,7 @@
     "react-geocode": "^0.2.2",
     "react-google-autocomplete": "^1.2.6",
     "react-google-maps": "^9.4.5",
+    "react-iframe": "^1.8.0",
     "react-player": "^2.7.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
