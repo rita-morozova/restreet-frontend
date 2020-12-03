@@ -273,10 +273,9 @@ class App extends React.Component {
           listings: [...prevState.listings, data] 
         }))
         })
-        this.props.history.push('adopt-a-wall')
+        this.props.history.push('find-a-wall')
       }
      
-
       deleteListing = (listing) =>{
         const wall = this.state.listings.filter(l => l.user_id === this.state.user.id)
         const walla= wall.find(w => w.id === listing.id)
@@ -314,7 +313,7 @@ class App extends React.Component {
               listings: [...prevState.listings.filter(l => l.id !== data.id), data]
             }))
           })
-          this.props.history.push('adopt-a-wall')
+          this.props.history.push('find-a-wall')
       }
 
     
@@ -337,7 +336,7 @@ class App extends React.Component {
               listings: [...prevState.listings.filter(l => l.id !== data.id), data]
             }))
           })
-          this.props.history.push('adopt-a-wall')
+          this.props.history.push('find-a-wall')
       }
      
   
@@ -354,7 +353,7 @@ class App extends React.Component {
       <Route exact path='/signup' component={this.renderForm} />
       <Route exact path='/logout' component={() =>this.handleLogout()} />
       <Route exact path='/profile' component={() => <UserProfile handleUpdateProfile={this.handleUpdateProfile} user={user}  deleteUser={this.deleteUser}/>} />
-      <Route exact path='/adopt-a-wall' component={() => <MapContainer listings={listings} user={user} handlePostWall={this.handlePostWall}/>} />
+      <Route exact path='/find-a-wall' component={() => <MapContainer listings={listings} user={user} handlePostWall={this.handlePostWall}/>} />
       <Route exact path='/my-listings' component={() => <UserListings listings={listings.filter(l => l.user_id === user.id)} deleteListing={this.deleteListing} handleWallAdoption={this.handleWallAdoption} handleListAgain={this.handleListAgain}/>} />
       <Route exact path='/my-library' component={() => <FavVideoContainer videos={user.videos} deleteFromList={this.deleteFromList}/>} />
       <Route exact path='/post-wall' component={() => <PostWall />} />

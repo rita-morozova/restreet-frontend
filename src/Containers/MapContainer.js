@@ -1,21 +1,16 @@
 import React from 'react'
-import Header from '../Components/Header'
 import Maps from '../Components/Maps'
-import ListingsContainer from './ListingsContainer'
 
 
 
-class MapContainer extends React.Component {
 
-  render(){
+const MapContainer = ({listings, user, handlePostWall}) => {
+
     return(
-      <div>
-        <Header />
-        <br />
-            <Maps listings={this.props.listings} user={this.props.user} handlePostWall={this.props.handlePostWall} />
+      <div>      
+        <Maps listings={listings} user={user} handlePostWall={handlePostWall} />
       </div>
     )
-  }
 }
 
 export default MapContainer

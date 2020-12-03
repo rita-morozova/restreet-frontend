@@ -1,25 +1,23 @@
 import React from 'react'
-import {Link} from 'react-router-dom' 
 import {Button, Card} from 'semantic-ui-react'
 
 const WallListing = ({listing}) => {
 
-  const style = {
-    position: 'relative',
-    bottom: 150,
-    left: '45px',
-    width: 200,
-    backgroundColor: 'white',
-    boxShadow: '0 2px 7px 1px rgba(0, 0, 0, 0.3)',
-    padding: 10,
-    fontSize: 14,
-    zIndex: 100,
-  }
+  // const style = {
+  //   position: 'relative',
+  //   bottom: 150,
+  //   left: '45px',
+  //   width: 300,
+  //   backgroundColor: 'white',
+  //   boxShadow: '0 2px 7px 1px rgba(0, 0, 0, 0.3)',
+  //   padding: 10,
+  //   fontSize: 14,
+  //   zIndex: 100,
+  // }
 
-   console.log(listing)
+ 
     return(
-    
-      <div key={listing.id} style={style} >
+      <div key={listing.id}>
         <Card>
           <img src={listing.photo} alt='wall' />
           <h5>{listing.description}</h5>
@@ -27,8 +25,7 @@ const WallListing = ({listing}) => {
           <h4>Zip Code: {listing.zipcode}</h4>
           <h4>{listing.adopted ? 
           'Another artist is already working here' : 
-          // <a href={'mailto:' + 'test@test.com'}><Button basic>Email To Adopt</Button></a>
-          <a href={`mailto: ${listing.owner.email}?subject=Wall Reservartion at ${listing.address}`}><Button basic>Email To Adopt</Button></a>
+          <a href={`mailto: ${listing.owner.email}?subject=Wall Reservation at ${listing.address}`}><Button basic>Email To Reserve</Button></a>
            }</h4>   
            </Card> 
       </div>

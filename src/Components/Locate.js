@@ -1,27 +1,26 @@
-import Button from '@material-ui/core/Button'
 import React from 'react'
-
+import {Icon, Popup} from 'semantic-ui-react'
+import '../styles/Maps.css'
 
 const Locate = ({ panTo })  => {
   return (
     <button
-      className="locate"
+      className='locate'
       onClick={() => {
         navigator.geolocation.getCurrentPosition(
           (position) => {
             panTo({
               lat: position.coords.latitude,
               lng: position.coords.longitude,
-            });
+            })
           },
           () => null
         );
       }}
     >
-      Locate Me
-      {/* <img src="/compass.svg" alt="compass" /> */}
+    <Popup content='Locate Me' trigger={<Icon name='compass' color='pink' size='big' /> } />
     </button>
-  );
+  )
 }
 
 export default Locate
