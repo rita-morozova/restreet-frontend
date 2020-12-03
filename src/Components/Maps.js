@@ -5,16 +5,18 @@ import Locate from './Locate'
 import SearchBar from './SearchBar'
 import WallListing from './WallListing'
 import PostWall from './PostWall'
+import MapStyles from '../styles/MapStyles.js'
 
 
 const libraries = ['places']
 const type = ['listing']
 const mapContainerStyle = {
   width: '100%',
-  height: '70vh'
+  height: '100vh'
 }
 const options = {
-  zoomControl: true
+  zoomControl: true,
+  styles: MapStyles
 }
 const center ={
   lat: 47.6228, 
@@ -82,6 +84,12 @@ const Maps =({listings, user, handlePostWall})=> {
                     <Marker 
                         key={listing.id}
                         position={{lat: listing.lat, lng: listing.lng}}
+                        icon={{
+                          url: '/bucket.svg',
+                          scaledSize: new window.google.maps.Size(30, 30),
+                          origin: new window.google.maps.Point(0,0),
+                          anchor: new window.google.maps.Point(15,15)
+                        }}
                         onClick={() => {
                             setChosen(listing)
                         }}
@@ -104,6 +112,12 @@ const Maps =({listings, user, handlePostWall})=> {
                     <Marker 
                         key={`${marker.lat}-${marker.lng}`}
                         position={{lat: marker.lat, lng: marker.lng}} 
+                        icon={{
+                          url: '/bucket.svg',
+                          scaledSize: new window.google.maps.Size(30, 30),
+                          origin: new window.google.maps.Point(0,0),
+                          anchor: new window.google.maps.Point(15,15)
+                        }}
                         onClick ={() => {setChosen(marker)}}
                     /> 
                 )}
