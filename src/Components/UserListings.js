@@ -7,9 +7,11 @@ class UserListings extends React.Component {
 
  
   render(){
-    console.log(this.props.listings)
     return(
       <div>
+        <div>
+          <h2>My Listings</h2>
+        </div>
         {this.props.listings.map(wall => (
             <Card key={wall.id}>
               <img src={wall.photo} />

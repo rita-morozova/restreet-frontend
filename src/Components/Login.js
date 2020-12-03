@@ -1,6 +1,6 @@
 import React from 'react'
 import {Form, Grid, Button, Header, Message, Segment} from 'semantic-ui-react'
-import axios from 'axios'
+
 
 
 class Login extends React.Component {
@@ -50,9 +50,9 @@ return (
           </Button>    
         </Segment>
     </Form>
-      {/* <Message> FIX VALIDATE
+      <Message> 
         New to us? <a href='/signup'>Sign Up</a>
-      </Message> */}
+      </Message>
     </Grid.Column>
    </Grid>
     
