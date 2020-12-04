@@ -16,8 +16,9 @@
 
 .textbox{
   position: relative;
-  top: 43rem;
-  right: 50%;
+  top: 3.5rem;
+  /* top: 43rem;
+  right: 50%; */ 
 }
 
 .note{
@@ -89,7 +90,8 @@ li:hover, li:focus{
 
 .notes-container{
   float: right;
-  position:relative;
+  position: relative;
   right: 10rem;
-  margin-top: -80px;
+  margin-top: 70px;
+  
 }

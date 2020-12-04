@@ -1,6 +1,6 @@
 import React from 'react'
 import Note from '../Components/Note'
-import {Form, TextArea} from 'semantic-ui-react'
+import {Form, TextArea, Button} from 'semantic-ui-react'
 import '../styles/Notes.css'
 
 
@@ -86,7 +86,7 @@ class NotesContainer extends React.Component {
             <TextArea placeholder='Add a Note Here' type='text' name='note' value={this.state.note} onChange={this.handleNewNote} style={{width: '350px'}}/>
             <br/>
             <br/>
-              <button onClick={this.handleSubmitNote}>Add</button>
+              <Button onClick={this.handleSubmitNote}>Add</Button>
               </Form>
         </div>
         {!videoComments.length > 0 ? 
@@ -94,7 +94,6 @@ class NotesContainer extends React.Component {
         :
         <>
             <div className='notes-container'>
-                <h2>My Notes</h2>
              {videoComments.map(note => (
                <li>
                   <Note key={note.id} note={note} user={this.props.user} deleteNote={this.deleteNote} />
