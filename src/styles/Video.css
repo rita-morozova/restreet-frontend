@@ -1,12 +1,3 @@
-/* .splitTop{
-  margin-left: 5%;
-  margin-right: 5%;
-} */
-
-/* .row{
-  padding-top: 25px;
-  width: 100%;
-} */
 
 .library{
   background-color: rgba(255, 255, 255, 0.596);
@@ -25,21 +16,9 @@
   padding-top: 3%;
   padding-bottom: 30px;
   align-items: center;
-}
-
-.list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-} 
-
-.trending {
-  display: grid;
-  grid: auto / auto;
-  padding-left: 10rem;
-  padding-top: 24px;
-  grid-row-gap: 10px;
-  max-width: 900px;
+  /* margin: 30px auto;
+  border: 10px double #ddd; */
+  
 }
 
 .box{
@@ -83,3 +62,27 @@
   overflow-y: auto;
 }
 
+.favorites{
+  border-radius: 15px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding-top: 3%;
+  padding-bottom: 30px;
+}
+
+.list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.videoCards{
+  padding-top: 15px;
+  margin-bottom: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 8px;
+  max-width: 350px;
+}
