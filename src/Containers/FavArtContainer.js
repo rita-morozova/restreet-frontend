@@ -1,6 +1,4 @@
 import React from 'react'
-import ArtCard from '../Components/ArtCard'
-import ArtInfo from '../Components/ArtInfo'
 import FavoriteArtCard from '../Components/FavoriteArtCard'
 import {Grid} from 'semantic-ui-react'
 
@@ -15,7 +13,9 @@ class FavArtContainer extends React.Component {
         :
         <>
         <h1>You Liked These</h1>
-         {this.props.userArts.map(art => <FavoriteArtCard key={art.id} art={art} deleteFromFavorites={this.props.deleteFromFavorites} selectArt={this.selectArt}/>)}      
+        <Grid columns={3} stretched> 
+         {this.props.userArts.map(art => <FavoriteArtCard key={art.id} art={art} deleteFromFavorites={this.props.deleteFromFavorites} selectArt={this.selectArt}/>)}  
+         </Grid>  
         </>
          }
       </div>

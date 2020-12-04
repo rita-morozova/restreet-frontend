@@ -1,0 +1,17 @@
+.listing-img{
+  vertical-align: bottom;
+  height: 5rem;
+  padding: 0 0.8333rem 0 0.8333rem;
+}
+
+.listing{
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.wall-info{
+  font-size: 1.25rem;
+  flex: 0 0 auto;
+  margin: 0.25rem 0.5rem;
+}

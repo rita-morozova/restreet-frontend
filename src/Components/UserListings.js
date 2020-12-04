@@ -1,6 +1,7 @@
 import React from 'react'
 import {Button, Card} from 'semantic-ui-react'
 import WallListing from './WallListing'
+import '../styles/Listing.css'
 
 
 class UserListings extends React.Component {
@@ -13,18 +14,18 @@ class UserListings extends React.Component {
           <h2>My Listings</h2>
         </div>
         {this.props.listings.map(wall => (
-            <Card key={wall.id}>
-              <img src={wall.photo} />
-              <h2>{wall.description}</h2>
-              <h3>{wall.address}</h3>
-              <h4>{wall.zipcode}</h4>
-           <button onClick={() => this.props.deleteListing(wall)}>Delete Listing</button>
+            <div key={wall.id} className='listing'>
+              <img className='listing-img' src={wall.photo} alt='wall image'/>
+                <div className='wall-info'> 
+                    <h3>{wall.description}: {wall.address}, {wall.zipcode}</h3>
+               </div>
+           <Button onClick={() => this.props.deleteListing(wall)}>Delete Listing</Button>
            {!wall.adopted ?
-           <button onClick={()=>this.props.handleWallAdoption(wall)}>Click if was adopted </button>
+           <Button onClick={()=>this.props.handleWallAdoption(wall)}>Click if was adopted </Button>
            :
-           <button onClick={()=>this.props.handleListAgain(wall)}>List again</button>
+           <Button onClick={()=>this.props.handleListAgain(wall)}>List again</Button>
            }     
-      </Card>
+      </div>
         ))} 
       </div>
         )
