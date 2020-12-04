@@ -13,14 +13,15 @@ class Video extends React.Component {
     }
 
     return(
-      <div className='standard'>
+      <div>
         <ReactPlayer url={video.url} 
           light={true} 
-          width='300px'
-          height='180px'
+          width='550px'
+          height='300px'
           origin='http://localhost:3000'
+          className='standard'
           />
-        <h2>{video.name}</h2>
+        <h4>{video.name}</h4>
         <button onClick={() => this.props.addToList(this.props.video)}>Add To My List</button>
         <button onClick={handleClick}>Go to this lesson</button>
 

@@ -1,5 +1,8 @@
 import React from 'react'
 import Note from '../Components/Note'
+import {Form, TextArea} from 'semantic-ui-react'
+import '../styles/Notes.css'
+
 
 
 class NotesContainer extends React.Component {
@@ -77,14 +80,30 @@ class NotesContainer extends React.Component {
     // console.log(this.state.videoNotes)
     const videoComments = this.state.videoNotes.filter(note => note.user_id === this.props.user.id)
     return(
-      <div>
-        <h4>Write Note:</h4>
-        <textarea className="input-group input-group-sm"  type='text' name='note' value={this.state.note} onChange={this.handleNewNote} />
-        <div>
-          <button onClick={this.handleSubmitNote}>Add</button>
+      <div> 
+        <div className='textbox'>
+          <Form>
+            <TextArea placeholder='Add a Note Here' type='text' name='note' value={this.state.note} onChange={this.handleNewNote} style={{width: '350px'}}/>
+            <br/>
+            <br/>
+              <button onClick={this.handleSubmitNote}>Add</button>
+              </Form>
         </div>
-        {videoComments.map(note => <Note key={note.id} note={note} user={this.props.user} deleteNote={this.deleteNote} />)}
-      </div>
+        {!videoComments.length > 0 ? 
+        <h3 className='notes-container'>Add Your First Note Here</h3>
+        :
+        <>
+            <div className='notes-container'>
+                <h2>My Notes</h2>
+             {videoComments.map(note => (
+               <li>
+                  <Note key={note.id} note={note} user={this.props.user} deleteNote={this.deleteNote} />
+               </li>
+            ))}
+            </div>
+        </>
+          }
+     </div>
     )
   }
 }

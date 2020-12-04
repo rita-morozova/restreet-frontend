@@ -39,6 +39,7 @@ class ArtInfo  extends React.Component {
     )
     return(
       <div>
+        <br />
           <ColorExtractor getColors={this.getColors}>
               <img src={chosenArt.image_url} alt='art' />
           </ColorExtractor>
@@ -50,7 +51,7 @@ class ArtInfo  extends React.Component {
               <h2>{chosenArt.name}</h2>
               <h2>{chosenArt.year}</h2>
               <h3>{extra}</h3>
-              <button onClick={goBackToAllArts}>Back To All Art</button>
+              <Icon name='arrow left' size='huge' color='pink' onClick={goBackToAllArts}/>
           </div>
       </div>
     )
