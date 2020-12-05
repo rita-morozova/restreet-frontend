@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import Grid from '@material-ui/core/Grid'
 import {Icon} from 'semantic-ui-react'
+import TimeAgo from 'react-timeago'
 import '../styles/Photo.css'
 
 
@@ -83,8 +84,8 @@ class PhotoInfo extends React.Component {
     const {chosenPhoto, seeAllPhotos, user, deletePhoto} = this.props
    
     return(
-      <div className='modal'>
-        <div className='inner-modal' key={chosenPhoto.id}> 
+      <div className='popup'>
+        <div className='inner-popup' key={chosenPhoto.id}> 
           <div className='header-photo'>
           <Icon name='arrow left' color='purple' onClick={seeAllPhotos} size='large' />
           {user.id === chosenPhoto.user_id ? 
@@ -93,8 +94,10 @@ class PhotoInfo extends React.Component {
           null
           }
           </div>
-          <img src={chosenPhoto.image}  width={380} height={380}  alt='street art' />
-          <h2>By: {chosenPhoto.username}</h2>
+          <img src={chosenPhoto.image}  width={500} height={500}  alt='street art' />
+          <h5><TimeAgo date={chosenPhoto.created_at}/></h5>
+            <h2>By: {chosenPhoto.username}</h2>
+          
           <h3>
           <Icon name='heart' color='red' key={chosenPhoto.id} onClick={() => this.handleLike(chosenPhoto)} disabled={this.state.disabledButton} />
           {this.state.photoLikes.length}

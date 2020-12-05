@@ -1,5 +1,5 @@
 import React from 'react'
-import Timeago from 'react-timeago'
+
 
  class NewPhoto extends React.Component {
 
