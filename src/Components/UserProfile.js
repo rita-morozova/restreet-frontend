@@ -2,14 +2,13 @@ import React from 'react'
 import {Form, Button, Grid, Header, Segment} from 'semantic-ui-react'
 import '../styles/Profile.css'
 import {Link} from 'react-router-dom'
-import { HashLink } from 'react-router-hash-link'
+
 
 class UserProfile extends React.Component {
     state = {
         name: this.props.user.name,
         location: this.props.user.location,
         bio: this.props.user.bio,
-        // picture: this.props.user.picture,
         password: this.props.user.password,
     }
 
@@ -40,7 +39,7 @@ class UserProfile extends React.Component {
                                         <h3 className='white'>
                                             {this.props.user.bio !=='' ? this.props.user.bio : "Why don't you tell us about yourself?"}
                                         </h3>
-                                     <Button onClick={()=> window.scrollTo('edit-profile',document.body.scrollHeight)} type='button' className='btn btn-labeled btn-info' style={{backgroundColor: '#46D8D2', color: 'white'}}>
+                                     <Button onClick={()=> window.scrollTo('edit-profile', document.body.scrollHeight)} type='button' className='btn btn-labeled btn-info' style={{backgroundColor: '#46D8D2', color: 'white'}}>
                                             Update Profile
                                     </Button>
                                     </div>
@@ -82,9 +81,6 @@ class UserProfile extends React.Component {
 
                              <Form.Input  fluid placeholder='Password' type='password' name='password' value={this.state.password} onChange={this.handleChange}/><br />
 
-                             {/* <Form.Input fluid placeholder='Picture URL' type='text' name='picture' value={this.state.picture} onChange={this.handleChange} /><br /> */}
-
-
                             {/* <Form.Input  fluid placeholder='Confirm Password' type='password' name='confirm-password' value={this.state.password} onChange={this.handleChange}/><br /> */}
                 
                                 <Button style={{backgroundColor: '#FA396F', color: 'white'}} fluid size='large'>
@@ -98,8 +94,8 @@ class UserProfile extends React.Component {
                         </Form>
                 </Grid.Column>
             </Grid>
-            </div>
-        </div> 
+         </div>
+    </div> 
    )
   }
 }

@@ -1,19 +1,37 @@
 import React from 'react'
 import {NavLink, Link} from 'react-router-dom'
-import {Icon, Grid, Menu} from 'semantic-ui-react'
+import {Icon, Grid, Menu, Dropdown} from 'semantic-ui-react'
 import '../App.css'
 
 
 const link = {
-  width: '100px',
   padding: '12px',
   margin: '0 6px 6px',
   textDecoration: 'none',
   color: 'black',
 }
 
-const Navbar =({user})=> {
+class Navbar extends React.Component{
 
+  state = {
+    dropdownMenuStyle: {
+      display: 'none'
+    }
+  }
+
+  handleToggleDropdownMenu = () => {
+    let newState = Object.assign({}, this.state)
+    if (newState.dropdownMenuStyle.display === 'none') {
+      newState.dropdownMenuStyle = { display: 'flex' }
+    } else {
+      newState.dropdownMenuStyle = { display: 'none' }
+    }
+    this.setState(newState)
+  }
+
+
+  render(){
+    const {user} = this.props
     return(
     <div>
         <Grid padded className='tablet computer only'>
@@ -25,12 +43,33 @@ const Navbar =({user})=> {
           <NavLink to='/find-a-wall' exact style={link} activeStyle={{background: '#f1f3f3'}}>Find a Wall</NavLink>
           <NavLink to='/get-inspired' exact style={link} activeStyle={{background: '#f1f3f3'}}>Get Inspired</NavLink>
           <NavLink to='/my-inspiration' exact style={link} activeStyle={{background: '#f1f3f3'}}> My Inspiration </NavLink>
-          <NavLink to='/learn' exact style={link} activeStyle={{background: '#f1f3f3'}}> Learn to Paint </NavLink>
-          <NavLink to='/my-library' exact style={link} activeStyle={{background: '#f1f3f3'}}> Library </NavLink>
-          <NavLink to='/my-listings' exact style={link} activeStyle={{background: '#f1f3f3'}}> Listings </NavLink>
-          <NavLink to='/share' exact style={link} activeStyle={{background: '#f1f3f3'}}> Share Art </NavLink>
+          <NavLink to='/learn' exact style={link} activeStyle={{background: '#f1f3f3'}}> Learn</NavLink>
+          <NavLink to='/share' exact style={link} activeStyle={{background: '#f1f3f3'}}> Share </NavLink>
           <Menu.Menu position='right'>
-          <NavLink to='/profile' exact style={link} activeStyle={{background: '#f1f3f3'}}> Profile </NavLink>
+            <Dropdown item text={user.username}>
+              <Dropdown.Menu>
+                <Link to='/my-inspiration'>
+                 <Dropdown.Item>
+                  Favorite Arts
+                </Dropdown.Item>
+                </Link>
+                <Link to='/my-library'>
+                 <Dropdown.Item>
+                  Library
+                </Dropdown.Item>
+                </Link>
+                <Link to='/my-listings'>
+                 <Dropdown.Item>
+                  Listings
+                </Dropdown.Item>
+                </Link>
+                <Link to='/profile'>
+                 <Dropdown.Item>
+                  Profile
+                </Dropdown.Item>
+                </Link>
+              </Dropdown.Menu>
+            </Dropdown>
           <NavLink to='/logout' exact style={link} activeStyle={{background: '#f1f3f3'}}> Logout </NavLink>
           </Menu.Menu> 
           </>
@@ -46,6 +85,7 @@ const Navbar =({user})=> {
        </Grid>      
       </div> 
     )
+  } 
 }
 
 export default Navbar
