@@ -10,6 +10,11 @@ class UserListings extends React.Component {
   render(){
     return(
       <div>
+        <br />
+          {!this.props.listings.length > 0 ?
+          <h2>You do not have any listings yet</h2>
+          :
+          <>
         <div>
           <h2>My Listings</h2>
         </div>
@@ -27,6 +32,8 @@ class UserListings extends React.Component {
            }     
       </div>
         ))} 
+        </>
+        }
       </div>
         )
      }

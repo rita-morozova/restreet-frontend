@@ -1,12 +1,13 @@
 import React from 'react'
 import {Form, Button, Grid, Header, Segment} from 'semantic-ui-react'
+import '../styles/Profile.css'
 
 class UserProfile extends React.Component {
     state = {
         name: this.props.user.name,
         location: this.props.user.location,
         bio: this.props.user.bio,
-        picture: this.props.user.picture,
+        // picture: this.props.user.picture,
         password: this.props.user.password,
     }
 
@@ -23,7 +24,8 @@ class UserProfile extends React.Component {
 
     render(){
         return(
-        <div>
+            <div>
+        
           <h1>Hi {this.props.user.username}</h1>
           <h2>This is who you are:</h2>
           <h3>Your username: {this.props.user.username}</h3>
@@ -31,19 +33,7 @@ class UserProfile extends React.Component {
           <h3>Your name: {this.props.user.name}</h3>
           <h3>Your location: {this.props.user.location}</h3>
           <h3>Your bio: {this.props.user.bio}</h3>
-          {/* <h3>Your picture: {this.props.user.picture.toString}</h3> */}
-          {/* <div style={{
-                height: '60px',
-                width: '60px'
-                }}
-            >
-            <img alt ='your photo' style={{
-                    width: '20%',
-                    height: '20%',
-                    position: 'absolute'
-                }}  
-            />
-            </div> */}
+        
          
           <br />
           <br />
@@ -63,10 +53,11 @@ class UserProfile extends React.Component {
 
                              <Form.Input  fluid placeholder='Password' type='password' name='password' value={this.state.password} onChange={this.handleChange}/><br />
 
+                             {/* <Form.Input fluid placeholder='Picture URL' type='text' name='picture' value={this.state.picture} onChange={this.handleChange} /><br /> */}
+
 
                             {/* <Form.Input  fluid placeholder='Confirm Password' type='password' name='confirm-password' value={this.state.password} onChange={this.handleChange}/><br /> */}
                 
-                            {/* <input type='submit' /> */}
                                 <Button color='olive' fluid size='large'>
                                     Update Profile
                                 </Button> 
