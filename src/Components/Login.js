@@ -1,5 +1,8 @@
 import React from 'react'
 import {Form, Grid, Button, Header, Message, Segment} from 'semantic-ui-react'
+import '../styles/Form.css'
+
+
 
 
 
@@ -7,7 +10,8 @@ class Login extends React.Component {
   state = {
     username: '',
     password: '',
-    errors: false
+    errors: false,
+    searchNodes:''
   }
 
   handleSubmit = (e) => {
@@ -28,9 +32,11 @@ class Login extends React.Component {
 
 render(){
   const isEnabled = this.validate()
+
 return (
-  <div>
+ <div>
     <br />
+
     <Grid textAlign='center' verticalAlign='middle'>
         <Grid.Column style={{maxWidth: 450}}>
             <Header as='h2' textAlign='center'>
@@ -57,13 +63,13 @@ return (
    </Grid>
     
     
-    {/* <label htmlFor="username">Username:</label>
+     {/* <label htmlFor="username">Username:</label>
     <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
     <label htmlFor="password">Password:</label>
     <input type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
     <input type="submit" value="Submit"  />
      </form> */}
-  </div>
+  </div>  
     )
 }
 }

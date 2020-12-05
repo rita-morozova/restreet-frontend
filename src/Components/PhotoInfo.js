@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid'
 import {Icon} from 'semantic-ui-react'
+import '../styles/Photo.css'
 
 
 
@@ -82,18 +83,22 @@ class PhotoInfo extends React.Component {
     const {chosenPhoto, seeAllPhotos, user, deletePhoto} = this.props
    
     return(
-      <div >
-        <div key={chosenPhoto.id}> 
-          <button onClick={seeAllPhotos}>Go Back</button>
+      <div className='modal'>
+        <div className='inner-modal' key={chosenPhoto.id}> 
+          <div className='header-photo'>
+          <Icon name='arrow left' color='purple' onClick={seeAllPhotos} size='large' />
           {user.id === chosenPhoto.user_id ? 
-          <button onClick={() => deletePhoto(chosenPhoto)}>Delete</button>
+          <Icon name='trash alternate outline' color='purple' onClick={() => deletePhoto(chosenPhoto)}  size='large'/>
           :
           null
           }
-          <img src={chosenPhoto.image}  width={300} height={300}  alt='art' />
+          </div>
+          <img src={chosenPhoto.image}  width={380} height={380}  alt='street art' />
           <h2>By: {chosenPhoto.username}</h2>
-          <h3><Icon name='heart' color='red' />{this.state.photoLikes.length}</h3>
-          <button key={chosenPhoto.id} onClick={() => this.handleLike(chosenPhoto)} disabled={this.state.disabledButton}>Like</button>
+          <h3>
+          <Icon name='heart' color='red' key={chosenPhoto.id} onClick={() => this.handleLike(chosenPhoto)} disabled={this.state.disabledButton} />
+          {this.state.photoLikes.length}
+          </h3>
           {/* <button key={chosenPhoto.id}  onClick={() => this.handleDeleteLike(chosenPhoto)} >Unlike</button>  */}
           </div>
       </div>

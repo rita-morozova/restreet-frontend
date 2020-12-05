@@ -3,6 +3,7 @@ import PhotosGrid from '../Components/PhotosGrid'
 
 
 
+
 class PhotosContainer extends React.Component{
   _isMounted=false
 
@@ -10,7 +11,7 @@ class PhotosContainer extends React.Component{
     photos: [],
     count: 0,
     chosenPhoto: null,
-    chosenPhotoLikes: 0
+    chosenPhotoLikes: 0,
   }
 
   componentDidMount = () =>{
@@ -75,6 +76,7 @@ class PhotosContainer extends React.Component{
   seeAllPhotos = () => {
     this.setState({chosenPhoto: null})
   }
+
 
   
   render(){

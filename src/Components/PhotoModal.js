@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Image, Modal } from 'semantic-ui-react'
+import { Button, Image, Modal, Icon } from 'semantic-ui-react'
 import NewPhoto from './NewPhoto'
 
 const PhotoModal =({photos, user, handleUploadPhoto}) => {
@@ -11,7 +11,7 @@ const PhotoModal =({photos, user, handleUploadPhoto}) => {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button photos={photos} user={user} >Upload Photo</Button>}
+      trigger={<Icon name='photo' color='purple' size='huge' photos={photos} user={user} />}
     >
       <Modal.Header>Upload Photo</Modal.Header>
       <Modal.Content image>
