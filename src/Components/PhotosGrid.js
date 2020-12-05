@@ -7,11 +7,9 @@ import PhotoInfo from './PhotoInfo'
 import '../styles/Photo.css'
 
 
-class PhotosGrid extends React.Component{
+const PhotosGrid = ({photos, user, handleUploadPhoto, handleLike, chosenPhoto, selectPhoto, seeAllPhotos, deletePhoto}) => {
 
 
-  render(){  
-    const {photos, user, handleUploadPhoto, handleLike, chosenPhoto, selectPhoto, seeAllPhotos, deletePhoto} = this.props
   return(
       <div >
         <br />
@@ -27,7 +25,6 @@ class PhotosGrid extends React.Component{
        } 
       </div>
     )
-  }
 }
 
 export default PhotosGrid

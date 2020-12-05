@@ -9,9 +9,7 @@ class PhotosContainer extends React.Component{
 
   state ={
     photos: [],
-    count: 0,
     chosenPhoto: null,
-    chosenPhotoLikes: 0,
   }
 
   componentDidMount = () =>{
@@ -75,7 +73,8 @@ class PhotosContainer extends React.Component{
  
   seeAllPhotos = () => {
     this.setState({chosenPhoto: null})
-  }
+  } 
+
 
 
   

@@ -1,5 +1,6 @@
 import React from 'react'
 import {NavLink, Link} from 'react-router-dom'
+import {Icon, Grid, Menu} from 'semantic-ui-react'
 import '../App.css'
 
 
@@ -15,6 +16,9 @@ const Navbar =({user})=> {
 
     return(
     <div>
+        <Grid padded className='tablet computer only'>
+           <Menu borderless fluid size='large'>
+           {/* <Link to='/'><Menu.Item header>IPLANT<Icon name='heart' color='red' size='small' /></Menu.Item></Link> */}
           <NavLink to='/' exact style={link} activeStyle={{background: '#f1f3f3'}}> Home </NavLink>
           {user ? 
           <>
@@ -25,15 +29,21 @@ const Navbar =({user})=> {
           <NavLink to='/my-library' exact style={link} activeStyle={{background: '#f1f3f3'}}> Library </NavLink>
           <NavLink to='/my-listings' exact style={link} activeStyle={{background: '#f1f3f3'}}> Listings </NavLink>
           <NavLink to='/share' exact style={link} activeStyle={{background: '#f1f3f3'}}> Share Art </NavLink>
+          <Menu.Menu position='right'>
           <NavLink to='/profile' exact style={link} activeStyle={{background: '#f1f3f3'}}> Profile </NavLink>
           <NavLink to='/logout' exact style={link} activeStyle={{background: '#f1f3f3'}}> Logout </NavLink>
+          </Menu.Menu> 
           </>
           :
           <>
+          <Menu.Menu position='right'>
           <NavLink to='/login' exact style={link} activeStyle={{background: '#f1f3f3'}}> Login </NavLink>
           <NavLink to='/signup' exact style={link} activeStyle={{background: '#f1f3f3'}}>Signup</NavLink> 
+          </Menu.Menu>
           </>
-          }      
+          }
+           </Menu>
+       </Grid>      
       </div> 
     )
 }

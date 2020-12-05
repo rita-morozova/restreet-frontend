@@ -1,6 +1,8 @@
 import React from 'react'
 import {Form, Button, Grid, Header, Segment} from 'semantic-ui-react'
 import '../styles/Profile.css'
+import {Link} from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link'
 
 class UserProfile extends React.Component {
     state = {
@@ -25,22 +27,49 @@ class UserProfile extends React.Component {
     render(){
         return(
             <div>
-        
-          <h1>Hi {this.props.user.username}</h1>
-          <h2>This is who you are:</h2>
-          <h3>Your username: {this.props.user.username}</h3>
-          <h3>Your email: {this.props.user.email}</h3>
-          <h3>Your name: {this.props.user.name}</h3>
-          <h3>Your location: {this.props.user.location}</h3>
-          <h3>Your bio: {this.props.user.bio}</h3>
-        
-         
-          <br />
-          <br />
+                <div className='user-container'>
+                    <div className='row user-menu-container square'>
+                        <div className='col-md-7 user-details'>
+                            <div className='row coralbg white'>
+                                <div className='col-md-6 no-pad'>
+                                    <div className='user-pad'>
+                                        <h1>Welcome back, {this.props.user.name !=='' ? this.props.user.name : "Stranger"}</h1>
+                                        <h3 className='white'>
+                                            {this.props.user.location !=='' ? this.props.user.location : "Mystery Land"}
+                                        </h3>
+                                        <h3 className='white'>
+                                            {this.props.user.bio !=='' ? this.props.user.bio : "Why don't you tell us about yourself?"}
+                                        </h3>
+                                     <Button onClick={()=> window.scrollTo('edit-profile',document.body.scrollHeight)} type='button' className='btn btn-labeled btn-info' style={{backgroundColor: '#46D8D2', color: 'white'}}>
+                                            Update Profile
+                                    </Button>
+                                    </div>
+                                </div>
+                                <div className='col-md-6 no-pad'>
+                                    <div className='user-image'>
+                                        <img src='https://images.unsplash.com/photo-1511769592469-ff66aff85026?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=667&q=80' className='img-responsive thumbnail' />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='row overview'>
+                                <div className='col-md-4 user-pad text-center coralbg'>
+                                  <Link to='/my-inspiration'><h3 style={{color: 'white'}}>FAVORITE ARTS</h3></Link>
+                                </div>
+                                <div className='col-md-4 user-pad text-center turqbg'>
+                                   <Link to='/my-library'><h3 style={{color: 'white'}}>MY LIBRARY</h3></Link>
+                                </div>
+                                <div className='col-md-4 user-pad text-center coralbg'>
+                                   <Link to='/my-listings'><h3 style={{color: 'white'}}>MY LISTINGS</h3></Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          <div  id='edit-profile' className='edit-form'>
             <Grid textAlign='center' verticalAlign='middle'>
                 <Grid.Column style={{maxWidth: 450}}>
-                    <Header as='h2' textAlign='center'>
-                        Edit Your Profile
+                    <Header as='h2' textAlign='center' style={{color: 'white', marginTop: '20px'}}>
+                        <h2>Edit Your Profile</h2>
                     </Header>
                         <Form className='signup-form' onSubmit={(event) => this.handleSubmit(event)} size='large'>
                             <Segment stacked>
@@ -58,17 +87,18 @@ class UserProfile extends React.Component {
 
                             {/* <Form.Input  fluid placeholder='Confirm Password' type='password' name='confirm-password' value={this.state.password} onChange={this.handleChange}/><br /> */}
                 
-                                <Button color='olive' fluid size='large'>
+                                <Button style={{backgroundColor: '#FA396F', color: 'white'}} fluid size='large'>
                                     Update Profile
                                 </Button> 
                                 <br />
-                                <Button color='olive' fluid size='large' onClick={this.props.deleteUser}>
+                                <Button style={{backgroundColor: '#FA396F', color: 'white'}} fluid size='large' onClick={this.props.deleteUser}>
                                     Delete Profile
                                 </Button>
                             </Segment>
                         </Form>
                 </Grid.Column>
             </Grid>
+            </div>
         </div> 
    )
   }

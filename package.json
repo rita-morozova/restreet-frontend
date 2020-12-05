@@ -31,6 +31,7 @@
     "react-iframe": "^1.8.0",
     "react-player": "^2.7.0",
     "react-router-dom": "^5.2.0",
+    "react-router-hash-link": "^2.2.2",
     "react-scripts": "4.0.0",
     "react-timeago": "^5.2.0",
     "react-validation": "^3.0.7",

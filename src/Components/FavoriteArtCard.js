@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card, Image} from 'semantic-ui-react'
+import {Card, Image, Icon} from 'semantic-ui-react'
 
 class FavoriteArtCard extends React.Component {
 
@@ -12,7 +12,7 @@ class FavoriteArtCard extends React.Component {
       <div key={art.id}>
       <Card> 
         <Image src={art.image_url} alt="Painting" wrapped ui={false} />
-        {deleteFromFavorites ? <button onClick={() => deleteFromFavorites(art)}>Delete</button> : null}
+        {deleteFromFavorites ? <Icon name='trash alternate outline' color='purple' size='large' onClick={() => deleteFromFavorites(art)} /> : null}
       </Card>
       </div>
     )
