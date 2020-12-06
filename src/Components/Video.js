@@ -24,8 +24,8 @@ class Video extends React.Component {
           className='standard'
           />
         <h4 className='video-name'>{video.name}</h4>
-        <Button onClick={() => this.props.addToList(this.props.video)}>Add To My Library</Button>
-        <Button onClick={handleClick}>See the lesson</Button>
+        <Button style={{backgroundColor: '#3970fa', color: 'white'}} onClick={() => this.props.addToList(this.props.video)}>Add To My Library</Button>
+        <Button style={{backgroundColor: '#3970fa', color: 'white'}}  onClick={handleClick}>See the lesson</Button>
 
         </div>
     )

@@ -13,7 +13,7 @@ class VideoPage extends React.Component {
   seeDescription = () =>{
     return(
       <div>
-        <Button onClick={() => this.setState({showDescription: !this.state.showDescription})}>
+        <Button onClick={() => this.setState({showDescription: !this.state.showDescription})} style={{backgroundColor: '#3970fa', color: 'white'}} >
           {!this.state.showDescription ? 'See Video Description' : 'Hide Description'}
         </Button>
       </div>
@@ -47,9 +47,9 @@ class VideoPage extends React.Component {
                    className='video-lesson'
                   />
               <div className='video-buttons'>
-                 <Button onClick={this.props.goBackToAllVideos}>Go Back To All Lessons</Button>
+                 <Button onClick={this.props.goBackToAllVideos} style={{backgroundColor: '#3970fa', color: 'white'}} >Go Back To All Lessons</Button>
                  {this.seeDescription()}
-                 <Button onClick={() =>this.props.addToList(this.props.selectedVideo)}>Add To My Library</Button>
+                 <Button onClick={() =>this.props.addToList(this.props.selectedVideo)} style={{backgroundColor: '#3970fa', color: 'white'}} >Add To My Library</Button>
               </div>
            {this.state.showDescription && this.renderDescription()}
             </div>

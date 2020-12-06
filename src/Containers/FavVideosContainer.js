@@ -23,8 +23,8 @@ class FavVideosContainer extends React.Component {
               origin='http://localhost:3000'
              />
              <h3> {video.name}</h3>
-            <Button onClick={() => this.props.deleteFromList(video)}>Delete from Library</Button>
-            <Button>See the lesson</Button>
+            <Button style={{backgroundColor: '#3970fa', color: 'white'}} onClick={() => this.props.deleteFromList(video)}>Delete</Button>
+            <Button style={{backgroundColor: '#3970fa', color: 'white'}} >See the lesson</Button>
          </span>
         ))}
          </div>

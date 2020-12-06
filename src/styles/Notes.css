@@ -23,10 +23,11 @@
 
 .note{
   color:#000;
-  background:#ccf;;
+  background:#ccf;
+  /* background: #F070A1; */
   display:block;
-  height:10em;
-  width:10em;
+  height:12em;
+  width:12em;
   padding:1em; 
   overflow-x: hidden;
   overflow-y: auto;
@@ -59,7 +60,7 @@ li:nth-child(even){
   -moz-transform:rotate(4deg);
   position:relative;
   top:5px;
-  background:#cfc;
+  background: #F5E6cc;
 }
 li:nth-child(3n){
   -o-transform:rotate(-3deg);

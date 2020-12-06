@@ -86,11 +86,11 @@ class NotesContainer extends React.Component {
             <TextArea placeholder='Add a Note Here' type='text' name='note' value={this.state.note} onChange={this.handleNewNote} style={{width: '350px'}}/>
             <br/>
             <br/>
-              <Button onClick={this.handleSubmitNote}>Add</Button>
+              <Button onClick={this.handleSubmitNote} style={{backgroundColor: ' #FA396F', color: 'white'}} >Add</Button>
               </Form>
         </div>
         {!videoComments.length > 0 ? 
-        <h3 className='notes-container'>Add Your First Note Here</h3>
+        <h3 className='notes-container'>Add Your First Note Here...</h3>
         :
         <>
             <div className='notes-container'>
