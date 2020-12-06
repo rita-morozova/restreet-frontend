@@ -9,15 +9,15 @@ class UserListings extends React.Component {
  
   render(){
     return(
-      <div>
+      <div className='user-listings-main'>
         <br />
           {!this.props.listings.length > 0 ?
-          <h2>You do not have any listings yet</h2>
+          <h2 className='empty-container'>You do not have any listings yet</h2>
           :
           <>
-        <div>
+        <div className='user-listings'>
+          <br />
           <h2>Your Listings</h2>
-        </div>
         <div className='all-listings'>
         {this.props.listings.map(wall => (
             <div key={wall.id} className='listing'>
@@ -34,6 +34,7 @@ class UserListings extends React.Component {
       </div>
         ))} 
         </div>
+       </div>
         </>
         }
       </div>
