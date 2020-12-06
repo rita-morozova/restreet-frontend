@@ -13,12 +13,9 @@ class FavArtContainer extends React.Component {
         {!this.props.userArts.length > 0 ? <h2>You do not have any favorite arts yet</h2>
         :
         <>
-        <h1>YOUR INSPIRATION</h1>
-        
+        <h1>YOUR INSPIRATION</h1> 
           <div className='fav-arts'>
-              <Grid columns={3} stretched > 
                 {this.props.userArts.map(art => <FavoriteArtCard key={art.id} art={art} deleteFromFavorites={this.props.deleteFromFavorites} selectArt={this.selectArt}/>)}  
-              </Grid> 
           </div> 
         </>
          }

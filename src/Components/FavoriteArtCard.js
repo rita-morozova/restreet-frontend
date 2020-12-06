@@ -9,7 +9,7 @@ class FavoriteArtCard extends React.Component {
 
     
     return(
-      <div key={art.id}>
+      <div key={art.id} className='fav-masonry-item'>
       <Card> 
         <Image src={art.image_url} alt="Painting" wrapped ui={false} />
         <Card.Content>
