@@ -80,10 +80,9 @@ return (
       <br />
       <Grid textAlign='center' verticalAlign='middle'>
           <Grid.Column style={{maxWidth: 450}}>
-              <Header as='h2' textAlign='center'>
+              <Header as='h2' textAlign='center' style={{color: '#FA396F'}}>
                         SIGNUP
-              </Header>
-            
+              </Header>        
     <Form className='signup-form' size='large' onSubmit={this.handleSubmit} noValidate > 
           <Segment stacked>
         <Form.Input fluid placeholder='Username' type='text' name='username' value={this.state.username} onChange={this.handleChange} noValidate/><br />
@@ -102,7 +101,7 @@ return (
         {errors.confirmPassword !== this.setState.password &&
                 <span className='error'>{errors.confirmPassword}</span>}
 
-        <Button color='olive' fluid size='large' >
+        <Button fluid size='large' style={{backgroundColor: '#FA396F', color: 'white'}}  >
           Sign Up
         </Button> 
           </Segment>
