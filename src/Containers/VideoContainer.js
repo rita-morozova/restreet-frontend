@@ -8,7 +8,7 @@ const VideoContainer = ({videos, selectVideo, addToList}) => {
   const randomVideos = videos.sort(() => Math.random() - 0.5)
   
     return(
-      <div>
+      <div className='learn-container'>
         {randomVideos.map(video => <Video key={video.id} video={video} selectVideo={selectVideo} addToList={addToList}/>)}
       </div>
     )

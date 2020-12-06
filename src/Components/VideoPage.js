@@ -31,7 +31,7 @@ class VideoPage extends React.Component {
   render(){
     const {name} = this.props.selectedVideo
     return(
-      <div>
+      <div className='video-page-main'> 
         <br />
           <h2>{name}</h2>
             <div className='box'>

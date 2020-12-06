@@ -49,8 +49,8 @@
 }
 
 .description{
-  background-color: rgba(255, 255, 255, 0.582);
-  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
   width: 100%;
   height: auto;
   max-height: 300px;
@@ -58,6 +58,7 @@
   margin-bottom: 40px;
   padding-left: 1%;
   padding-top: 20px;
+  padding-bottom: 20px;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -105,4 +106,20 @@
   text-align: center;
   vertical-align: middle;
   line-height: 50vh;
+}
+
+.learn-container{
+  background-image: url('https://images.unsplash.com/photo-1531685250784-7569952593d2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80');
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 2px;
+}
+
+.video-page-main{
+  background-image: url('https://res.cloudinary.com/diexi8g0j/image/upload/v1607290237/brick-wall1_z9u0mm.jpg');
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 2px;
 }
