@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Button} from 'semantic-ui-react'
 
  class NewPhoto extends React.Component {
 
@@ -33,13 +33,13 @@ import React from 'react'
         return (
             <div className='form'>
                 <form onSubmit={this.onSubmit} >
-                    <label>Image Upload</label>
+                    {/* <label>Image Upload</label> */}
                     <input type='file' name='image' accept='image/*' onChange={this.onChange}/>
                     <input  type='hidden' name='username' value={this.state.username}  />
                     <input  type='hidden' name='likes' value='0'  />
                     <br />
                     <br />
-                    <input type='submit' value='Submit'/>
+                    <Button type='submit' value='Submit' style={{backgroundColor: '#FA396F', color: 'white'}}>Submit</Button>
                     <br/>
                 </form>
             </div>

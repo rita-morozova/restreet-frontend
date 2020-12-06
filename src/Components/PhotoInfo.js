@@ -94,9 +94,9 @@ class PhotoInfo extends React.Component {
           null
           }
           </div>
-          <img src={chosenPhoto.image}  width={500} height={500}  alt='street art' />
+          <img src={chosenPhoto.image}  width={320} height={320}  alt='street art' />
           <h5><TimeAgo date={chosenPhoto.created_at}/></h5>
-            <h2>By: {chosenPhoto.username}</h2>
+            <h2> By: {chosenPhoto.username}</h2>
           
           <h3>
           <Icon name='heart' color='red' key={chosenPhoto.id} onClick={() => this.handleLike(chosenPhoto)} disabled={this.state.disabledButton} />

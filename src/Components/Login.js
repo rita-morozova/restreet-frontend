@@ -54,8 +54,8 @@ return (
           </Button>    
         </Segment>
     </Form>
-      <Message  > 
-        New to us? <a href='/signup'>Sign Up</a>
+      <Message style={{color: '#FA396F'}}  > 
+        New to us? <a style={{color: '#FA396F'}} href='/signup'>Sign Up</a>
       </Message>
     </Grid.Column>
    </Grid> 

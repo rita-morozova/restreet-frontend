@@ -20,8 +20,8 @@ const PhotoModal =({photos, user, handleUploadPhoto}) => {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={() => setOpen(false)}>Cancel</Button>
-        <Button onClick={() => setOpen(false)} positive>
+        <Button onClick={() => setOpen(false)} style={{backgroundColor: ' #46D8D2', color: 'white'}}>Cancel</Button>
+        <Button onClick={() => setOpen(false)} style={{backgroundColor: ' #FA396F', color: 'white'}}>
          Let's see my art!
         </Button>
       </Modal.Actions>
