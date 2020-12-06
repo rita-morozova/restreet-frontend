@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import {Icon} from 'semantic-ui-react'
+import {Icon, Button} from 'semantic-ui-react'
 import {ColorExtractor} from 'react-color-extractor'
 import {Link} from 'react-router-dom'
+import '../styles/Arts.css'
 
 class ArtInfo  extends React.Component {
 
@@ -34,26 +35,27 @@ class ArtInfo  extends React.Component {
     const {chosenArt, goBackToAllArts, addToFavorites} = this.props
     const extra = (
       <div onClick={() => addToFavorites(chosenArt)}>
-        <Icon color='red' name='heart outline'  />
+        <Icon color='red' name='heart outline'  size='large' />
       </div>
     )
     return(
-      <div>
-        <br />
+     <div className='arrow-back'>
+        <Button  onClick={goBackToAllArts} basic color='blue' style={{float: 'left'}}>Back</Button>
+      <div className='art-page'>
           <ColorExtractor getColors={this.getColors}>
               <img src={chosenArt.image_url} alt='art' />
           </ColorExtractor>
           <div style={{marginTop: 20, display: 'flex', justifyContent: 'center'}}>
           {this.renderPalette()}
           </div>
-          <div>
+          <div className='art-info'>
               <h1>{chosenArt.artist}</h1>
               <h2>{chosenArt.name}</h2>
               <h2>{chosenArt.year}</h2>
               <h3>{extra}</h3>
-              <Icon name='arrow left' size='huge' color='pink' onClick={goBackToAllArts}/>
           </div>
       </div>
+  </div> 
     )
   }
 }

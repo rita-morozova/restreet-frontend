@@ -12,9 +12,17 @@ class FavoriteArtCard extends React.Component {
       <div key={art.id}>
       <Card> 
         <Image src={art.image_url} alt="Painting" wrapped ui={false} />
-        {deleteFromFavorites ? <Icon name='trash alternate outline' color='purple' size='large' onClick={() => deleteFromFavorites(art)} /> : null}
+        <Card.Content>
+          <Card.Header style={{float: 'left'}}>{art.artist}</Card.Header>
+          <Card.Meta >
+            <span className='date' style={{float: 'right'}}>{art.year}</span>
+          </Card.Meta>
+        </Card.Content>
+        <Card.Content extra >
+         {deleteFromFavorites ? <Icon name='trash alternate outline'  size='large' style={{float: 'right'}} onClick={() => deleteFromFavorites(art)} /> : null}
+         </Card.Content>
       </Card>
-      </div>
+  </div>
     )
   }
 }
