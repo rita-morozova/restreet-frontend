@@ -10,6 +10,7 @@ class FavVideosContainer extends React.Component {
 
   render(){
     return(
+      <div className='favorites-main' style={{marginTop: '0px'}}>
       <div className='favorites'>
         <h1>My Library</h1>
           <div className='list'>
@@ -29,6 +30,7 @@ class FavVideosContainer extends React.Component {
         ))}
          </div>
       </div>
+  </div>
     )
   }
 }
