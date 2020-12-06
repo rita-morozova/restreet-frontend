@@ -16,3 +16,17 @@
   margin-top: 50px;
 }
 
+.all-arts{
+  column-count: 3;
+  column-gap: 15px;  
+}
+
+.masonry-item {
+  display: inline-block;
+  width: 100%;
+ }
+ 
+ .masonry-item Card{
+  display:block;
+  width: 100%;
+ }

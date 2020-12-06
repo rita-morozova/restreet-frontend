@@ -10,9 +10,7 @@ const randomArts = arts.sort(() => Math.random() - 0.5)
 
   return(
     <div className='all-arts'>
-      <Grid columns={3} stretched>
       {randomArts.map (art =><ArtCard key={art.id} art={art}  selectArt={selectArt}/>)}
-      </Grid>
     </div>
   )
 }
