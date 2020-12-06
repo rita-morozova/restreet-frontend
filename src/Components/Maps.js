@@ -67,12 +67,13 @@ const Maps =({listings, user, handlePostWall})=> {
  if (!isLoaded) return 'Loading...'
         
     return (
-        <div >
-            <section className='maps-name'>
-                <h1>Walls</h1>
-               <SearchBar panTo={panTo} />
-               <Locate panTo={panTo} />
-            </section>     
+        <div>
+          <br/>
+          <div className='maps-name'>
+                <h2>Find a Legal Wall on the Map or Create Your Own Listing By Clicking On Your Location</h2>
+          </div>
+            <SearchBar panTo={panTo} />
+            <Locate panTo={panTo} />     
             <GoogleMap 
             mapContainerStyle={mapContainerStyle} 
             zoom={14} 

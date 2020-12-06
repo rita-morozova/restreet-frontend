@@ -27,9 +27,24 @@
 
 .locate {
   position: absolute;
-  top: 11rem;
-  right: 3rem;
+  top: 13rem;
+  right: 2rem;
   background: none;
   border: none;
   z-index: 10;
+}
+
+.maps-container{
+  background-image: url('https://images.unsplash.com/photo-1541692033570-5b2e9c4e2aa9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80');
+}
+
+.maps-name {
+  background-color: white;
+  width: 48%;
+  opacity: 0.7;
+  margin-left: 25%;
+}
+
+.maps-name h2{
+  color: #FA396F;
 }
