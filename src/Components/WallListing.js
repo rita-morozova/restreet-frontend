@@ -25,7 +25,7 @@ const WallListing = ({listing}) => {
           <h4>Zip Code: {listing.zipcode}</h4>
           <h4>{listing.adopted ? 
           'Another artist is already working here' : 
-          <a href={`mailto: ${listing.owner.email}?subject=Wall Reservation at ${listing.address}`}><Button basic>Email To Reserve</Button></a>
+          <a href={`mailto: ${listing.owner.email}?subject=Wall Reservation at ${listing.address}`}><Button style={{backgroundColor: '#FA396F', color: 'white'}} >Email To Reserve</Button></a>
            }</h4>   
            </Card> 
       </div>

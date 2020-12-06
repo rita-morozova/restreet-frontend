@@ -33,9 +33,9 @@ class Navbar extends React.Component{
   render(){
     const {user} = this.props
     return(
-    <div>
+    <div className='nav-bar-main'>
         <Grid padded className='tablet computer only'>
-           <Menu borderless fluid size='large'>
+           <Menu borderless fluid size='large' style={{backgroundColor: '#fac339'}}>
            {/* <Link to='/'><Menu.Item header>IPLANT<Icon name='heart' color='red' size='small' /></Menu.Item></Link> */}
           <NavLink to='/' exact style={link} activeStyle={{background: '#f1f3f3'}}> Home </NavLink>
           {user ? 
@@ -45,10 +45,10 @@ class Navbar extends React.Component{
           <NavLink to='/learn' exact style={link} activeStyle={{background: '#f1f3f3'}}> Learn</NavLink>
           <NavLink to='/share' exact style={link} activeStyle={{background: '#f1f3f3'}}> Share </NavLink>
           <Menu.Menu position='right'>
-            <Dropdown item text={user.username}>
-              <Dropdown.Menu>
+            <Dropdown item text={user.username} >
+              <Dropdown.Menu style={{backgroundColor: '#fac339'}} >
                 <Link to='/my-inspiration'>
-                 <Dropdown.Item>
+                 <Dropdown.Item >
                   Favorite Arts
                 </Dropdown.Item>
                 </Link>

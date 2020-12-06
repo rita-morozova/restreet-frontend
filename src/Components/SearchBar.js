@@ -35,7 +35,9 @@ const handleSelect = async (address) => {
         <Combobox onSelect={handleSelect}>
           <ComboboxInput value={value} onChange={handleInput} disabled={!ready} placeholder='Enter Address' />
               <ComboboxPopover>
+                <ComboboxList style={{backgroundColor: "white"}}>
                   {status === 'OK' && data.map(({id, description}) => <ComboboxOption key={id} value={description} />)}
+                </ComboboxList> 
               </ComboboxPopover>
     </Combobox>
     </div>

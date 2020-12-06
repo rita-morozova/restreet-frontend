@@ -11,7 +11,7 @@ import '../styles/Maps.css'
 const libraries = ['places']
 const type = ['listing']
 const mapContainerStyle = {
-  width: '80%',
+  width: '100%',
   height: '80vh'
 }
 const options = {
