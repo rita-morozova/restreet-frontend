@@ -33,17 +33,21 @@ class ArtInfo  extends React.Component {
   
   render(){
     const {chosenArt, goBackToAllArts, addToFavorites} = this.props
-    const extra = (
-      <div onClick={() => addToFavorites(chosenArt)}>
-        <Icon color='red' name='heart outline'  size='large' />
-      </div>
-    )
+    // const extra = (
+    //   <div onClick={() => addToFavorites(chosenArt)}>
+    //     <Icon color='red' name='heart'  size='large' />
+    //   </div>
+    // )
     return(
-     <div className='arrow-back'>
-        <Button  onClick={goBackToAllArts} basic color='blue' style={{float: 'left'}}>Back</Button>
+     <div className='buttons'>
+       <Button.Group>
+        <Button  onClick={goBackToAllArts} color='yellow'>Back</Button>
+        <Button.Or />
+        <Button onClick={() => addToFavorites(chosenArt)} color='red' > <Icon color='white' name='heart'  size='large' /></Button>
+        </Button.Group>
       <div className='art-page'>
           <ColorExtractor getColors={this.getColors}>
-              <img src={chosenArt.image_url} alt='art' />
+              <img src={chosenArt.image_url} alt='art' /> 
           </ColorExtractor>
           <div style={{marginTop: 20, display: 'flex', justifyContent: 'center'}}>
           {this.renderPalette()}
@@ -52,7 +56,6 @@ class ArtInfo  extends React.Component {
               <h1>{chosenArt.artist}</h1>
               <h2>{chosenArt.name}</h2>
               <h2>{chosenArt.year}</h2>
-              <h3>{extra}</h3>
           </div>
       </div>
   </div> 
