@@ -11,10 +11,14 @@ class FavVideosContainer extends React.Component {
   render(){
     return(
       <div className='favorites-main' style={{marginTop: '0px'}}>
-      <div className='favorites'>
-        <h1>My Library</h1>
-          <div className='list'>
-        {this.props.videos.map(video => (
+        {!this.props.videos.length > 0 ?
+          <h2 className='empty-library'>Your Library Is Empty</h2>
+         :
+        <> 
+         <div className='favorites'>
+            <h1>My Library</h1>
+        <div className='list'>
+           {this.props.videos.map(video => (
           <span key={video.id} className='videoCards'>
             <ReactPlayer url={video.url} 
               light={true} 
@@ -30,6 +34,8 @@ class FavVideosContainer extends React.Component {
         ))}
          </div>
       </div>
+      </>
+      }
   </div>
     )
   }
