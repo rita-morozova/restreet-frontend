@@ -17,6 +17,7 @@ import FavVideoContainer from './Containers/FavVideosContainer'
 import ArtPhotosContainer from './Containers/ArtPhotosContainer'
 import ArtCard from './Components/ArtCard'
 import PhotosContainer from './Containers/PhotosContainer'
+import Footer from './Components/Footer'
 
 
 
@@ -364,6 +365,7 @@ class App extends React.Component {
       <Route exact path='/share' component={() => <PhotosContainer user={user}  />} />
       <Route component={NotFound} />
       </Switch>
+      {/* <Footer /> */}
     </div>
   );
   }

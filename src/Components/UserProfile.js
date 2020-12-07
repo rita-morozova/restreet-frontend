@@ -52,7 +52,7 @@ class UserProfile extends React.Component {
                             </div>
                             <div className='row overview'>
                                 <div className='col-md-4 user-pad text-center coralbg'>
-                                  <Link to='/my-inspiration'><h3 style={{color: 'white'}}>FAVORITE ARTS</h3></Link>
+                                  <Link to='/my-inspiration'><h3 style={{color: 'white'}}>FAVORITE ART</h3></Link>
                                 </div>
                                 <div className='col-md-4 user-pad text-center turqbg'>
                                    <Link to='/my-library'><h3 style={{color: 'white'}}>MY LIBRARY</h3></Link>

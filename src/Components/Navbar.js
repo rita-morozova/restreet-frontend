@@ -32,25 +32,23 @@ class Navbar extends React.Component{
 
 
   render(){
-    const {user} = this.props
     return(
     <div className='nav-bar-main'>
         <Grid padded className='tablet computer only'>
            <Menu borderless fluid size='large' style={{backgroundColor: '#fac339'}}>
-           {/* <Link to='/'><Menu.Item header>IPLANT<Icon name='heart' color='red' size='small' /></Menu.Item></Link> */}
-          <NavLink to='/' exact style={link} activeStyle={{background: '#f1f3f3'}}> Home </NavLink>
-          {user ? 
+           <Link to='/'><Menu.Item header style={{color: '#44484b'}}>RE-STREET<Icon name='heart' color='red' size='small' /></Menu.Item></Link>
+          {this.props.user  && this.props.user.id > 0 ? 
           <>
           <NavLink to='/find-a-wall' exact style={link} activeStyle={{background: '#f1f3f3'}}>Find a Wall</NavLink>
           <NavLink to='/get-inspired' exact style={link} activeStyle={{background: '#f1f3f3'}}>Get Inspired</NavLink>
           <NavLink to='/learn' exact style={link} activeStyle={{background: '#f1f3f3'}}> Learn</NavLink>
           <NavLink to='/share' exact style={link} activeStyle={{background: '#f1f3f3'}}> Share </NavLink>
           <Menu.Menu position='right'>
-            <Dropdown item text={user.username} style={{color: '#44484b'}}>
+            <Dropdown item text={this.props.user.username} style={{color: '#44484b'}}>
               <Dropdown.Menu style={{backgroundColor: '#fac339'}}>
                 <Link to='/my-inspiration'>
                  <Dropdown.Item style={{color: '#44484b'}}>
-                  Favorite Arts
+                  Favorite Art
                 </Dropdown.Item>
                 </Link>
                 <Link to='/my-library'>

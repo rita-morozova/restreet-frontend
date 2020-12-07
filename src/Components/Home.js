@@ -2,6 +2,7 @@ import React from 'react'
 import {Container, Grid, Header, Image,  Segment} from 'semantic-ui-react'
 import '../styles/Home.css'
 import {Link} from 'react-router-dom'
+import Footer from './Footer'
 
 
 
@@ -47,7 +48,7 @@ const Home = ({user}) => {
                 size='medium'
                 src="https://images.unsplash.com/photo-1571657047939-d349fa7890f2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTkzfHxzdHJlZXQlMjBhcnR8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" />
                 </Link>
-                <Header as='h1' style={{color: 'white'}}>PAINT</Header>
+                <Header as='h1' style={{color: 'white'}}>GET INSPIRED</Header>
                 <p style={{fontSize: '14pt'}}>
                 It doesn’t matter if you are just starting out or you are already a pro, everyone can learn some new tricks from other artists. Check out our lesson selection and see if you find something you can fall in love with.
                 </p> 
@@ -65,7 +66,8 @@ const Home = ({user}) => {
              </Grid.Column>
           </Grid>
         </Segment>
-        </section>       
+        </section>  
+        <Footer />     
       </div>
     )
 
