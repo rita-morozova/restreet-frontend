@@ -53,9 +53,9 @@ class ArtInfo  extends React.Component {
           {this.renderPalette()}
           </div>
           <div className='art-info'>
-              <h1>{chosenArt.artist}</h1>
-              <h2>{chosenArt.name}</h2>
-              <h2>{chosenArt.year}</h2>
+              <h1 style={{fontWeight: 'bold'}}>{chosenArt.artist}</h1>
+              <h2 style={{fontStyle: 'italic'}}>{chosenArt.name}</h2>
+              <h3 style={{fontStyle: 'italic'}}>{chosenArt.year}</h3>
           </div>
       </div>
   </div> 

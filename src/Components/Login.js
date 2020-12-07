@@ -37,7 +37,7 @@ return (
   <div className='login-page'>
       <Grid textAlign='center' verticalAlign='middle'>
         <Grid.Column style={{maxWidth: 450}}>
-            <Header as='h2' textAlign='center' style={{color: '#FA396F'}}>
+            <Header as='h2' textAlign='center' style={{color: '#FA396F', marginTop: '20px'}}>
                 LOGIN
             </Header>
             <p>

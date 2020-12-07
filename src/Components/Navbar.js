@@ -8,7 +8,8 @@ const link = {
   padding: '12px',
   margin: '0 6px 6px',
   textDecoration: 'none',
-  color: 'black',
+  color: '#44484b',
+  fontSize: '14pt',
 }
 
 class Navbar extends React.Component{
@@ -45,25 +46,25 @@ class Navbar extends React.Component{
           <NavLink to='/learn' exact style={link} activeStyle={{background: '#f1f3f3'}}> Learn</NavLink>
           <NavLink to='/share' exact style={link} activeStyle={{background: '#f1f3f3'}}> Share </NavLink>
           <Menu.Menu position='right'>
-            <Dropdown item text={user.username} >
-              <Dropdown.Menu style={{backgroundColor: '#fac339'}} >
+            <Dropdown item text={user.username} style={{color: '#44484b'}}>
+              <Dropdown.Menu style={{backgroundColor: '#fac339'}}>
                 <Link to='/my-inspiration'>
-                 <Dropdown.Item >
+                 <Dropdown.Item style={{color: '#44484b'}}>
                   Favorite Arts
                 </Dropdown.Item>
                 </Link>
                 <Link to='/my-library'>
-                 <Dropdown.Item>
+                 <Dropdown.Item style={{color: '#44484b'}}>  
                   Library
                 </Dropdown.Item>
                 </Link>
                 <Link to='/my-listings'>
-                 <Dropdown.Item>
+                 <Dropdown.Item style={{color: '#44484b'}}>
                   Listings
                 </Dropdown.Item>
                 </Link>
                 <Link to='/profile'>
-                 <Dropdown.Item>
+                 <Dropdown.Item style={{color: '#44484b'}}>
                   Profile
                 </Dropdown.Item>
                 </Link>

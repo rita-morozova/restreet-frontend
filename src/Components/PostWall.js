@@ -30,7 +30,7 @@ const PostWall = ({position, user, handlePostWall}) => {
     return (
         <Grid>
             <div>
-                <h3>Add New Location</h3>
+                <h3 style={{color: '#44484b'}}>Add New Location</h3>
             <form  noValidate>
             <Grid container spacing={1} >
                 <Grid item xs={12} >

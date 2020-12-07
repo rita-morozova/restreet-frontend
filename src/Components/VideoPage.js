@@ -33,7 +33,7 @@ class VideoPage extends React.Component {
     return(
       <div className='video-page-main'> 
         <br />
-          <h2>{name}</h2>
+          <h2 style={{fontStyle: 'italic'}}>{name}</h2>
             <div className='box'>
                <div className='videoWrapper' style={{aspectRatio: '3/4'}}>
                   <ReactPlayer url={this.props.selectedVideo.url} 

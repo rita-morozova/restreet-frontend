@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import {Form, Button, Grid, Header, Segment} from 'semantic-ui-react'
+import '../styles/Form.css'
 
 
 const validEmailRegex = RegExp(
@@ -76,11 +77,10 @@ class Signup extends React.Component {
 render(){
   const{errors} =this.state
 return (
-    <div>
-      <br />
+    <div className='signup-page'>
       <Grid textAlign='center' verticalAlign='middle'>
           <Grid.Column style={{maxWidth: 450}}>
-              <Header as='h2' textAlign='center' style={{color: '#FA396F'}}>
+              <Header as='h2' textAlign='center' style={{color: '#FA396F', marginTop: '20px'}}>
                         SIGNUP
               </Header>        
     <Form className='signup-form' size='large' onSubmit={this.handleSubmit} noValidate > 
