@@ -9,7 +9,7 @@ const link = {
   margin: '0 6px 6px',
   textDecoration: 'none',
   color: '#44484b',
-  fontSize: '14pt',
+  fontSize: '12pt',
 }
 
 class Navbar extends React.Component{

@@ -73,7 +73,7 @@ class App extends React.Component {
       return <Signup handleSubmit={this.handleSignup} />
     }
   }
-  //Remove console.logs after testing
+ 
   handleLogin = (info) => {
     console.log('login')
     console.log(info)
@@ -81,7 +81,7 @@ class App extends React.Component {
   }
 
   handleSignup = (info) => {
-    console.log('sign up')
+    // console.log('sign up')
     this.handleSignupFetch(info,`${URL}/users`)
   }
 
@@ -109,7 +109,6 @@ class App extends React.Component {
       })
     })
     .catch(errors =>alert(errors))
-
   }
 
   handleSignupFetch = (info, request) => {  
@@ -366,7 +365,6 @@ class App extends React.Component {
       <Route exact path='/share' component={() => <PhotosContainer user={user}  />} />
       <Route component={NotFound} />
       </Switch>
-      {/* <Footer /> */}
     </div>
   );
   }

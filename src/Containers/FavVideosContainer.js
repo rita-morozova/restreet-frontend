@@ -16,7 +16,7 @@ class FavVideosContainer extends React.Component {
          :
         <> 
          <div className='favorites'>
-            <h1 >Your Library</h1>
+            <h1 style={{color: '#44484b'}}>Your Library</h1>
         <div className='list'>
            {this.props.videos.map(video => (
           <span key={video.id} className='videoCards'>

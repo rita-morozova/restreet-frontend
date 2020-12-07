@@ -34,12 +34,15 @@ class ArtInfo  extends React.Component {
   render(){
     const {chosenArt, goBackToAllArts, addToFavorites} = this.props
     return(
+    <div className='modal-art-info'>
+      <div className='inner-modal-art'>
      <div className='buttons'>
        <Button.Group>
         <Button  onClick={goBackToAllArts} color='yellow'>Back</Button>
         <Button.Or />
         <Button onClick={() => addToFavorites(chosenArt)} color='red' > <Icon color='white' name='heart'  size='large' /></Button>
         </Button.Group>
+       </div> 
       <div className='art-page'>
           <ColorExtractor getColors={this.getColors}>
               <img src={chosenArt.image_url} alt='art' /> 
@@ -53,6 +56,7 @@ class ArtInfo  extends React.Component {
               <h3 style={{fontStyle: 'italic'}}>{chosenArt.year}</h3>
           </div>
       </div>
+    </div>
   </div> 
     )
   }

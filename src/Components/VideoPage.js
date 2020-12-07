@@ -3,11 +3,13 @@ import ReactPlayer from 'react-player'
 import NotesContainer from '../Containers/NotesContainer'
 import '../styles/Video.css'
 import {Button} from 'semantic-ui-react'
+import Loader from './Loader'
 
 class VideoPage extends React.Component {
 
   state={
     showDescription: false,
+    loaded: false,
   }
 
   seeDescription = () =>{
@@ -28,6 +30,10 @@ class VideoPage extends React.Component {
     )
   }
 
+  successState = () => {
+    this.setState({loaded: !this.state.loaded})
+  }
+
   render(){
     const {name} = this.props.selectedVideo
     return(
@@ -36,15 +42,15 @@ class VideoPage extends React.Component {
           <h2 style={{fontStyle: 'italic'}}>{name}</h2>
             <div className='box'>
                <div className='videoWrapper' style={{aspectRatio: '3/4'}}>
+                 {!this.state.loaded ? <Loader /> : null}
                   <ReactPlayer url={this.props.selectedVideo.url} 
                     width='850px'
                     height='450px'
-                 // width='100%'
-                 // height='100%'
-                   max-width = '100%'
-                   controls={true}
-                   origin='http://localhost:3000'
-                   className='video-lesson'
+                    onReady={this.successState}
+                    max-width = '100%'
+                    controls={true}
+                    origin='http://localhost:3000'
+                    className='video-lesson'
                   />
               <div className='video-buttons'>
                  <Button onClick={this.props.goBackToAllVideos} style={{backgroundColor: '#3970fa', color: 'white'}} >Go Back To All Lessons</Button>

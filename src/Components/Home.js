@@ -12,7 +12,7 @@ const Home = ({user}) => {
     return(
       <div className='wrapper'>
         <section className='section parallax bg1'>
-          <h1 style={{fontSize: '80pt'}}>RE-STREET</h1>
+          <h1 style={{fontSize: '80pt',  textShadow: '5px 5px #e06084'}}>RE-STREET</h1>
         </section>
         <section className='section static'>
           <div className='text'>
@@ -37,9 +37,7 @@ const Home = ({user}) => {
                 </Link>
                 <Header as='h1' style={{color: 'white'}}>LEARN</Header>
                 <p style={{fontSize: '14pt'}}>
-                Artists are natural creators always trying out new things and developing new artforms. 
-                We put together an extensive collection of the modern art. Get inspired by famous artists 
-                and create your own mood boards.
+                It doesn’t matter if you are just starting out or you are already a pro, everyone can learn some new tricks from other artists. Check out our lesson selection and see if you find something you can fall in love with.
                 </p> 
             </Grid.Column> 
             <Grid.Column>
@@ -50,7 +48,9 @@ const Home = ({user}) => {
                 </Link>
                 <Header as='h1' style={{color: 'white'}}>GET INSPIRED</Header>
                 <p style={{fontSize: '14pt'}}>
-                It doesn’t matter if you are just starting out or you are already a pro, everyone can learn some new tricks from other artists. Check out our lesson selection and see if you find something you can fall in love with.
+                Artists are natural creators always trying out new things and developing new artforms. 
+                We put together an extensive collection of the modern art. Get inspired by famous artists 
+                and create your own mood board.
                 </p> 
              </Grid.Column>
             <Grid.Column>

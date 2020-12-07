@@ -2,19 +2,6 @@
   text-align: center;
 }
 
-.circle{
-  -webkit-border-radius:8px;
-  -moz-border-radius:8px;
-  border-radius:8px;
-  border:1px solid red;
-  width:18px;
-  height:18px;
-  background: red;
-}
-
-.circleText{
-  color: white;
-}
 
 .listingContainer{
   float: right;

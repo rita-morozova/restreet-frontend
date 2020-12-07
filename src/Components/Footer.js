@@ -1,4 +1,5 @@
 import React from 'react'
+import '../App.css'
 import {Segment, Icon, Grid} from 'semantic-ui-react'
 
 
