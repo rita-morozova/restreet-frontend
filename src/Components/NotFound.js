@@ -1,12 +1,13 @@
 import React from 'react'
 import {Container} from 'semantic-ui-react'
+import notFound from '../images/notFound.gif'
 
 
 const NotFound = () => {
   
   return(
     <Container textAlign='center'>
-      <h2>Sorry, This Page Is Not Found</h2>
+      <img src={notFound} style={{marginTop: '50px'}}alt='page not found' />
     </Container>
     )}
 

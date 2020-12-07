@@ -81,7 +81,7 @@ class UserProfile extends React.Component {
 
                              <Form.Input  fluid placeholder='Password' type='password' name='password' value={this.state.password} onChange={this.handleChange}/><br />
 
-                            {/* <Form.Input  fluid placeholder='Confirm Password' type='password' name='confirm-password' value={this.state.password} onChange={this.handleChange}/><br /> */}
+                            {/* <Form.Input  fluid placeholder='Confirm Password' type='password' name='confirmPassword' value={this.state.confirmPassword} onChange={this.handleChange}/><br /> */}
                 
                                 <Button style={{backgroundColor: '#FA396F', color: 'white'}} fluid size='large'>
                                     Update Profile

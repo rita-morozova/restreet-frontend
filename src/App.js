@@ -109,6 +109,7 @@ class App extends React.Component {
       })
     })
     .catch(errors =>alert(errors))
+
   }
 
   handleSignupFetch = (info, request) => {  
