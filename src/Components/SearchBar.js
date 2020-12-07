@@ -13,10 +13,11 @@ const SearchBar = ({panTo}) =>{
       radius: 2000
     }
   })
+  
 
   const handleInput = (e) => {
     setValue(e.target.value)
-};
+  }
 
 const handleSelect = async (address) => {
     setValue(address, false)

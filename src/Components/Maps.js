@@ -70,7 +70,7 @@ const Maps =({listings, user, handlePostWall})=> {
         <div>
           <br/>
           <div className='maps-name'>
-                <h2 style={{color: '#44484b'}}>Find a Legal Wall on the Map or Create Your Own Listing by Clicking On Your Location</h2>
+                <h2>Find a Legal Wall on the Map or Create Your Own Listing by Clicking On Your Location</h2>
           </div>
             <SearchBar panTo={panTo} />
             <Locate panTo={panTo} />     
