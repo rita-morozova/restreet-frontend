@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# _RE-STREET_
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+RE-STREET is an art-platform for street artists. Here artists can find locations of legal walls and email owners to reserve a wall for their future masterpiece. Also, if someone knows an available  walls location, they can share it with the community by placing a pin on the map. Users can get some inspiration by contemplating modern art. Each piece of art has a color palette showing the colors used to make it. Users can create their own moodboard by liking paintings from the gallery page. Users can watch video lessons, create notes while watching lessons and create their own library with favorited videos. Also, users can share their own art by uploading pictures and sharing them with the community. Users can also show some love to other artists by liking their photos.
 
-In the project directory, you can run:
+## [Server-side Repository](https://github.com/rita-morozova/final-backend)
 
-### `yarn start`
+## Getting Started
+Before setting up, make sure the rails server is running
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Clone this repo and cd into the restreet-frontend
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Run `npm install` to install all dependencies
+- Run `npm start` 
 
-### `yarn test`
+## Build with
+* React.js
+* Semantic UI
+* Rails API
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## Tools
+* Google Maps Javascript API
+* Google Places API
+* JSON Web Tokens
+* Cloudinary (photo uploads)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Created By _**Margarita Morozova**_
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Legal
+Copyright (c) 2020 Margarita Morozova.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

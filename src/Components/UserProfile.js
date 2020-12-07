@@ -68,7 +68,7 @@ class UserProfile extends React.Component {
             <Grid textAlign='center' verticalAlign='middle'>
                 <Grid.Column style={{maxWidth: 450}}>
                     <Header as='h2' textAlign='center' style={{color: 'white', marginTop: '20px'}}>
-                        <h2>Edit Your Profile</h2>
+                        Edit Your Profile
                     </Header>
                         <Form className='signup-form' onSubmit={(event) => this.handleSubmit(event)} size='large'>
                             <Segment stacked>

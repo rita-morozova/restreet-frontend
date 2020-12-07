@@ -15,8 +15,8 @@ const Home = ({user}) => {
           <h1 style={{fontSize: '80pt'}}>RE-STREET</h1>
         </section>
         <section className='section static'>
-          <div clasName='text'>
-          <h1>Our Mission: To Live in Painted Cities</h1>
+          <div className='text'>
+          <h1 style={{fontSize: '26pt'}}>Our Mission: To Live in Painted Cities</h1>
           <h1>RE-STREET brings a new experience into the street art world. We believe ethical artists should respect historical architecture and other people’s private property. 
             Check out our map and find ‘legal walls’ where you can create your next masterpiece with the consent of the owner. Do you know a wall location? Share it with the community. 
           </h1>

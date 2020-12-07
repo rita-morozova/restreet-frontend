@@ -33,11 +33,6 @@ class ArtInfo  extends React.Component {
   
   render(){
     const {chosenArt, goBackToAllArts, addToFavorites} = this.props
-    // const extra = (
-    //   <div onClick={() => addToFavorites(chosenArt)}>
-    //     <Icon color='red' name='heart'  size='large' />
-    //   </div>
-    // )
     return(
      <div className='buttons'>
        <Button.Group>

@@ -10,7 +10,7 @@ class FavArtContainer extends React.Component {
     return(
       <div>
         <br />
-        {!this.props.userArts.length > 0 ? <h2>You do not have any favorite arts yet</h2>
+        {!this.props.userArts.length > 0 ? <h2 style={{color: '#44484b'}}>You do not have any favorite art yet</h2>
         :
         <>
         <h1 >YOUR INSPIRATION</h1> 
