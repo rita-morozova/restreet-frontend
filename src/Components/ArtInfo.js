@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {Icon, Button} from 'semantic-ui-react'
 import {ColorExtractor} from 'react-color-extractor'
-import {Link} from 'react-router-dom'
 import '../styles/Arts.css'
 
 class ArtInfo  extends React.Component {
@@ -40,7 +39,7 @@ class ArtInfo  extends React.Component {
        <Button.Group>
         <Button  onClick={goBackToAllArts} color='yellow'>Back</Button>
         <Button.Or />
-        <Button onClick={() => addToFavorites(chosenArt)} color='red' > <Icon color='white' name='heart'  size='large' /></Button>
+        <Button onClick={() => addToFavorites(chosenArt)} color='red' > <Icon color='yellow' name='heart'  size='large' /></Button>
         </Button.Group>
        </div> 
       <div className='art-page'>
@@ -53,7 +52,7 @@ class ArtInfo  extends React.Component {
           <div className='art-info'>
               <h1 style={{fontWeight: 'bold'}}>{chosenArt.artist}</h1>
               <h2 style={{fontStyle: 'italic'}}>{chosenArt.name}</h2>
-              <h3 style={{fontStyle: 'italic'}}>{chosenArt.year}</h3>
+              <h3 style={{fontStyle: 'italic'}}>{chosenArt.year === 0 ? 'Unknown Year' : chosenArt.year}</h3>
           </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ const SearchBar = ({panTo}) =>{
   const{ready, value, suggestions: {status, data}, setValue, clearSuggestions} = usePlacesAutocomplete({
     requestOptions:{
       location: {lat: () => 47.6228, lng: () => -122.332112},
-      radius: 2000
+      radius: 2000,
     }
   })
   
@@ -32,7 +32,7 @@ const handleSelect = async (address) => {
     }
 
   return(
-    <div className='search'>
+    <div className='searchBar'>
         <Combobox onSelect={handleSelect}>
           <ComboboxInput value={value} onChange={handleInput} disabled={!ready} placeholder='Enter Address' />
               <ComboboxPopover>

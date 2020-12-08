@@ -1,5 +1,5 @@
 
-.search {
+.searchBar {
   position: relative;
   top: 4rem;
   left: 50%;
@@ -9,7 +9,7 @@
   z-index: 10;
 }
 
-.search input {
+.searchBar input {
   padding: 0.5rem;
   font-size: 1.5rem;
   width: 100%;

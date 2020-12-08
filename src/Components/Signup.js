@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import {Form, Button, Grid, Header, Segment} from 'semantic-ui-react'
+import {Form, Button, Grid, Header, Segment, Message} from 'semantic-ui-react'
 import '../styles/Form.css'
 
 
@@ -106,6 +106,9 @@ return (
         </Button> 
           </Segment>
       </Form>
+      <Message style={{color: '#FA396F'}}  > 
+        Already registered? <a style={{color: '#FA396F'}} href='/login'>Log In </a>
+      </Message>
             </Grid.Column>
        </Grid>
      </div>

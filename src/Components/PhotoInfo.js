@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react'
-import Grid from '@material-ui/core/Grid'
+import React from 'react'
 import {Icon} from 'semantic-ui-react'
 import TimeAgo from 'react-timeago'
 import '../styles/Photo.css'
+
 
 
 
@@ -82,7 +82,7 @@ class PhotoInfo extends React.Component {
  
   render(){
     const {chosenPhoto, seeAllPhotos, user, deletePhoto} = this.props
-   
+   debugger
     return(
       <div className='popup'>
         <div className='inner-popup' key={chosenPhoto.id}> 
@@ -96,8 +96,7 @@ class PhotoInfo extends React.Component {
           </div>
           <img src={chosenPhoto.image}  width={320} height={320}  alt='street art' />
           <h5><TimeAgo date={chosenPhoto.created_at}/></h5>
-            <h2> By: {chosenPhoto.username}</h2>
-          
+           <h2> By: {chosenPhoto.username}</h2>
           <h3>
           <Icon name='heart' color='red' key={chosenPhoto.id} onClick={() => this.handleLike(chosenPhoto)} disabled={this.state.disabledButton} />
           {this.state.photoLikes.length}

@@ -1,6 +1,4 @@
-import React, { Fragment } from 'react'
-import { useState } from 'react'
-import {Card, Icon} from 'semantic-ui-react'
+import React from 'react'
 
 
 class Photo extends React.Component {

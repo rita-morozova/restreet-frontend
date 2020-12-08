@@ -15,7 +15,7 @@ class FavoriteArtCard extends React.Component {
         <Card.Content>
           <Card.Header style={{float: 'left'}}>{art.artist}</Card.Header>
           <Card.Meta >
-            <span className='date' style={{float: 'right'}}>{art.year}</span>
+            <span className='date' style={{float: 'right'}}>{art.year === 0 ? 'Unknown Year' : art.year}</span>
           </Card.Meta>
         </Card.Content>
         <Card.Content extra >

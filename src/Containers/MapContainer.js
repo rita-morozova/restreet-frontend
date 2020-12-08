@@ -1,6 +1,5 @@
 import React from 'react'
 import Maps from '../Components/Maps'
-import ListingsContainer from './ListingsContainer'
 import '../styles/Maps.css'
 
 

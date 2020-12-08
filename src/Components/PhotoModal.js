@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Image, Modal, Icon } from 'semantic-ui-react'
+import { Button, Modal, Icon } from 'semantic-ui-react'
 import NewPhoto from './NewPhoto'
 
 const PhotoModal =({photos, user, handleUploadPhoto}) => {

@@ -33,12 +33,12 @@ return (
             <Header as='h2' textAlign='center' style={{color: '#FA396F', marginTop: '20px'}}>
                 LOGIN
             </Header>
-    <Form  size='large' onSubmit={this.handleSubmit}>
+    <Form  size='large' onSubmit={this.handleSubmit} >
       <Segment stacked>
           <Form.Input  fluid icon='user'  iconPosition='left' type='text' name='username' placeholder='Username' value={this.state.username} onChange={this.handleChange}/><br />
 
           <Form.Input fluid icon='lock' iconPosition='left' type='password' name='password' placeholder='Password' value={this.state.password} onChange={this.handleChange}/><br />
-            
+        
           <Button fluid size='large' style={{backgroundColor: '#FA396F', color: 'white'}} >
             Login
           </Button>    

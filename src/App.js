@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css';
-import {Route, Switch, withRouter, Redirect, Link} from 'react-router-dom'
+import {Route, Switch, withRouter, Redirect} from 'react-router-dom'
 import Login from './Components/Login'
 import Signup from './Components/Signup'
 import Navbar from './Components/Navbar'
@@ -14,11 +14,7 @@ import NotFound from './Components/NotFound'
 import MapContainer from './Containers/MapContainer'
 import PostWall from './Components/PostWall';
 import FavVideoContainer from './Containers/FavVideosContainer'
-import ArtPhotosContainer from './Containers/ArtPhotosContainer'
-import ArtCard from './Components/ArtCard'
 import PhotosContainer from './Containers/PhotosContainer'
-import Footer from './Components/Footer'
-
 
 
 
@@ -39,6 +35,7 @@ class App extends React.Component {
     adopted: false,
     playlist: [],
     currentUser: {},
+    errors: undefined
   }
 
   componentDidMount() {
@@ -86,7 +83,6 @@ class App extends React.Component {
   }
 
   handleAuthFetch = (info, request) => {  
-    this.setState({error: null})
     fetch(request, {
       method:'POST',
       headers:{
@@ -108,7 +104,8 @@ class App extends React.Component {
         this.props.history.push('/') 
       })
     })
-    .catch(errors =>alert(errors))
+  .catch(errors =>alert(errors))
+   
   }
 
   handleSignupFetch = (info, request) => {  

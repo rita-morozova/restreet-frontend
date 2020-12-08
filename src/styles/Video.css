@@ -8,24 +8,24 @@
 
 
 .standard {
-  border-radius: 15px;
+  /* border-radius: 15px; */
   margin-left: 30%;
   margin-right: 5%;
   margin-top: 25px;
   margin-bottom: 25px;
   padding-top: 3%;
   padding-bottom: 30px;
-  align-items: center;
-  /* margin: 30px auto;
-  border: 10px double #ddd; */
-  
+  align-items: center;  
+}
+
+.frame{
+  margin-bottom: 50px;
 }
 
 .box{
   float: left;
   width: 60%;
-  padding: 50px;
-  
+  padding: 50px; 
 }
 
 .videoWrapper{

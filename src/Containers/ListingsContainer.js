@@ -1,5 +1,4 @@
 import React from 'react'
-import WallListing from '../Components/WallListing'
 import '../App.css'
 
 class ListingsContainer extends React.Component {

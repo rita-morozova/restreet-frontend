@@ -1,6 +1,4 @@
 import React from 'react'
-import {Card, Icon} from 'semantic-ui-react'
-import NewPhoto from './NewPhoto' 
 import Photo from './Photo'
 import PhotoModal from './PhotoModal'
 import PhotoInfo from './PhotoInfo'

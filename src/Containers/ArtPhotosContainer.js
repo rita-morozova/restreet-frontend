@@ -1,7 +1,6 @@
 import React from 'react'
 import ArtCard from '../Components/ArtCard'
 import ArtContainer from './ArtContainer'
-import {Grid} from 'semantic-ui-react'
 import '../styles/Arts.css'
 
 const ArtPhotosContainer = ({arts, selectArt}) => {

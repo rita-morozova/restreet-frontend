@@ -1,6 +1,5 @@
 import React from 'react'
-import {Button, Card} from 'semantic-ui-react'
-import WallListing from './WallListing'
+import {Button} from 'semantic-ui-react'
 import '../styles/Listing.css'
 
 
@@ -21,7 +20,7 @@ class UserListings extends React.Component {
         <div className='all-listings'>
         {this.props.listings.map(wall => (
             <div key={wall.id} className='listing'>
-              <img className='listing-img' src={wall.photo}  alt='wall image'/>
+              <img className='listing-img' src={wall.photo}  alt='wall'/>
                 <div className='wall-info'> 
                     <h3>{wall.description}: {wall.address}, {wall.zipcode}</h3>
                </div>

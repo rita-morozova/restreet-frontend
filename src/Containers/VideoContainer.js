@@ -1,7 +1,7 @@
 import React from 'react'
 import Video from '../Components/Video'
-import {Grid} from 'semantic-ui-react'
 import '../styles/Video.css'
+
 
 const VideoContainer = ({videos, selectVideo, addToList}) => {
 

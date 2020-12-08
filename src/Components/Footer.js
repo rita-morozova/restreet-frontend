@@ -1,6 +1,6 @@
 import React from 'react'
 import '../App.css'
-import {Segment, Icon, Grid} from 'semantic-ui-react'
+import {Segment, Grid} from 'semantic-ui-react'
 
 
 const Footer = () => {

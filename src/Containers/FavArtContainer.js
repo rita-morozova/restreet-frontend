@@ -1,6 +1,5 @@
 import React from 'react'
 import FavoriteArtCard from '../Components/FavoriteArtCard'
-import {Grid} from 'semantic-ui-react'
 import '../styles/Arts.css'
 
 class FavArtContainer extends React.Component {

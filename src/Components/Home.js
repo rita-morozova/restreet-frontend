@@ -1,5 +1,5 @@
 import React from 'react'
-import {Container, Grid, Header, Image,  Segment} from 'semantic-ui-react'
+import { Grid, Header, Image,  Segment} from 'semantic-ui-react'
 import '../styles/Home.css'
 import {Link} from 'react-router-dom'
 import Footer from './Footer'

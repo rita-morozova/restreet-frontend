@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactPlayer from 'react-player'
-import VideoPage from '../Components/VideoPage'
 import {Button} from 'semantic-ui-react'
 import '../styles/Video.css'
 

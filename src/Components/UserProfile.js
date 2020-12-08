@@ -24,6 +24,7 @@ class UserProfile extends React.Component {
 
 
     render(){
+        console.log(this.props.user)
         return(
             <div>
                 <div className='user-container'>
@@ -32,12 +33,12 @@ class UserProfile extends React.Component {
                             <div className='row coralbg white'>
                                 <div className='col-md-6 no-pad'>
                                     <div className='user-pad'>
-                                        <h1>Welcome back, {this.props.user.name !=='' ? this.props.user.name : "Stranger"}</h1>
+                                        <h1>Welcome back, {this.props.user.name !== null  ? this.props.user.name : "Stranger"}</h1>
                                         <h3 className='white'>
-                                            {this.props.user.location !=='' ? this.props.user.location : "Mystery Land"}
+                                            {this.props.user.location !== null ? this.props.user.location : "From Mystery Land"}
                                         </h3>
                                         <h3 className='white'>
-                                            {this.props.user.bio !=='' ? this.props.user.bio : "Why don't you tell us about yourself?"}
+                                            {this.props.user.bio !== null ? this.props.user.bio : "Why don't you tell us about yourself?"}
                                         </h3>
                                      <Button onClick={()=> window.scrollTo('edit-profile', document.body.scrollHeight)} type='button' className='btn btn-labeled btn-info' style={{backgroundColor: '#46D8D2', color: 'white'}}>
                                             Update Profile
