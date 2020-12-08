@@ -22,9 +22,8 @@ Clone this repo and cd into the restreet-frontend
 
 ## Tools
 * Google Maps Javascript API
-* Google Places API
 * JSON Web Tokens
-* Cloudinary (photo uploads)
+* Cloudinary - a cloud-based image and video management service, is utilized to handle hosting of user generated images
 
 #### Created By _**Margarita Morozova**_
 
