@@ -44,8 +44,8 @@ class Signup extends React.Component {
     switch (name) {
       case 'username': 
         errors.username = 
-          value.length < 5
-            ? 'Username must be at least 5 characters long'
+          value.length < 4
+            ? 'Username must be at least 4 characters long'
             : '';
         break;
       case 'email': 

@@ -6,6 +6,8 @@ RE-STREET is an art-platform for street artists. Here artists can find locations
 
 #### [Server-side Repository](https://github.com/rita-morozova/final-backend)
 
+#### [Video Demo](https://www.youtube.com/watch?v=oPv08cnf1gM&feature=youtu.be)
+
 ## Getting Started
 Before setting up, make sure the rails server is running
 
@@ -27,6 +29,4 @@ Clone this repo and cd into the restreet-frontend
 
 #### Created By _**Margarita Morozova**_
 
-### Legal
-Copyright (c) 2020 Margarita Morozova
 

@@ -26,7 +26,7 @@ class UserListings extends React.Component {
                </div>
            <Button onClick={() => this.props.deleteListing(wall)} style={{backgroundColor: '#46D8D2', color: 'white'}}>Delete Listing</Button>
            {!wall.adopted ?
-           <Button onClick={()=>this.props.handleWallAdoption(wall)} style={{backgroundColor: '#FA396F', color: 'white'}}>Click if was adopted </Button>
+           <Button onClick={()=>this.props.handleWallAdoption(wall)} style={{backgroundColor: '#FA396F', color: 'white'}}>Click if was reserved </Button>
            :
            <Button onClick={()=>this.props.handleListAgain(wall)} style={{backgroundColor: '#46D8D2', color: 'white'}}>List again</Button>
            }   
