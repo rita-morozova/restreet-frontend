@@ -341,7 +341,6 @@ class App extends React.Component {
 
   render(){
     const {user, videos, listings} = this.state
-    // console.log(listings)
   return (
     <div className="App">
         <Navbar user={user} />
@@ -356,7 +355,6 @@ class App extends React.Component {
       <Route exact path='/my-library' component={() => <FavVideoContainer videos={user.videos} deleteFromList={this.deleteFromList}/>} />
       <Route exact path='/post-wall' component={() => <PostWall />} />
       <Route exact path='/get-inspired' component={() => <ArtContainer addToFavorites={this.addToFavorites} />} />
-      {/* <Route path='/get-inspired/:id' component={ArtCard} /> */}
       <Route exact path='/my-inspiration' component={() =><FavArtContainer userArts={user.arts} deleteFromFavorites={this.deleteFromFavorites}/>} />
       <Route exact path='/learn' component={() => <LearnContainer user={user} videos={videos} addToList={this.addToList} />} />
       <Route exact path='/share' component={() => <PhotosContainer user={user}  />} />

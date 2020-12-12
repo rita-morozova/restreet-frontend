@@ -10,7 +10,6 @@ const MapContainer = ({listings, user, handlePostWall}) => {
     return(
       <div className='maps-container'>      
         <Maps listings={listings} user={user} handlePostWall={handlePostWall} />
-        {/* <ListingsContainer listings={listings} /> */}
       </div>
     )
 }

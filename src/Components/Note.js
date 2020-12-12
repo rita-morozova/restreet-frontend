@@ -9,8 +9,6 @@ const Note = ({note, deleteNote}) => {
       <div className='note'>
         <Icon name='trash alternate outline' onClick={() => deleteNote(note)} style={{float: 'right'}}/>
           <p className='font'>{note.content}</p>
-          {/* <button onClick={() => deleteNote(note)}>X</button> */}
-        {/* {note.user_id === this.props.user.id ? <button onClick={props.deleteNote}>X</button> : null} */}
       </div>
     )
 }

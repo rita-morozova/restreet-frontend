@@ -52,7 +52,6 @@ class NotesContainer extends React.Component {
       })
       .then(resp => resp.json())
       .then(data => {
-        // console.log(data)
         this.setState({videoNotes: data.user.notes.filter(n => n.video_id ===video_id)})
       })    
   }
@@ -67,7 +66,6 @@ class NotesContainer extends React.Component {
     })
     .then(resp => resp.json())
     .then(data => {
-      // console.log(data)
       this.setState((prevState) => ({
        videoNotes: prevState.videoNotes.filter(n => n.id !== data.id)
       })
@@ -77,7 +75,6 @@ class NotesContainer extends React.Component {
 
 
   render(){
-    // console.log(this.state.videoNotes)
     const videoComments = this.state.videoNotes.filter(note => note.user_id === this.props.user.id)
     return(
       <div> 

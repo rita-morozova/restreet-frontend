@@ -33,7 +33,6 @@ import {Button} from 'semantic-ui-react'
         return (
             <div className='form'>
                 <form onSubmit={this.onSubmit} >
-                    {/* <label>Image Upload</label> */}
                     <input type='file' name='image' accept='image/*' onChange={this.onChange}/>
                     <input  type='hidden' name='username' value={this.state.username}  />
                     <input  type='hidden' name='likes' value='0'  />
