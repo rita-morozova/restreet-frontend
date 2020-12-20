@@ -19,8 +19,7 @@ import PhotosContainer from './Containers/PhotosContainer'
 
 
 const URL = 'http://localhost:3000'
-
-
+const token = localStorage.getItem('token')
 
 class App extends React.Component {
   
@@ -33,13 +32,16 @@ class App extends React.Component {
     favvideos: [],
     listings: [],
     adopted: false,
-    playlist: [],
-    currentUser: {},
-    errors: undefined
   }
 
   componentDidMount() {
-    let token = localStorage.getItem('token')
+    this.fetchUser()
+    this.fetchListings()
+    this.fetchVideos()
+  }
+
+  ////Find User Profile 
+  fetchUser = () => {
     if (token) {
       fetch(`${URL}/profile`, {
         headers: {
@@ -52,11 +54,17 @@ class App extends React.Component {
         this.setState({user: user.user})
       })
     }
+  }
 
+  //////Find All Listings to Display Them on the Map
+  fetchListings = () => {
     fetch(`${URL}/listings`)
     .then(resp => resp.json())
     .then( data => this.setState({listings: data}))
+  }
 
+  ///Find All Videos to Display Them in Learn Section 
+  fetchVideos = () => {
     fetch(`${URL}/videos`)
     .then(resp => resp.json())
     .then(data =>this.setState({videos: data}))
