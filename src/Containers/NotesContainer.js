@@ -17,7 +17,11 @@ class NotesContainer extends React.Component {
   }
 
   updateNotes = () => {
-    fetch('http://localhost:3000/notes')
+    fetch('http://localhost:3000/notes', {
+      headers: {
+        'Authorization': `Bearer ${this.props.token}`,
+      }
+    })
       .then(resp => resp.json())
       .then(data => {
         this.setState({
@@ -38,7 +42,6 @@ class NotesContainer extends React.Component {
   }
 
   postNote = () =>{
-    const userToken = localStorage.getItem('token')
     const video_id= this.props.video.id
     const user_id =this.props.user.id
       fetch('http://localhost:3000/notes', {
@@ -46,7 +49,7 @@ class NotesContainer extends React.Component {
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
-          'Authorization' : `Bearer ${userToken}`
+          'Authorization' : `Bearer ${this.props.token}`
         },
         body: JSON.stringify(({user_id: user_id, video_id: video_id, content: this.state.note}))
       })
@@ -58,11 +61,12 @@ class NotesContainer extends React.Component {
 
   
   deleteNote = (note) => {
-    console.log(note)
     let currentNote = this.state.videoNotes.filter(n => n.id ===note.id)[0]
-    console.log(currentNote)
     fetch(`http://localhost:3000/notes/${currentNote.id}`, {
-      method: 'DELETE'
+      method: 'DELETE', 
+      headers:{
+        'Authorization' : `Bearer ${this.props.token}`
+      }
     })
     .then(resp => resp.json())
     .then(data => {
@@ -92,8 +96,8 @@ class NotesContainer extends React.Component {
         <>
             <div className='notes-container'>
              {videoComments.map(note => (
-               <li>
-                  <Note key={note.id} note={note} user={this.props.user} deleteNote={this.deleteNote} />
+               <li key={note.id}>
+                  <Note note={note} user={this.props.user} deleteNote={this.deleteNote} />
                </li>
             ))}
             </div>

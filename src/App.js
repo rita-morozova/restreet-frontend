@@ -58,14 +58,22 @@ class App extends React.Component {
 
   //////Find All Listings to Display Them on the Map
   fetchListings = () => {
-    fetch(`${URL}/listings`)
+    fetch(`${URL}/listings`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      }
+    })
     .then(resp => resp.json())
     .then( data => this.setState({listings: data}))
   }
 
   ///Find All Videos to Display Them in Learn Section 
   fetchVideos = () => {
-    fetch(`${URL}/videos`)
+    fetch(`${URL}/videos`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      }
+    })
     .then(resp => resp.json())
     .then(data =>this.setState({videos: data}))
   }
@@ -80,8 +88,6 @@ class App extends React.Component {
   }
  
   handleLogin = (info) => {
-    console.log('login')
-    console.log(info)
     this.handleAuthFetch(info,`${URL}/login`)
   }
 
@@ -147,7 +153,8 @@ class App extends React.Component {
     fetch(`${URL}${route}`, {
         method: method,
         headers: {
-            'Content-Type':'application/json'
+            'Content-Type':'application/json',
+            'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(data)
     })
@@ -167,7 +174,10 @@ class App extends React.Component {
   //////// DELETE USER
   deleteUser = () => {
     fetch(`http://localhost:3000/users/${this.state.user.id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers:{
+        'Authorization' : `Bearer ${token}`
+      }
     })
     this.props.history.push('/')
     localStorage.clear()
@@ -177,12 +187,11 @@ class App extends React.Component {
 
   ////////////////////// Handle favorite arts
   addToFavorites = (art) => {
-    const userToken = localStorage.getItem('token')
     fetch(`${URL}/favorites`,{
       method:'POST',
       headers:{
         'Content-Type': 'application/json',
-        'Authorization' : `Bearer ${userToken}`
+        'Authorization' : `Bearer ${token}`
       },
       body: JSON.stringify(({art_id: art.id}))
     })
@@ -199,6 +208,7 @@ class App extends React.Component {
       method: 'DELETE',
       headers: {
         'Content-Type':'application/json',
+        'Authorization' : `Bearer ${token}`
       }
     })
     .then(resp => resp.json())
@@ -212,13 +222,11 @@ class App extends React.Component {
 
   /////////HANDLE VIDEOS
   addToList = (video) => {
-    const userToken = localStorage.getItem('token')
-  
     fetch('http://localhost:3000/favvideos',{
       method:'POST',
       headers:{
         'Content-Type': 'application/json',
-        'Authorization' : `Bearer ${userToken}`
+        'Authorization' : `Bearer ${token}`
       },
       body: JSON.stringify(({video_id: video.id}))
     })
@@ -237,6 +245,7 @@ class App extends React.Component {
         method: 'DELETE',
         headers: {
           'Content-Type':'application/json',
+          'Authorization' : `Bearer ${token}`
         }
       })
       .then(resp => resp.json())
@@ -253,13 +262,12 @@ class App extends React.Component {
     ///////////////////Handle Wall Listings
 
     handlePostWall = (listing) => {
-      const userToken = localStorage.getItem('token')
       fetch(`${URL}/listings`,{
         method:'POST',
         headers:{
           'Content-Type': 'application/json',
           'Accept': 'application/json',
-          'Authorization' : `Bearer ${userToken}`
+          'Authorization' : `Bearer ${token}`
         },
         body: JSON.stringify(({
           lat: listing.lat,
@@ -289,6 +297,7 @@ class App extends React.Component {
           method: 'DELETE',
           headers: {
             'Content-Type':'application/json',
+            'Authorization' : `Bearer ${token}`
           }
         })
         .then(resp => resp.json())
@@ -303,13 +312,12 @@ class App extends React.Component {
 
     /////////////IF THE WALL WAS RESERVED FOR AN ARTIST - TAKE THE OFFER OFF THE MAP
       handleWallAdoption =(wall) =>{
-        const userToken = localStorage.getItem('token')
         fetch(`${URL}/listings/${wall.id}`, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            'Authorization': `Bearer ${userToken}`
+            'Authorization': `Bearer ${token}`
           },
            body: JSON.stringify(({adopted: true }))
           })
@@ -325,13 +333,12 @@ class App extends React.Component {
     
       /////MAKE THE LISTING AVAILABLE FOR ARTISTS AGAIN
       handleListAgain =(wall) =>{
-        const userToken = localStorage.getItem('token')
         fetch(`${URL}/listings/${wall.id}`, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            'Authorization': `Bearer ${userToken}`
+            'Authorization': `Bearer ${token}`
           },
            body: JSON.stringify(({adopted: false }))
           })
@@ -362,10 +369,10 @@ class App extends React.Component {
       <Route exact path='/my-listings' component={() => <UserListings listings={listings.filter(l => l.user_id === user.id)} deleteListing={this.deleteListing} handleWallAdoption={this.handleWallAdoption} handleListAgain={this.handleListAgain}/>} />
       <Route exact path='/my-library' component={() => <FavVideoContainer videos={user.videos} deleteFromList={this.deleteFromList}/>} />
       <Route exact path='/post-wall' component={() => <PostWall />} />
-      <Route exact path='/get-inspired' component={() => <ArtContainer addToFavorites={this.addToFavorites} />} />
+      <Route exact path='/get-inspired' component={() => <ArtContainer addToFavorites={this.addToFavorites} token={token}/>} />
       <Route exact path='/my-inspiration' component={() =><FavArtContainer userArts={user.arts} deleteFromFavorites={this.deleteFromFavorites}/>} />
-      <Route exact path='/learn' component={() => <LearnContainer user={user} videos={videos} addToList={this.addToList} />} />
-      <Route exact path='/share' component={() => <PhotosContainer user={user}  />} />
+      <Route exact path='/learn' component={() => <LearnContainer user={user} videos={videos} addToList={this.addToList} token={token} />} />
+      <Route exact path='/share' component={() => <PhotosContainer user={user} token={token} />} />
       <Route component={NotFound} />
       </Switch>
     </div>

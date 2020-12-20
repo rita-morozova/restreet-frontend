@@ -5,7 +5,7 @@ import PhotoInfo from './PhotoInfo'
 import '../styles/Photo.css'
 
 
-const PhotosGrid = ({photos, user, handleUploadPhoto, handleLike, chosenPhoto, selectPhoto, seeAllPhotos, deletePhoto}) => {
+const PhotosGrid = ({photos, user, handleUploadPhoto, handleLike, chosenPhoto, selectPhoto, seeAllPhotos, deletePhoto, token}) => {
 
 
   return(
@@ -13,7 +13,7 @@ const PhotosGrid = ({photos, user, handleUploadPhoto, handleLike, chosenPhoto, s
         <br />
         <PhotoModal photos={photos} user={user} handleUploadPhoto={handleUploadPhoto} />
         {chosenPhoto ?
-        <PhotoInfo chosenPhoto={chosenPhoto} seeAllPhotos={seeAllPhotos} user={user} handleLike={handleLike} deletePhoto={deletePhoto}/>
+        <PhotoInfo chosenPhoto={chosenPhoto} seeAllPhotos={seeAllPhotos} user={user} handleLike={handleLike} deletePhoto={deletePhoto} token={token}/>
         :
         <>
         <div className='gallery'>    

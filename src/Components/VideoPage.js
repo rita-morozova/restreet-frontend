@@ -60,7 +60,7 @@ class VideoPage extends React.Component {
            {this.state.showDescription && this.renderDescription()}
             </div>
         </div>
-        <NotesContainer video={this.props.selectedVideo} user={this.props.user}/>
+        <NotesContainer video={this.props.selectedVideo} user={this.props.user} token={this.props.token}/>
       </div>
     )
   }

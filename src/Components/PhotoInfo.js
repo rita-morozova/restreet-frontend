@@ -16,7 +16,11 @@ class PhotoInfo extends React.Component {
   }
 
   componentDidMount = () => {
-    fetch('http://localhost:3000/likes')
+    fetch('http://localhost:3000/likes', {
+      headers: {
+        'Authorization': `Bearer ${this.props.token}`,
+      }
+    })
     .then(resp => resp.json())
     .then(data => {
       console.log(data)
@@ -29,13 +33,12 @@ class PhotoInfo extends React.Component {
 
 
  handleLike = (chosenPhoto) => {
-  const userToken = localStorage.getItem('token')
   fetch('http://localhost:3000/likes', {
       method: 'POST',
       headers: {
               "Content-Type": "application/json",
               "Accept": "application/json",
-              "Authorization": `Bearer ${userToken}`
+              "Authorization": `Bearer ${this.props.token}`
             },
             body: JSON.stringify(({photo_id: chosenPhoto.id, user_id: this.props.user.id}))
     })

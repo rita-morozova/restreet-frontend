@@ -14,7 +14,11 @@ class ArtContainer extends React.Component{
   }
 
   componentDidMount(){
-    fetch('http://localhost:3000/arts')
+    fetch('http://localhost:3000/arts', {
+      headers: {
+        'Authorization': `Bearer ${this.props.token}`,
+      }
+    })
     .then(resp => resp.json())
     .then(data => {
       this.setState({
