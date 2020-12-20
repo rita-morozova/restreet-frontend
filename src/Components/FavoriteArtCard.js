@@ -1,13 +1,8 @@
 import React from 'react'
 import {Card, Image, Icon} from 'semantic-ui-react'
 
-class FavoriteArtCard extends React.Component {
+const FavoriteArtCard = ({art, deleteFromFavorites}) => {
 
-  
-  render(){
-    const {art, deleteFromFavorites} = this.props
-
-    
     return(
       <div key={art.id} className='fav-masonry-item'>
       <Card> 
@@ -24,7 +19,7 @@ class FavoriteArtCard extends React.Component {
       </Card>
   </div>
     )
-  }
 }
+
 
 export default FavoriteArtCard

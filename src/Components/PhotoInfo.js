@@ -82,7 +82,6 @@ class PhotoInfo extends React.Component {
  
   render(){
     const {chosenPhoto, seeAllPhotos, user, deletePhoto} = this.props
-   debugger
     return(
       <div className='popup'>
         <div className='inner-popup' key={chosenPhoto.id}> 

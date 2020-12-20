@@ -2,25 +2,22 @@ import React from 'react'
 import FavoriteArtCard from '../Components/FavoriteArtCard'
 import '../styles/Arts.css'
 
-class FavArtContainer extends React.Component {
+const FavArtContainer = ({userArts, deleteFromFavorites}) => {
   
-
-  render(){
     return(
       <div>
         <br />
-        {!this.props.userArts.length > 0 ? <h2 style={{color: '#44484b'}}>You do not have any favorite art yet</h2>
+        {!userArts.length > 0 ? <h2 style={{color: '#44484b'}}>You do not have any favorite art yet</h2>
         :
         <>
         <h1 style={{color: '#44484b'}}>YOUR INSPIRATION</h1> 
           <div className='fav-arts'>
-                {this.props.userArts.map(art => <FavoriteArtCard key={art.id} art={art} deleteFromFavorites={this.props.deleteFromFavorites} selectArt={this.selectArt}/>)}  
+                {userArts.map(art => <FavoriteArtCard key={art.id} art={art} deleteFromFavorites={deleteFromFavorites}/>)}  
           </div> 
         </>
          }
       </div>
     )
-  }
 }
 
 export default FavArtContainer

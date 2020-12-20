@@ -1,24 +1,21 @@
 import React from 'react'
 
 
-class Photo extends React.Component {
+const Photo = ({photo, selectPhoto}) => {
 
 
-  handleClick = () => {
-    this.props.selectPhoto(this.props.photo)
+  const handleClick = () => {
+    selectPhoto(photo)
   }
-
-  render(){
-    const{photo} = this.props
   
     return(
       <div >
         <div key={photo.id}> 
-          <img src={photo.image}  width={300} height={300}  alt='art' onClick={this.handleClick}/>
+          <img src={photo.image}  width={300} height={300}  alt='art' onClick={handleClick}/>
           </div>
       </div>
     )
-  }
+
 }
 
 export default Photo

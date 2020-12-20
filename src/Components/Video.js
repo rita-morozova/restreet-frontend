@@ -4,13 +4,10 @@ import {Button} from 'semantic-ui-react'
 import  '../styles/Video.css'
 
 
-class Video extends React.Component {
-
-  render(){
-    const {video} = this.props 
+const Video = ({video, selectVideo}) => {
 
     const handleClick = () =>{
-      this.props.selectVideo(video.id)
+      selectVideo(video.id)
     }
 
     return(
@@ -30,7 +27,6 @@ class Video extends React.Component {
         </div>
       </div>  
     )
-  }
 }
 
 export default Video
