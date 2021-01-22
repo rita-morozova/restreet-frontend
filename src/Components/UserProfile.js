@@ -153,6 +153,11 @@ class UserProfile extends React.Component {
                     style={{ backgroundColor: "#FA396F", color: "white" }}
                     fluid
                     size="large"
+                    onClick={() =>
+                      window.scrollTo(
+                        "white",
+                        document.body.scrollTop                      )
+                    }
                   >
                     Update Profile
                   </Button>
