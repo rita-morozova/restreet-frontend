@@ -1,11 +1,9 @@
-
-.library{
+.library {
   background-color: rgba(255, 255, 255, 0.596);
   height: 60px;
   border-radius: 10px;
   padding: 10px;
 }
-
 
 .standard {
   /* border-radius: 15px; */
@@ -15,26 +13,26 @@
   margin-bottom: 25px;
   padding-top: 3%;
   padding-bottom: 30px;
-  align-items: center;  
+  align-items: center;
 }
 
-.frame{
+.frame {
   margin-bottom: 50px;
 }
 
-.box{
+.box {
   float: left;
   width: 60%;
-  padding: 50px; 
+  padding: 50px;
 }
 
-.videoWrapper{
+.videoWrapper {
   position: relative;
   padding-bottom: 56.25%;
   height: 0;
 }
 
-.videoWrapper ReactPlayer{
+.videoWrapper ReactPlayer {
   position: absolute;
   top: 0;
   left: 0;
@@ -42,13 +40,13 @@
   height: 100%;
 }
 
-.video-buttons{
+.video-buttons {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
 
-.description{
+.description {
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 10px;
   width: 100%;
@@ -63,7 +61,7 @@
   overflow-y: auto;
 }
 
-.favorites{
+.favorites {
   border-radius: 15px;
   margin-left: 5%;
   margin-right: 5%;
@@ -73,13 +71,13 @@
   padding-bottom: 30px;
 }
 
-.list{
+.list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.videoCards{
+.videoCards {
   padding-top: 15px;
   margin-bottom: 15px;
   padding-left: 25px;
@@ -88,8 +86,8 @@
   max-width: 350px;
 }
 
-.favorites-main{
-  background-image: url('https://res.cloudinary.com/diexi8g0j/image/upload/v1607290237/brick-wall1_z9u0mm.jpg');
+.favorites-main {
+  background-image: url("https://res.cloudinary.com/diexi8g0j/image/upload/v1607290237/brick-wall1_z9u0mm.jpg");
   /* margin-top: 0px; */
   height: 100vh;
   overflow-x: hidden;
@@ -97,8 +95,8 @@
   perspective: 2px;
 }
 
-.empty-library{
-  background-color: rgba(255,255,255, 0.5);
+.empty-library {
+  background-color: rgba(255, 255, 255, 0.5);
   margin-top: 20px;
   width: 50%;
   height: 50vh;
@@ -108,19 +106,18 @@
   line-height: 50vh;
 }
 
-.learn-container{
-  background-image: url('https://images.unsplash.com/photo-1531685250784-7569952593d2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80');
+.learn-container {
+  background-image: url("https://images.unsplash.com/photo-1531685250784-7569952593d2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80");
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
   perspective: 2px;
 }
 
-.video-page-main{
-  background-image: url('https://res.cloudinary.com/diexi8g0j/image/upload/v1607290237/brick-wall1_z9u0mm.jpg');
+.video-page-main {
+  background-image: url("https://res.cloudinary.com/diexi8g0j/image/upload/v1607290237/brick-wall1_z9u0mm.jpg");
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
   perspective: 2px;
 }
-

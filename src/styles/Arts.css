@@ -1,47 +1,45 @@
-.fav-arts{
+.fav-arts {
   margin-top: 50px;
   margin-left: 60px;
   column-count: 3;
-  column-gap: 15px; 
+  column-gap: 15px;
 }
 
-.all-arts{
+.all-arts {
   margin-top: 50px;
   margin-left: 80px;
 }
 
-.art-page{
+.art-page {
   margin-top: 50px;
 }
 
-.art-info{
+.art-info {
   margin-top: 50px;
 }
 
-.all-arts{
+.all-arts {
   column-count: 3;
-  column-gap: 15px;  
+  column-gap: 15px;
 }
 
 .masonry-item {
   display: inline-block;
   width: 100%;
- }
- 
- .masonry-item Image{
-  display:block;
+}
+
+.masonry-item Image {
+  display: block;
   width: 100%;
- }
+}
 
- .buttons{
-   margin-top: 20px;
-   margin-bottom: 10px;
- }
+.buttons {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
 
- .fav-masonry-item{
+.fav-masonry-item {
   display: inline-block;
   width: 100%;
   margin-top: 15px;
- }
-
-
+}

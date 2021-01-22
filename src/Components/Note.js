@@ -1,16 +1,18 @@
-import React from 'react'
-import '../styles/Notes.css'
-import {Icon} from 'semantic-ui-react'
+import React from "react";
+import "../styles/Notes.css";
+import { Icon } from "semantic-ui-react";
 
-const Note = ({note, deleteNote}) => {
+const Note = ({ note, deleteNote }) => {
+  return (
+    <div className="note">
+      <Icon
+        name="trash alternate outline"
+        onClick={() => deleteNote(note)}
+        style={{ float: "right" }}
+      />
+      <p className="font">{note.content}</p>
+    </div>
+  );
+};
 
- 
-    return(
-      <div className='note'>
-        <Icon name='trash alternate outline' onClick={() => deleteNote(note)} style={{float: 'right'}}/>
-          <p className='font'>{note.content}</p>
-      </div>
-    )
-}
-
-export default Note
+export default Note;

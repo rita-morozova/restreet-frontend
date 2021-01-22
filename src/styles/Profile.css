@@ -1,48 +1,48 @@
-.edit-form{
-  background-color: #46D8D2;
+.edit-form {
+  background-color: #46d8d2;
 }
 
-.white-font{
+.white-font {
   color: white;
 }
 
-.square, .btn {
-  border-radius: 0px!important;
+.square,
+.btn {
+  border-radius: 0px !important;
 }
 
 /* -- color classes -- */
 .coralbg {
-  background-color: #FA396F;
-} 
+  background-color: #fa396f;
+}
 
 .coral {
-  color: #FA396f;
+  color: #fa396f;
 }
 
 .turqbg {
-  background-color: #46D8D2;
+  background-color: #46d8d2;
   /* background-color: #51a5ff; */
   /* background-color: #3970fa; */
 }
 
 .turq {
-  color: #46D8D2;
+  color: #46d8d2;
 }
 
 .white {
-  color: #fff!important;
+  color: #fff !important;
 }
 
-
 div.user-menu-container {
-z-index: 10;
-background-color: #fff;
-/* margin-top: 20px; */
-background-clip: padding-box;
-opacity: 0.97;
-filter: alpha(opacity=97);
--webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  z-index: 10;
+  background-color: #fff;
+  /* margin-top: 20px; */
+  background-clip: padding-box;
+  opacity: 0.97;
+  filter: alpha(opacity=97);
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
 }
 
 div.user-menu-container .btn-lg {
@@ -54,21 +54,31 @@ div.user-menu-container h4 {
   color: #8b8b8b;
 }
 
-div.user-menu-container a, div.user-menu-container .btn  {
+div.user-menu-container a,
+div.user-menu-container .btn {
   transition: 1s ease;
 }
 
 div.user-menu-container .thumbnail {
- width:100%;
- min-height:200px;
- border: 0px!important;
- padding: 0px;
- border-radius: 0;
- border: 0px!important;
+  width: 100%;
+  min-height: 200px;
+  border: 0px !important;
+  padding: 0px;
+  border-radius: 0;
+  border: 0px !important;
 }
 
-.btn-label {position: relative;left: -12px;display: inline-block;padding: 6px 12px;border-radius: 3px 0 0 3px;}
-.btn-labeled {padding-top: 0;padding-bottom: 0;}
+.btn-label {
+  position: relative;
+  left: -12px;
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 3px 0 0 3px;
+}
+.btn-labeled {
+  padding-top: 0;
+  padding-bottom: 0;
+}
 
 .user-pad {
   padding: 20px 25px;
@@ -86,8 +96,8 @@ div.user-menu-container .thumbnail {
 }
 
 .user-image {
-max-height: 550px;
-overflow:hidden;
+  max-height: 550px;
+  overflow: hidden;
 }
 
 .overview h3 {
@@ -97,9 +107,7 @@ overflow:hidden;
 }
 
 .overview h4 {
-  font-weight: bold!important;
+  font-weight: bold !important;
   font-size: 40px;
   margin-top: 0;
 }
-
-

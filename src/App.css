@@ -2,12 +2,10 @@
   text-align: center;
 }
 
-
-.listingContainer{
+.listingContainer {
   float: right;
 }
 
-.was-validated .form-control:valid~.invalid-feedback {
+.was-validated .form-control:valid ~ .invalid-feedback {
   display: none;
 }
-
