@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Button, Grid, Header, Segment } from "semantic-ui-react";
+import { Form, Button, Grid, Header, Segment, Message } from "semantic-ui-react";
 import "../styles/Profile.css";
 import { Link } from "react-router-dom";
 
@@ -68,6 +68,7 @@ class UserProfile extends React.Component {
                     <img
                       src="https://images.unsplash.com/photo-1511769592469-ff66aff85026?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=667&q=80"
                       className="img-responsive thumbnail"
+                      alt='art'
                     />
                   </div>
                 </div>
@@ -148,8 +149,6 @@ class UserProfile extends React.Component {
                   />
                   <br />
 
-                  {/* <Form.Input  fluid placeholder='Confirm Password' type='password' name='confirmPassword' value={this.state.confirmPassword} onChange={this.handleChange}/><br /> */}
-
                   <Button
                     style={{ backgroundColor: "#FA396F", color: "white" }}
                     fluid
@@ -158,16 +157,11 @@ class UserProfile extends React.Component {
                     Update Profile
                   </Button>
                   <br />
-                  <Button
-                    style={{ backgroundColor: "#FA396F", color: "white" }}
-                    fluid
-                    size="large"
-                    onClick={this.props.deleteUser}
-                  >
-                    Delete Profile
-                  </Button>
                 </Segment>
               </Form>
+              <Message style={{ color: "#FA396F" }}>
+              <div onClick={this.props.deleteUser}> Delete My Profile</div>
+            </Message>
             </Grid.Column>
           </Grid>
         </div>
