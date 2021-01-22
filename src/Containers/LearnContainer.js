@@ -25,6 +25,7 @@ class LearnContainer extends React.Component {
       <div>
         {this.state.selectedVideo ? (
           <VideoPage
+            key={this.state.selectedVideo.id}
             selectedVideo={this.state.selectedVideo}
             user={this.props.user}
             goBackToAllVideos={this.goBackToAllVideos}

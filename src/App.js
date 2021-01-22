@@ -88,7 +88,6 @@ class App extends React.Component {
   };
 
   handleSignup = (info) => {
-    // console.log('sign up')
     this.handleSignupFetch(info, `${URL}/users`);
   };
 

@@ -21,7 +21,7 @@ const Locate = ({ panTo }) => {
       <Popup
         content="Locate Me"
         trigger={<Icon name="compass" color="pink" size="big" />}
-      />
+      /> 
     </button>
   );
 };

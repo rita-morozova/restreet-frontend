@@ -3,10 +3,14 @@ import ReactPlayer from "react-player";
 import { Button } from "semantic-ui-react";
 import "../styles/Video.css";
 
+
+
 const FavVideosContainer = ({ videos, deleteFromList }) => {
+
+ 
   return (
     <div className="favorites-main" style={{ marginTop: "0px" }}>
-      {videos.length === 0 ? (
+      {undefined ===videos || videos.length === 0 ? (
         <h2 className="empty-library">Your Library Is Empty</h2>
       ) : (
         <>
@@ -29,11 +33,6 @@ const FavVideosContainer = ({ videos, deleteFromList }) => {
                     onClick={() => deleteFromList(video)}
                   >
                     Delete
-                  </Button>
-                  <Button
-                    style={{ backgroundColor: "#3970fa", color: "white" }}
-                  >
-                    See the lesson
                   </Button>
                 </span>
               ))}
