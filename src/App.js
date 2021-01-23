@@ -28,6 +28,7 @@ class App extends React.Component {
     favvideos: [],
     listings: [],
     adopted: false,
+    selectedVideo: null,
   };
 
   componentDidMount() {
@@ -366,8 +367,20 @@ class App extends React.Component {
     this.props.history.push("find-a-wall");
   };
 
+  selectVideo = (id) => {
+    this.setState({
+      selectedVideo: this.state.videos.find((video) => video.id === id),
+    });
+  };
+
+  goBackToAllVideos = () => {
+    this.setState({
+      selectedVideo: null,
+    });
+  };
+
   render() {
-    const { user, videos, listings } = this.state;
+    const { user, videos, listings, selectedVideo } = this.state;
 
     return (
       <div className="App">
@@ -418,6 +431,12 @@ class App extends React.Component {
               <FavVideoContainer
                 videos={user.videos}
                 deleteFromList={this.deleteFromList}
+                selectedVideo={selectedVideo}
+                selectVideo={this.selectVideo}
+                goBackToAllVideos={this.goBackToAllVideos}
+                addToList={this.addToList}
+                user={user}
+                token={token}
               />
             )}
           />
@@ -451,6 +470,9 @@ class App extends React.Component {
                 videos={videos}
                 addToList={this.addToList}
                 token={token}
+                selectedVideo={selectedVideo}
+                selectVideo={this.selectVideo}
+                goBackToAllVideos={this.goBackToAllVideos}
               />
             )}
           />

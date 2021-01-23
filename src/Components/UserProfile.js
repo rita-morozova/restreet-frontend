@@ -1,5 +1,12 @@
 import React from "react";
-import { Form, Button, Grid, Header, Segment, Message } from "semantic-ui-react";
+import {
+  Form,
+  Button,
+  Grid,
+  Header,
+  Segment,
+  Message,
+} from "semantic-ui-react";
 import "../styles/Profile.css";
 import { Link } from "react-router-dom";
 
@@ -68,7 +75,7 @@ class UserProfile extends React.Component {
                     <img
                       src="https://images.unsplash.com/photo-1511769592469-ff66aff85026?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=667&q=80"
                       className="img-responsive thumbnail"
-                      alt='art'
+                      alt="art"
                     />
                   </div>
                 </div>
@@ -154,9 +161,7 @@ class UserProfile extends React.Component {
                     fluid
                     size="large"
                     onClick={() =>
-                      window.scrollTo(
-                        "white",
-                        document.body.scrollTop                      )
+                      window.scrollTo("white", document.body.scrollTop)
                     }
                   >
                     Update Profile
@@ -165,8 +170,8 @@ class UserProfile extends React.Component {
                 </Segment>
               </Form>
               <Message style={{ color: "#FA396F" }}>
-              <div onClick={this.props.deleteUser}> Delete My Profile</div>
-            </Message>
+                <div onClick={this.props.deleteUser}> Delete My Profile</div>
+              </Message>
             </Grid.Column>
           </Grid>
         </div>

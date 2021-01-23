@@ -3,39 +3,30 @@ import VideoContainer from "./VideoContainer";
 import VideoPage from "../Components/VideoPage";
 
 class LearnContainer extends React.Component {
-  state = {
-    selectedVideo: null,
-  };
-
-  selectVideo = (id) => {
-    this.setState({
-      selectedVideo: this.props.videos.find((video) => video.id === id),
-    });
-  };
-
-  goBackToAllVideos = () => {
-    this.setState({
-      selectedVideo: null,
-    });
-  };
-
   render() {
-    const { videos, addToList, token } = this.props;
+    const {
+      videos,
+      addToList,
+      token,
+      selectedVideo,
+      selectVideo,
+      goBackToAllVideos,
+    } = this.props;
     return (
       <div>
-        {this.state.selectedVideo ? (
+        {selectedVideo ? (
           <VideoPage
-            key={this.state.selectedVideo.id}
-            selectedVideo={this.state.selectedVideo}
+            key={selectedVideo.id}
+            selectedVideo={selectedVideo}
             user={this.props.user}
-            goBackToAllVideos={this.goBackToAllVideos}
+            goBackToAllVideos={goBackToAllVideos}
             addToList={addToList}
             token={token}
           />
         ) : (
           <VideoContainer
             videos={videos}
-            selectVideo={this.selectVideo}
+            selectVideo={selectVideo}
             addToList={addToList}
           />
         )}

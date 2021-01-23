@@ -11,7 +11,7 @@ const UserListings = ({
   return (
     <div className="user-listings-main">
       <br />
-      {!listings.length > 0 ? (
+      {undefined === listings || !listings.length > 0 ? (
         <h2 className="empty-container">You do not have any listings yet</h2>
       ) : (
         <>
