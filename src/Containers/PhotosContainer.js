@@ -15,9 +15,10 @@ class PhotosContainer extends React.Component {
   };
 
   getPhotos = () => {
+    let token = localStorage.getItem("token");
     fetch("http://localhost:3000/photos", {
       headers: {
-        Authorization: `Bearer ${this.props.token}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((resp) => resp.json())
@@ -33,10 +34,11 @@ class PhotosContainer extends React.Component {
   }
 
   handleUploadPhoto = (formData) => {
+    let token = localStorage.getItem("token");
     fetch("http://localhost:3000/photos", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${this.props.token}`,
+        Authorization: `Bearer ${token}`,
       },
       body: formData,
     })
@@ -53,10 +55,11 @@ class PhotosContainer extends React.Component {
   };
 
   deletePhoto = (photo) => {
+    let token = localStorage.getItem("token");
     fetch(`http://localhost:3000/photos/${photo.id}`, {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${this.props.token}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((resp) => resp.json())
@@ -79,7 +82,7 @@ class PhotosContainer extends React.Component {
   };
 
   render() {
-    const { user, token } = this.props;
+    const { user } = this.props;
     return (
       <div>
         <PhotosGrid
@@ -90,7 +93,6 @@ class PhotosContainer extends React.Component {
           chosenPhoto={this.state.chosenPhoto}
           seeAllPhotos={this.seeAllPhotos}
           deletePhoto={this.deletePhoto}
-          token={token}
         />
       </div>
     );

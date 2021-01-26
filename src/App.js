@@ -254,7 +254,6 @@ class App extends React.Component {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        // console.log(data)
         this.setState((prevState) => ({
           user: {
             ...prevState.user,
@@ -291,7 +290,6 @@ class App extends React.Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data)
         this.setState((prevState) => ({
           listings: [...prevState.listings, data],
         }));
@@ -381,7 +379,6 @@ class App extends React.Component {
 
   render() {
     const { user, videos, listings, selectedVideo } = this.state;
-
     return (
       <div className="App">
         <Navbar user={user} />
@@ -479,7 +476,7 @@ class App extends React.Component {
           <Route
             exact
             path="/share"
-            component={() => <PhotosContainer user={user} token={token} />}
+            component={() => <PhotosContainer user={user} />}
           />
           <Route component={NotFound} />
         </Switch>

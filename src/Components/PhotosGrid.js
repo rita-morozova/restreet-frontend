@@ -35,14 +35,15 @@ const PhotosGrid = ({
       ) : (
         <>
           <div className="gallery">
-            {photos.map((photo) => (
-              <Photo
-                key={photo.id}
-                photo={photo}
-                user={user}
-                selectPhoto={selectPhoto}
-              />
-            ))}
+            {photos.length > 0 &&
+              photos.map((photo) => (
+                <Photo
+                  key={photo.id}
+                  photo={photo}
+                  user={user}
+                  selectPhoto={selectPhoto}
+                />
+              ))}
           </div>
         </>
       )}

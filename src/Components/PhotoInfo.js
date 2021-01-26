@@ -12,9 +12,10 @@ class PhotoInfo extends React.Component {
   };
 
   componentDidMount = () => {
+    let token = localStorage.getItem("token");
     fetch("http://localhost:3000/likes", {
       headers: {
-        Authorization: `Bearer ${this.props.token}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((resp) => resp.json())
@@ -30,12 +31,13 @@ class PhotoInfo extends React.Component {
   };
 
   handleLike = (chosenPhoto) => {
+    let token = localStorage.getItem("token");
     fetch("http://localhost:3000/likes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${this.props.token}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         photo_id: chosenPhoto.id,
@@ -50,35 +52,6 @@ class PhotoInfo extends React.Component {
         }));
       });
   };
-
-  // handleDeleteLike = (chosenPhoto) =>{
-  //   const like = this.state.likes.find(like => like.photo_id === chosenPhoto.id)
-  //   fetch(`http://localhost:3000/likes/${like.id}`,{
-  //     method: 'DELETE',
-  //     headers: {
-  //       'Content-Type':'application/json',
-  //     }
-  //   })
-  //   .then(resp => resp.json())
-  //   .then(data =>{
-  //     console.log(data)
-  //     this.setState((prevState) => ({
-  //       photoLikes: [...prevState.photoLikes.filter(l => l.id !== data.id)],
-  //       disabledButton: false
-  //     }))
-  //   })
-  // }
-
-  // findLiked =() => {
-  //   // const liked = this.props.chosenPhoto.likes.filter(like => like.user_id === this.props.user.id)[0]
-  //   const liked= this.state.photoLikes.filter(like => like.user_id === this.props.user.id)
-  // //  const liked= this.state.photoLikes
-  //   if(liked === undefined || liked === []){
-  //     return <button key={this.props.chosenPhoto.id}  onClick={() => this.handleLike(this.props.chosenPhoto)}>Like</button>
-  //   }else{
-  //     return <button key={this.props.chosenPhoto.id}  onClick={() => this.deleteLike(this.props.chosenPhoto)}>Unlike</button>
-  //   }
-  // }
 
   render() {
     const { chosenPhoto, seeAllPhotos, user, deletePhoto } = this.props;
@@ -121,7 +94,6 @@ class PhotoInfo extends React.Component {
             />
             {this.state.photoLikes.length}
           </h3>
-          {/* <button key={chosenPhoto.id}  onClick={() => this.handleDeleteLike(chosenPhoto)} >Unlike</button>  */}
         </div>
       </div>
     );

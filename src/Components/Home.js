@@ -4,7 +4,7 @@ import "../styles/Home.css";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 
-const Home = ({ user }) => {
+const Home = ({ props }) => {
   return (
     <div className="wrapper">
       <section className="section parallax bg1">
