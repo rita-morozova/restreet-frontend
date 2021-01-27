@@ -15,12 +15,11 @@ class PhotoInfo extends React.Component {
     let token = localStorage.getItem("token");
     fetch("http://localhost:3000/likes", {
       headers: {
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
       },
     })
       .then((resp) => resp.json())
       .then((data) => {
-        console.log(data);
         this.setState({
           likes: data,
           photoLikes: data.filter(
@@ -36,8 +35,8 @@ class PhotoInfo extends React.Component {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        "Accept": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify({
         photo_id: chosenPhoto.id,

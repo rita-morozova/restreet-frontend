@@ -3,6 +3,7 @@ import Note from "../Components/Note";
 import { Form, TextArea, Button } from "semantic-ui-react";
 import "../styles/Notes.css";
 
+
 class NotesContainer extends React.Component {
   state = {
     note: "",
@@ -14,9 +15,10 @@ class NotesContainer extends React.Component {
   };
 
   updateNotes = () => {
+    const token = localStorage.getItem("token");
     fetch("http://localhost:3000/notes", {
       headers: {
-        Authorization: `Bearer ${this.props.token}`,
+        "Authorization": `Bearer ${token}`,
       },
     })
       .then((resp) => resp.json())
@@ -42,12 +44,13 @@ class NotesContainer extends React.Component {
   postNote = () => {
     const video_id = this.props.video.id;
     const user_id = this.props.user.id;
+    const token = localStorage.getItem("token");
     fetch("http://localhost:3000/notes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${this.props.token}`,
+        "Accept": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify({
         user_id: user_id,
@@ -64,11 +67,12 @@ class NotesContainer extends React.Component {
   };
 
   deleteNote = (note) => {
+    const token = localStorage.getItem("token");
     let currentNote = this.state.videoNotes.filter((n) => n.id === note.id)[0];
     fetch(`http://localhost:3000/notes/${currentNote.id}`, {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${this.props.token}`,
+        "Authorization": `Bearer ${token}`,
       },
     })
       .then((resp) => resp.json())

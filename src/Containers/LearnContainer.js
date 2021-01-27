@@ -7,7 +7,6 @@ class LearnContainer extends React.Component {
     const {
       videos,
       addToList,
-      token,
       selectedVideo,
       selectVideo,
       goBackToAllVideos,
@@ -21,7 +20,6 @@ class LearnContainer extends React.Component {
             user={this.props.user}
             goBackToAllVideos={goBackToAllVideos}
             addToList={addToList}
-            token={token}
           />
         ) : (
           <VideoContainer

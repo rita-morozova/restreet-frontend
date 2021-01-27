@@ -12,7 +12,6 @@ const FavVideosContainer = ({
   goBackToAllVideos,
   addToList,
   user,
-  token,
 }) => {
   return (
     <div className="favorites-main" style={{ marginTop: "0px" }}>
@@ -27,7 +26,6 @@ const FavVideosContainer = ({
               user={user}
               goBackToAllVideos={goBackToAllVideos}
               addToList={addToList}
-              token={token}
             />
           ) : (
             <>

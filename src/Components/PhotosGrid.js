@@ -13,7 +13,6 @@ const PhotosGrid = ({
   selectPhoto,
   seeAllPhotos,
   deletePhoto,
-  token,
 }) => {
   return (
     <div>
@@ -30,7 +29,6 @@ const PhotosGrid = ({
           user={user}
           handleLike={handleLike}
           deletePhoto={deletePhoto}
-          token={token}
         />
       ) : (
         <>

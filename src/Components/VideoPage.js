@@ -78,7 +78,6 @@ class VideoPage extends React.Component {
         <NotesContainer
           video={this.props.selectedVideo}
           user={this.props.user}
-          token={this.props.token}
         />
       </div>
     );

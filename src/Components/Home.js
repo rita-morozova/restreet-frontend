@@ -1,10 +1,9 @@
 import React from "react";
 import { Grid, Header, Image, Segment } from "semantic-ui-react";
 import "../styles/Home.css";
-import { Link } from "react-router-dom";
 import Footer from "./Footer";
 
-const Home = ({ props }) => {
+const Home = () => {
   return (
     <div className="wrapper">
       <section className="section parallax bg1">
@@ -29,19 +28,17 @@ const Home = ({ props }) => {
         </div>
       </section>
       <section className="section parallax bg2">
-        <h1></h1>
+        {/* <h1></h1> */}
       </section>
       <section className="section static">
         <Segment vertical>
           <Grid container stackable textAlign="center" columns={3}>
             <Grid.Column>
-              <Link to="/learn">
                 <Image
                   centered
                   size="medium"
                   src="https://images.unsplash.com/photo-1511815151576-08444c6f1fa6?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NTB8fHN0cmVldCUyMGFydHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
                 />
-              </Link>
               <Header as="h1" style={{ color: "white" }}>
                 LEARN
               </Header>
@@ -53,13 +50,11 @@ const Home = ({ props }) => {
               </p>
             </Grid.Column>
             <Grid.Column>
-              <Link to="/get-inspired">
                 <Image
                   centered
                   size="medium"
                   src="https://images.unsplash.com/photo-1571657047939-d349fa7890f2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTkzfHxzdHJlZXQlMjBhcnR8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
                 />
-              </Link>
               <Header as="h1" style={{ color: "white" }}>
                 GET INSPIRED
               </Header>
@@ -71,13 +66,11 @@ const Home = ({ props }) => {
               </p>
             </Grid.Column>
             <Grid.Column>
-              <Link to="/share">
                 <Image
                   centered
                   size="medium"
                   src="https://images.unsplash.com/photo-1470700467371-d42b6c25c6a8?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=752&q=80"
                 />
-              </Link>
               <Header as="h1" style={{ color: "white" }}>
                 SHARE
               </Header>

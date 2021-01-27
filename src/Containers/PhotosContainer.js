@@ -18,7 +18,7 @@ class PhotosContainer extends React.Component {
     let token = localStorage.getItem("token");
     fetch("http://localhost:3000/photos", {
       headers: {
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
       },
     })
       .then((resp) => resp.json())
@@ -38,13 +38,12 @@ class PhotosContainer extends React.Component {
     fetch("http://localhost:3000/photos", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
       },
       body: formData,
     })
       .then((resp) => resp.json())
       .then((data) => {
-        console.log(data);
         this.setState((prevState) => ({
           photos: [...prevState.photos, data],
         }));
@@ -59,7 +58,7 @@ class PhotosContainer extends React.Component {
     fetch(`http://localhost:3000/photos/${photo.id}`, {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
       },
     })
       .then((resp) => resp.json())

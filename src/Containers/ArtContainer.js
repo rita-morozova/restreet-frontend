@@ -10,9 +10,10 @@ class ArtContainer extends React.Component {
   };
 
   componentDidMount() {
+    const token = localStorage.getItem("token");
     fetch("http://localhost:3000/arts", {
       headers: {
-        Authorization: `Bearer ${this.props.token}`,
+        "Authorization": `Bearer ${token}`,
       },
     })
       .then((resp) => resp.json())

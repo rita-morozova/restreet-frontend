@@ -39,15 +39,15 @@ class App extends React.Component {
 
   ////Find User Profile
   fetchUser = () => {
+    const token = localStorage.getItem("token");
     if (token) {
       fetch(`${URL}/profile`, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          "Authorization": `Bearer ${token}`,
         },
       })
         .then((res) => res.json())
         .then((user) => {
-          console.log(user.user);
           this.setState({ user: user.user });
         });
     }
@@ -57,7 +57,7 @@ class App extends React.Component {
   fetchListings = () => {
     fetch(`${URL}/listings`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
       },
     })
       .then((resp) => resp.json())
@@ -68,7 +68,7 @@ class App extends React.Component {
   fetchVideos = () => {
     fetch(`${URL}/videos`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
       },
     })
       .then((resp) => resp.json())
@@ -97,7 +97,7 @@ class App extends React.Component {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
+         "Accept": "application/json",
       },
       body: JSON.stringify({
         username: info.username,
@@ -106,7 +106,6 @@ class App extends React.Component {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        console.log(data);
         if (data.error) throw Error(data.error);
         localStorage.setItem("token", data.token);
         this.setState({ user: data.user }, () => {
@@ -171,7 +170,7 @@ class App extends React.Component {
     fetch(`http://localhost:3000/users/${this.state.user.id}`, {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
       },
     });
     this.props.history.push("/");
@@ -181,17 +180,17 @@ class App extends React.Component {
 
   ////////////////////// Handle favorite arts
   addToFavorites = (art) => {
+    const token = localStorage.getItem("token");
     fetch(`${URL}/favorites`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify({ art_id: art.id }),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         this.setState({ user: data.user });
       });
   };
@@ -204,7 +203,7 @@ class App extends React.Component {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
       },
     })
       .then((resp) => resp.json())
@@ -224,17 +223,17 @@ class App extends React.Component {
 
   /////////HANDLE VIDEOS
   addToList = (video) => {
+    const token = localStorage.getItem("token");
     fetch("http://localhost:3000/favvideos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify({ video_id: video.id }),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         // debugger
         this.setState({ user: data.user });
       })
@@ -249,7 +248,7 @@ class App extends React.Component {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
       },
     })
       .then((resp) => resp.json())
@@ -274,8 +273,8 @@ class App extends React.Component {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        "Accept": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify({
         lat: listing.lat,
@@ -306,12 +305,11 @@ class App extends React.Component {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
       },
     })
       .then((resp) => resp.json())
       .then((data) => {
-        console.log(data);
         this.setState((prevState) => ({
           listings: prevState.listings.filter((l) => l.id !== walla.id),
         }));
@@ -324,8 +322,8 @@ class App extends React.Component {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        "Accept": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify({ adopted: true }),
     })
@@ -347,14 +345,13 @@ class App extends React.Component {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        "Accept": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify({ adopted: false }),
     })
       .then((resp) => resp.json())
       .then((data) => {
-        console.log(data);
         this.setState((prevState) => ({
           listings: [
             ...prevState.listings.filter((l) => l.id !== data.id),
@@ -379,11 +376,12 @@ class App extends React.Component {
 
   render() {
     const { user, videos, listings, selectedVideo } = this.state;
+    console.log(this.state.user)
     return (
       <div className="App">
         <Navbar user={user} />
         <Switch>
-          <Route exact path="/" component={() => <Home user={user} />} />
+          <Route exact path="/" component={() => <Home />} />
           <Route exact path="/login" component={this.renderForm} />
           <Route exact path="/signup" component={this.renderForm} />
           <Route exact path="/logout" component={() => this.handleLogout()} />
@@ -433,7 +431,6 @@ class App extends React.Component {
                 goBackToAllVideos={this.goBackToAllVideos}
                 addToList={this.addToList}
                 user={user}
-                token={token}
               />
             )}
           />
@@ -444,7 +441,6 @@ class App extends React.Component {
             component={() => (
               <ArtContainer
                 addToFavorites={this.addToFavorites}
-                token={token}
               />
             )}
           />
@@ -466,7 +462,6 @@ class App extends React.Component {
                 user={user}
                 videos={videos}
                 addToList={this.addToList}
-                token={token}
                 selectedVideo={selectedVideo}
                 selectVideo={this.selectVideo}
                 goBackToAllVideos={this.goBackToAllVideos}
