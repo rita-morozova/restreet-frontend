@@ -352,6 +352,7 @@ class App extends React.Component {
     })
       .then((resp) => resp.json())
       .then((data) => {
+        console.log(data);
         this.setState((prevState) => ({
           listings: [
             ...prevState.listings.filter((l) => l.id !== data.id),

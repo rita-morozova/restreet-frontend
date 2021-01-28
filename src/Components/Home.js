@@ -42,7 +42,7 @@ const Home = () => {
               <Header as="h1" style={{ color: "white" }}>
                 LEARN
               </Header>
-              <p style={{ fontSize: "14pt" }}>
+              <p className='home-columns'>
                 It doesn’t matter if you are just starting out or you are
                 already a pro, everyone can learn some new tricks from other
                 artists. Check out our lesson selection and see if you find
@@ -58,7 +58,7 @@ const Home = () => {
               <Header as="h1" style={{ color: "white" }}>
                 GET INSPIRED
               </Header>
-              <p style={{ fontSize: "14pt" }}>
+              <p className='home-columns'>
                 Artists are natural creators always trying out new things and
                 developing new artforms. We put together an extensive collection
                 of the modern art. Get inspired by famous artists and create
@@ -74,7 +74,7 @@ const Home = () => {
               <Header as="h1" style={{ color: "white" }}>
                 SHARE
               </Header>
-              <p style={{ fontSize: "14pt" }}>
+              <p className='home-columns'>
                 Experience our fantastic community. Sit back and enjoy the
                 artistic experience, or if you dare, share your own art. Don’t
                 forget to show some love to our community!
