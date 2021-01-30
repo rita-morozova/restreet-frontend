@@ -14,11 +14,15 @@
   padding-top: 3%;
   padding-bottom: 30px;
   align-items: center;
+ 
 }
 
 .frame {
   margin-bottom: 50px;
 }
+
+
+
 
 .box {
   float: left;
@@ -65,8 +69,6 @@
   border-radius: 15px;
   margin-left: 5%;
   margin-right: 5%;
-  /* margin-top: 25px; */
-  /* margin-bottom: 25px; */
   padding-top: 3%;
   padding-bottom: 30px;
 }
@@ -126,4 +128,11 @@
   overflow-x: hidden;
   overflow-y: auto;
   perspective: 2px;
+  
 }
+.standard{
+  width: 550px;
+  height: 350px;
+}
+
+

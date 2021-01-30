@@ -75,7 +75,7 @@ const Maps = ({ listings, user, handlePostWall }) => {
   if (!isLoaded) return "Loading...";
 
   return (
-    <div>
+    <div className='google-maps'>
       <br />
       <div className="maps-name">
         <h2 style={{ color: "#44484b", fontWeight: "bold" }}>
@@ -83,8 +83,8 @@ const Maps = ({ listings, user, handlePostWall }) => {
           Your Location
         </h2>
       </div>
-      <SearchBar panTo={panTo} />
       <Locate panTo={panTo} />
+      <SearchBar panTo={panTo} />
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={14}

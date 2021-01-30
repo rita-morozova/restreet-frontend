@@ -13,7 +13,7 @@ class Video extends React.Component {
 
     return (
       <div className="single-video">
-        <div className="frame">
+        <div className="frame" >
           <ReactPlayer
             url={video.url}
             light={true}

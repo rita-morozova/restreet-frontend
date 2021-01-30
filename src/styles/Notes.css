@@ -1,29 +1,11 @@
-/* textarea {
-  width: 100%;
-  height: 100px;
-  padding: 12px 20px;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background-color: #f8f8f8;
-  font-size: 14px;
-} */
-
-/* textarea{
-  height: 100px;
-} */
-
 .textbox {
   position: relative;
   top: 3.5rem;
-  /* top: 43rem;
-  right: 50%; */
 }
 
 .note {
   color: #000;
   background: #ccf;
-  /* background: #F070A1; */
   display: block;
   height: 12em;
   width: 12em;
@@ -95,3 +77,4 @@ li:focus {
   right: 10rem;
   margin-top: 70px;
 }
+

@@ -31,10 +31,11 @@ class Navbar extends React.Component {
   render() {
     return (
       <div className="nav-bar-main">
-        <Grid padded className="tablet computer only">
+        <Grid padded className="mobile tablet computer only">
           <Menu
             borderless
             fluid
+            stackable
             size="large"
             style={{ backgroundColor: "#fac339" }}
           >

@@ -88,7 +88,7 @@ class NotesContainer extends React.Component {
       (note) => note.user_id === this.props.user.id
     );
     return (
-      <div>
+      <div className="parent-notes">
         <div className="textbox">
           <Form>
             <TextArea
