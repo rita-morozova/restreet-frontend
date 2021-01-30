@@ -22,8 +22,6 @@
 
 .turqbg {
   background-color: #46d8d2;
-  /* background-color: #51a5ff; */
-  /* background-color: #3970fa; */
 }
 
 .turq {
@@ -37,7 +35,6 @@
 div.user-menu-container {
   z-index: 10;
   background-color: #fff;
-  /* margin-top: 20px; */
   background-clip: padding-box;
   opacity: 0.97;
   filter: alpha(opacity=97);

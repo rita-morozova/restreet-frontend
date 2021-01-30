@@ -1,6 +1,7 @@
 .textbox {
   position: relative;
   top: 3.5rem;
+
 }
 
 .note {
@@ -76,5 +77,6 @@ li:focus {
   position: relative;
   right: 10rem;
   margin-top: 70px;
+  position: absolute;
 }
 

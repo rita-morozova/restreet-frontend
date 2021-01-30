@@ -5,6 +5,7 @@ import "../styles/Video.css";
 import { Button } from "semantic-ui-react";
 import Loader from "./Loader";
 
+
 class VideoPage extends React.Component {
   state = {
     showDescription: false,
@@ -49,8 +50,8 @@ class VideoPage extends React.Component {
             {!this.state.loaded ? <Loader /> : null}
             <ReactPlayer
               url={this.props.selectedVideo.url}
-              width="850px"
-              height="450px"
+              width="60vw"
+              height="40vw"
               onReady={this.successState}
               max-width="100%"
               controls={true}

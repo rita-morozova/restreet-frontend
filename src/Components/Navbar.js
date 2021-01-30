@@ -31,7 +31,7 @@ class Navbar extends React.Component {
   render() {
     return (
       <div className="nav-bar-main">
-        <Grid padded className="mobile tablet computer only">
+        <Grid padded className="mobile tablet computer">
           <Menu
             borderless
             fluid
