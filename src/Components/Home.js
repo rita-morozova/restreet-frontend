@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Header, Image, Segment } from "semantic-ui-react";
+import { Grid, Header, Image, Segment, } from "semantic-ui-react";
 import "../styles/Home.css";
 import Footer from "./Footer";
 
@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div className="wrapper">
       <section className="section parallax bg1">
-        <h1 style={{ fontSize: "80pt", textShadow: "5px 5px #e06084" }}>
+        <h1 className='re-street'>
           RE-STREET
         </h1>
       </section>

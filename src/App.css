@@ -9,3 +9,25 @@
 .was-validated .form-control:valid ~ .invalid-feedback {
   display: none;
 }
+
+footer{
+  /* position: fixed; */
+  overflow: hidden;
+  background-color: #fac339;
+  height: 2rem;
+  width: 100vw;
+  bottom: 0;
+  color: #44484b;
+}
+
+footer p{
+  font-size: 1rem;
+}
+
+footer a{
+  color: #44484b
+}
+
+footer a:hover{
+  color: white;
+}

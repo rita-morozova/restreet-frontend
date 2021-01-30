@@ -16,6 +16,7 @@ import PostWall from "./Components/PostWall";
 import FavVideoContainer from "./Containers/FavVideosContainer";
 import PhotosContainer from "./Containers/PhotosContainer";
 
+
 const URL = "http://localhost:3000";
 const token = localStorage.getItem("token");
 

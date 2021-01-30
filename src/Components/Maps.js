@@ -11,6 +11,7 @@ import WallListing from "./WallListing";
 import PostWall from "./PostWall";
 import MapStyles from "../styles/MapStyles.js";
 import "../styles/Maps.css";
+import Footer from "./Footer"
 
 const libraries = ["places"];
 const type = ["listing"];
@@ -137,6 +138,7 @@ const Maps = ({ listings, user, handlePostWall }) => {
           />
         ))}
       </GoogleMap>
+      <Footer />
     </div>
   );
 };

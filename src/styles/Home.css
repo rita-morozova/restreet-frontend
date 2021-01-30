@@ -12,7 +12,6 @@
   align-items: center;
   justify-content: center;
   color: white;
-  /* text-shadow: 0 0 5px #000; */
 }
 
 .parallax::after {
@@ -48,3 +47,9 @@
 .home-columns{
   font-size: 3vh;
 }
+
+.re-street{
+  font-size:  80pt;
+  text-shadow: 5px 5px #e06084;
+}
+

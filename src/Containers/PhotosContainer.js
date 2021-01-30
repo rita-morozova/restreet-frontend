@@ -1,5 +1,6 @@
 import React from "react";
 import PhotosGrid from "../Components/PhotosGrid";
+import Footer from "../Components/Footer";
 
 class PhotosContainer extends React.Component {
   _isMounted = false;
@@ -93,6 +94,7 @@ class PhotosContainer extends React.Component {
           seeAllPhotos={this.seeAllPhotos}
           deletePhoto={this.deletePhoto}
         />
+        <Footer />
       </div>
     );
   }
