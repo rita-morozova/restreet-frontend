@@ -12,14 +12,15 @@ class Video extends React.Component {
     };
 
     return (
+    <div className="learn-videos">
       <div className="single-video">
         <div className="frame" >
           <ReactPlayer
             url={video.url}
             light={true}
             controls={true}
-            width="550px"
-            height="350px"
+            width="300px"
+            height="210px"
             origin="http://localhost:3000"
             className="standard"
           />
@@ -38,6 +39,7 @@ class Video extends React.Component {
           </Button>
         </div>
       </div>
+    </div>
     );
   }
 }

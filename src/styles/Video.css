@@ -5,24 +5,14 @@
   padding: 10px;
 }
 
-.standard {
-  /* border-radius: 15px; */
-  margin-left: 30%;
-  margin-right: 5%;
-  margin-top: 25px;
-  margin-bottom: 25px;
-  padding-top: 3%;
-  padding-bottom: 30px;
-  align-items: center;
- 
-}
-
 .frame {
-  margin-bottom: 50px;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 8px;
+  max-width: 350px;
 }
-
-
-
 
 .box {
   float: left;
@@ -131,9 +121,19 @@
  
   
 }
-.standard{
-  width: 550px;
-  height: 350px;
+
+.learn-videos{
+  border-radius: 15px;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 3%;
+  padding-bottom: 30px;
+  
 }
 
+.single-video{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
