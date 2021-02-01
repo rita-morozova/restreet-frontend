@@ -1003,7 +1003,7 @@
     "core-js-pure" "^3.0.0"
     "regenerator-runtime" "^0.13.4"
 
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.4", "@babel/runtime@^7.10.5", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.4", "@babel/runtime@^7.10.5", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.4.2", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
   "integrity" "sha512-plcc+hbExy3McchJCEQG3knOsuh3HH+Prx1P6cLIkET/0dLuQDEnrT+s27Axgc9bqfsmNUNHfscgMUdBpC9xfg=="
   "resolved" "https://registry.npmjs.org/@babel/runtime/-/runtime-7.12.5.tgz"
   "version" "7.12.5"
@@ -1444,33 +1444,6 @@
   "integrity" "sha1-ioP5M1x4YO/6Lu7KJUMyqgru2PI="
   "resolved" "https://registry.npmjs.org/@mapbox/point-geometry/-/point-geometry-0.1.0.tgz"
   "version" "0.1.0"
-
-"@material-ui/icons@^4.11.2":
-  "integrity" "sha512-fQNsKX2TxBmqIGJCSi3tGTO/gZ+eJgWmMJkgDiOfyNaunNaxcklJQFaFogYcFl0qFuaEz1qaXYXboa/bUXVSOQ=="
-  "resolved" "https://registry.npmjs.org/@material-ui/icons/-/icons-4.11.2.tgz"
-  "version" "4.11.2"
-  dependencies:
-    "@babel/runtime" "^7.4.4"
-
-"@material-ui/lab@^4.0.0-alpha.57":
-  "integrity" "sha512-qo/IuIQOmEKtzmRD2E4Aa6DB4A87kmY6h0uYhjUmrrgmEAgbbw9etXpWPVXuRK6AGIQCjFzV6WO2i21m1R4FCw=="
-  "resolved" "https://registry.npmjs.org/@material-ui/lab/-/lab-4.0.0-alpha.57.tgz"
-  "version" "4.0.0-alpha.57"
-  dependencies:
-    "@babel/runtime" "^7.4.4"
-    "@material-ui/utils" "^4.11.2"
-    "clsx" "^1.0.4"
-    "prop-types" "^15.7.2"
-    "react-is" "^16.8.0 || ^17.0.0"
-
-"@material-ui/utils@^4.11.2":
-  "integrity" "sha512-Uul8w38u+PICe2Fg2pDKCaIG7kOyhowZ9vjiC1FsVwPABTW8vPPKfF6OvxRq3IiBaI1faOJmgdvMG7rMJARBhA=="
-  "resolved" "https://registry.npmjs.org/@material-ui/utils/-/utils-4.11.2.tgz"
-  "version" "4.11.2"
-  dependencies:
-    "@babel/runtime" "^7.4.4"
-    "prop-types" "^15.7.2"
-    "react-is" "^16.8.0 || ^17.0.0"
 
 "@nodelib/fs.scandir@2.1.3":
   "integrity" "sha512-eGmwYQn3gxo4r7jdQnkrrN6bY478C3P+a/y72IJukF8LjB6ZHeB3c+Ehacj3sYeSmUXGlnA67/PmbM9CVwL7Dw=="
@@ -3635,7 +3608,7 @@
     "kind-of" "^6.0.2"
     "shallow-clone" "^3.0.0"
 
-"clsx@^1.0.4", "clsx@^1.1.1":
+"clsx@^1.1.1":
   "integrity" "sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA=="
   "resolved" "https://registry.npmjs.org/clsx/-/clsx-1.1.1.tgz"
   "version" "1.1.1"
@@ -4326,13 +4299,6 @@
     "ms" "2.0.0"
 
 "debug@^2.6.0":
-  "integrity" "sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA=="
-  "resolved" "https://registry.npmjs.org/debug/-/debug-2.6.9.tgz"
-  "version" "2.6.9"
-  dependencies:
-    "ms" "2.0.0"
-
-"debug@^2.6.6":
   "integrity" "sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA=="
   "resolved" "https://registry.npmjs.org/debug/-/debug-2.6.9.tgz"
   "version" "2.6.9"
@@ -5400,7 +5366,7 @@
   "resolved" "https://registry.npmjs.org/extsprintf/-/extsprintf-1.3.0.tgz"
   "version" "1.3.0"
 
-"fast-deep-equal@^3.1.1", "fast-deep-equal@^3.1.3", "fast-deep-equal@3.1.3":
+"fast-deep-equal@^3.1.1", "fast-deep-equal@^3.1.3":
   "integrity" "sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q=="
   "resolved" "https://registry.npmjs.org/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz"
   "version" "3.1.3"
@@ -9807,7 +9773,7 @@
     "react-is" "^16.3.2"
     "warning" "^4.0.0"
 
-"prop-types@^15.5.0", "prop-types@^15.5.8", "prop-types@^15.6.0", "prop-types@^15.6.2", "prop-types@^15.7.2", "prop-types@15.7.2":
+"prop-types@^15.5.0", "prop-types@^15.5.8", "prop-types@^15.6.0", "prop-types@^15.6.2", "prop-types@^15.7.2":
   "integrity" "sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ=="
   "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz"
   "version" "15.7.2"
@@ -10134,11 +10100,6 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
 
-"react-is@^16.8.0 || ^17.0.0", "react-is@^17.0.1":
-  "integrity" "sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA=="
-  "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.1.tgz"
-  "version" "17.0.1"
-
 "react-is@^16.8.1":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
@@ -10148,6 +10109,11 @@
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
+
+"react-is@^17.0.1":
+  "integrity" "sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA=="
+  "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.1.tgz"
+  "version" "17.0.1"
 
 "react-lifecycles-compat@^3.0.4":
   "integrity" "sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA=="
@@ -10335,15 +10301,6 @@
     "react" "^16.0.0"
     "shallow-equal" "^1.0.0"
     "uuid" "^3.1.0"
-
-"react-youtube@^7.13.0":
-  "integrity" "sha512-cVCQE9ktKD1NJOFcJ59jU82UgCXM4yRueWIKSRsOnBfx7uRyhgdLKPKbCQX1Xk2+iXtLpMdAjYmjgxrCvwvfqA=="
-  "resolved" "https://registry.npmjs.org/react-youtube/-/react-youtube-7.13.0.tgz"
-  "version" "7.13.0"
-  dependencies:
-    "fast-deep-equal" "3.1.3"
-    "prop-types" "15.7.2"
-    "youtube-player" "5.5.2"
 
 "react@^16.0.0":
   "integrity" "sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g=="
@@ -11299,11 +11256,6 @@
   "version" "0.2.2"
   dependencies:
     "is-arrayish" "^0.3.1"
-
-"sister@^3.0.0":
-  "integrity" "sha512-p19rtTs+NksBRKW9qn0UhZ8/TUI9BPw9lmtHny+Y3TinWlOa9jWh9xB0AtPSdmOy49NJJJSSe0Ey4C7h0TrcYA=="
-  "resolved" "https://registry.npmjs.org/sister/-/sister-3.0.2.tgz"
-  "version" "3.0.2"
 
 "sisteransi@^1.0.5":
   "integrity" "sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg=="
@@ -13162,15 +13114,6 @@
     "which-module" "^2.0.0"
     "y18n" "^4.0.0"
     "yargs-parser" "^18.1.2"
-
-"youtube-player@5.5.2":
-  "integrity" "sha512-ZGtsemSpXnDky2AUYWgxjaopgB+shFHgXVpiJFeNB5nWEugpW1KWYDaHKuLqh2b67r24GtP6HoSW5swvf0fFIQ=="
-  "resolved" "https://registry.npmjs.org/youtube-player/-/youtube-player-5.5.2.tgz"
-  "version" "5.5.2"
-  dependencies:
-    "debug" "^2.6.6"
-    "load-script" "^1.0.0"
-    "sister" "^3.0.0"
 
 "zen-observable@^0.8.14":
   "integrity" "sha512-PQ2PC7R9rslx84ndNBZB/Dkv8V8fZEpk83RLgXtYd0fwUgEjseMn1Dgajh2x6S8QbZAFa9p2qVCEuYZNgve0dQ=="

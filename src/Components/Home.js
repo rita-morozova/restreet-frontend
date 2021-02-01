@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Header, Image, Segment, } from "semantic-ui-react";
+import { Grid, Image, Segment, } from "semantic-ui-react";
 import "../styles/Home.css";
 import Footer from "./Footer";
 

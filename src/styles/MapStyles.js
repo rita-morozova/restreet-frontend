@@ -1,4 +1,4 @@
-export default [
+export default  mapStyle =[
   {
     featureType: "administrative",
     elementType: "all",

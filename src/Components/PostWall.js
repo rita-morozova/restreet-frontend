@@ -6,8 +6,8 @@ const PostWall = ({ position, user, handlePostWall }) => {
   const [zipcode, setZipCode] = useState("");
   const [description, setDescription] = useState("");
   const [photo, setPhoto] = useState("");
-  const [user_id, setUser_id] = useState(user.id);
-  const [adopted, setAdopted] = useState(false);
+  // const [user_id, setUser_id] = useState(user.id);
+  // const [adopted, setAdopted] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

@@ -4,8 +4,6 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.2.9",
-    "@material-ui/icons": "^4.11.2",
-    "@material-ui/lab": "^4.0.0-alpha.57",
     "@reach/combobox": "^0.12.1",
     "@react-google-maps/api": "^1.13.0",
     "@testing-library/jest-dom": "^5.11.4",
@@ -35,7 +33,6 @@
     "react-scripts": "4.0.0",
     "react-timeago": "^5.2.0",
     "react-validation": "^3.0.7",
-    "react-youtube": "^7.13.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.1",
     "use-places-autocomplete": "^1.6.0",

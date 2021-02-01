@@ -1,6 +1,5 @@
 import React from "react";
 import ArtCard from "../Components/ArtCard";
-import ArtContainer from "./ArtContainer";
 import "../styles/Arts.css";
 
 const ArtPhotosContainer = ({ arts, selectArt }) => {
