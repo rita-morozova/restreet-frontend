@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 class UserProfile extends React.Component {
   state = {
     name: this.props.user.name,
-    location: this.props.user.location,
+    location: this.props.user.location, 
     bio: this.props.user.bio,
     password: this.props.user.password,
   };

@@ -13,7 +13,7 @@ const Home = () => {
       </section>
       <section className="section static">
         <div className="text">
-          <h1 style={{ fontSize: "26pt" }}>
+          <h1 className="mission">
             Our Mission: To Live in Painted Cities
           </h1>
           <h1>
@@ -39,9 +39,9 @@ const Home = () => {
                   size="medium"
                   src="https://images.unsplash.com/photo-1511815151576-08444c6f1fa6?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NTB8fHN0cmVldCUyMGFydHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
                 />
-              <Header as="h1" style={{ color: "white" }}>
+              <h1 className='title'>
                 LEARN
-              </Header>
+              </h1>
               <p className='home-columns'>
                 It doesn’t matter if you are just starting out or you are
                 already a pro, everyone can learn some new tricks from other
@@ -55,9 +55,9 @@ const Home = () => {
                   size="medium"
                   src="https://images.unsplash.com/photo-1571657047939-d349fa7890f2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTkzfHxzdHJlZXQlMjBhcnR8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
                 />
-              <Header as="h1" style={{ color: "white" }}>
+              <h1 clasName='title'>
                 GET INSPIRED
-              </Header>
+              </h1>
               <p className='home-columns'>
                 Artists are natural creators always trying out new things and
                 developing new artforms. We put together an extensive collection
@@ -71,9 +71,9 @@ const Home = () => {
                   size="medium"
                   src="https://images.unsplash.com/photo-1470700467371-d42b6c25c6a8?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=752&q=80"
                 />
-              <Header as="h1" style={{ color: "white" }}>
+              <h1 className='title'>
                 SHARE
-              </Header>
+              </h1>
               <p className='home-columns'>
                 Experience our fantastic community. Sit back and enjoy the
                 artistic experience, or if you dare, share your own art. Don’t

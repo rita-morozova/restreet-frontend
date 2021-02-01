@@ -149,7 +149,7 @@ class App extends React.Component {
       method: method,
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     })
@@ -176,7 +176,7 @@ class App extends React.Component {
     });
     this.props.history.push("/");
     localStorage.clear();
-    this.setState({ user: null });
+    this.setState({ user: '' });
   };
 
   ////////////////////// Handle favorite arts
