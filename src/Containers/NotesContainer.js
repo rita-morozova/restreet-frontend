@@ -16,7 +16,7 @@ class NotesContainer extends React.Component {
 
   updateNotes = () => {
     const token = localStorage.getItem("token");
-    fetch("http://localhost:3000/notes", {
+    fetch("https://re-street.herokuapp.com/notes", {
       headers: {
         "Authorization": `Bearer ${token}`,
       },
@@ -45,7 +45,7 @@ class NotesContainer extends React.Component {
     const video_id = this.props.video.id;
     const user_id = this.props.user.id;
     const token = localStorage.getItem("token");
-    fetch("http://localhost:3000/notes", {
+    fetch("https://re-street.herokuapp.com/notes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -69,7 +69,7 @@ class NotesContainer extends React.Component {
   deleteNote = (note) => {
     const token = localStorage.getItem("token");
     let currentNote = this.state.videoNotes.filter((n) => n.id === note.id)[0];
-    fetch(`http://localhost:3000/notes/${currentNote.id}`, {
+    fetch(`https://re-street.herokuapp.com/notes/${currentNote.id}`, {
       method: "DELETE",
       headers: {
         "Authorization": `Bearer ${token}`,

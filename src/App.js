@@ -17,7 +17,7 @@ import FavVideoContainer from "./Containers/FavVideosContainer";
 import PhotosContainer from "./Containers/PhotosContainer";
 
 
-const URL = "http://localhost:3000";
+const URL = "https://re-street.herokuapp.com";
 const token = localStorage.getItem("token");
 
 class App extends React.Component {
@@ -168,7 +168,7 @@ class App extends React.Component {
 
   //////// DELETE USER
   deleteUser = () => {
-    fetch(`http://localhost:3000/users/${this.state.user.id}`, {
+    fetch(`https://re-street.herokuapp.com/users/${this.state.user.id}`, {
       method: "DELETE",
       headers: {
         "Authorization": `Bearer ${token}`,
@@ -225,7 +225,7 @@ class App extends React.Component {
   /////////HANDLE VIDEOS
   addToList = (video) => {
     const token = localStorage.getItem("token");
-    fetch("http://localhost:3000/favvideos", {
+    fetch("https://re-street.herokuapp.com/favvideos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

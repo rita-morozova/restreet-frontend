@@ -21,7 +21,7 @@ class Video extends React.Component {
             controls={true}
             width="300px"
             height="210px"
-            origin="http://localhost:3000"
+            origin="https://re-street.herokuapp.com/"
             className="standard"
           />
           <h4 style={{ fontWeight: "bold" }}>{video.name}</h4>

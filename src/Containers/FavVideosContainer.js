@@ -42,7 +42,7 @@ const FavVideosContainer = ({
                           controls={true}
                           width="300px"
                           height="210px"
-                          origin="http://localhost:3000"
+                          origin="https://re-street.herokuapp.com/"
                         />
                         <h3> {video.name}</h3>
                         <Button

@@ -13,7 +13,7 @@ class PhotoInfo extends React.Component {
 
   componentDidMount = () => {
     let token = localStorage.getItem("token");
-    fetch("http://localhost:3000/likes", {
+    fetch("https://re-street.herokuapp.com/likes", {
       headers: {
         "Authorization": `Bearer ${token}`,
       },
@@ -31,7 +31,7 @@ class PhotoInfo extends React.Component {
 
   handleLike = (chosenPhoto) => {
     let token = localStorage.getItem("token");
-    fetch("http://localhost:3000/likes", {
+    fetch("https://re-street.herokuapp.com/likes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

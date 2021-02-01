@@ -55,7 +55,7 @@ class VideoPage extends React.Component {
               onReady={this.successState}
               max-width="100%"
               controls={true}
-              origin="http://localhost:3000"
+              origin="https://re-street.herokuapp.com/"
               className="video-lesson"
             />
             <div className="video-buttons">

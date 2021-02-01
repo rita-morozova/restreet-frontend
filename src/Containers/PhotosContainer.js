@@ -17,7 +17,7 @@ class PhotosContainer extends React.Component {
 
   getPhotos = () => {
     let token = localStorage.getItem("token");
-    fetch("http://localhost:3000/photos", {
+    fetch("https://re-street.herokuapp.com/photos", {
       headers: {
         "Authorization": `Bearer ${token}`,
       },
@@ -36,7 +36,7 @@ class PhotosContainer extends React.Component {
 
   handleUploadPhoto = (formData) => {
     let token = localStorage.getItem("token");
-    fetch("http://localhost:3000/photos", {
+    fetch("https://re-street.herokuapp.com/photos", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${token}`,
@@ -56,7 +56,7 @@ class PhotosContainer extends React.Component {
 
   deletePhoto = (photo) => {
     let token = localStorage.getItem("token");
-    fetch(`http://localhost:3000/photos/${photo.id}`, {
+    fetch(`https://re-street.herokuapp.com/photos/${photo.id}`, {
       method: "DELETE",
       headers: {
         "Authorization": `Bearer ${token}`,
