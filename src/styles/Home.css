@@ -1,4 +1,4 @@
-@media screen and (min-width: 375px){
+@media screen and (max-width: 375px){
  
   .re-street{
     text-shadow: 5px 5px #e06084;

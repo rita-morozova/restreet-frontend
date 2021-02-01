@@ -1,3 +1,66 @@
+@media screen and (max-width: 599px){
+  .note {
+    color: #000;
+    background: #ccf;
+    display: block;
+    height: 12em;
+    width: 12em;
+    padding: 1em;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  li {
+    list-style: none;
+    overflow: hidden;
+    padding: 1em;
+    margin: 1em;
+  }
+  
+  .font {
+    font-family: "Reenie Beanie", arial, sans-serif;
+    font-size: 180%;
+  }
+  
+  li:nth-child(even) {
+    -o-transform: rotate(4deg);
+    -webkit-transform: rotate(4deg);
+    -moz-transform: rotate(4deg);
+    position: relative;
+    top: 5px;
+
+  }
+  li:nth-child(3n) {
+    -o-transform: rotate(-3deg);
+    -webkit-transform: rotate(-3deg);
+    -moz-transform: rotate(-3deg);
+    position: relative;
+    top: -5px;
+  }
+  li:nth-child(5n) {
+    -o-transform: rotate(5deg);
+    -webkit-transform: rotate(5deg);
+    -moz-transform: rotate(5deg);
+    position: relative;
+    top: -10px;
+    background: #ffc;
+  }
+  
+  li:hover,
+  li:focus {
+    -moz-box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.7);
+    box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.7);
+    -webkit-transform: scale(1.25);
+    -moz-transform: scale(1.25);
+    -o-transform: scale(1.25);
+    position: relative;
+    z-index: 5;
+  }
+
+}
+
+
+@media screen and (min-width: 600px){
 .textbox {
   position: relative;
   top: 3.5rem;
@@ -78,5 +141,6 @@ li:focus {
   right: 10rem;
   margin-top: 70px;
   position: absolute;
+}
 }
 

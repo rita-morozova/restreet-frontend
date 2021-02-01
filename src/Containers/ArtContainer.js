@@ -2,7 +2,6 @@ import React from "react";
 import { Container } from "semantic-ui-react";
 import ArtInfo from "../Components/ArtInfo";
 import ArtPhotosContainer from "./ArtPhotosContainer";
-import Footer from '../Components/Footer'
 
 class ArtContainer extends React.Component {
   state = {
@@ -52,7 +51,6 @@ class ArtContainer extends React.Component {
             />
           )}
         </Container>
-        <Footer />
       </div>
     );
   }

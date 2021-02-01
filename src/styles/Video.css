@@ -1,3 +1,19 @@
+@media screen and (max-width: 599px){
+  .video-page-main {
+    background-image: url("https://res.cloudinary.com/diexi8g0j/image/upload/v1607290237/brick-wall1_z9u0mm.jpg");
+    background-size: cover;
+  
+  }
+
+  .video-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+}
+
+@media screen and (min-width: 600px){
 .library {
   background-color: rgba(255, 255, 255, 0.596);
   height: 60px;
@@ -135,3 +151,4 @@
   justify-content: center;
 }
 
+}
