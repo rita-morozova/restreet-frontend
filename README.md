@@ -6,7 +6,7 @@ RE-STREET is an art-platform for street artists. Here artists can find locations
 
 #### [Server-side Repository](https://github.com/rita-morozova/final-backend)
 
-#### [Video Demo](https://www.youtube.com/watch?v=oPv08cnf1gM&feature=youtu.be)
+#### [The demo can be viewed on Netlify](https://re-street.netlify.app/) or watch [a video walkthrough of the original app] (https://www.youtube.com/watch?v=oPv08cnf1gM&feature=youtu.be)
 
 ## Getting Started
 

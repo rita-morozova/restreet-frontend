@@ -9,9 +9,7 @@ import {
 } from "semantic-ui-react";
 import "../styles/Form.css";
 
-const validEmailRegex = RegExp(
-  /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-);
+
 const validateForm = (errors) => {
   let valid = true;
   Object.values(errors).forEach((val) => val.length > 0 && (valid = false));
@@ -50,19 +48,10 @@ class Signup extends React.Component {
         errors.username =
           value.length < 4 ? "Username must be at least 4 characters long" : "";
         break;
-      case "email":
-        errors.email = validEmailRegex.test(value) ? "" : "Email is not valid";
-        break;
       case "password":
         errors.password =
           value.length < 6 ? "Password must be at least 6 characters long" : "";
         break;
-      // case 'confirmPassword':
-      //   errors.confirmPassword =
-      //    value !== this.setState.password
-      //       ? "Passwords don't match"
-      //       : '';
-      //   break;
       default:
         break;
     }
